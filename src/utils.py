@@ -1,15 +1,27 @@
 """
 Database utilities for FlowFix AI
 Handles database connections, schema creation, and common queries
+
+Schema Version: 2.0
+Last Updated: 2026-01-05
 """
 import os
+import logging
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import SQLAlchemyError
 from dotenv import load_dotenv
 import pandas as pd
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 # Load environment variables
 load_dotenv()
+
+# Schema version for migration tracking
+SCHEMA_VERSION = "2.0"
 
 # Get absolute path to database
 DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'workflow_data.db')
@@ -22,12 +34,16 @@ if env_db_url and not env_db_url.startswith('sqlite:///data/'):
 else:
     DATABASE_URL = f'sqlite:///{DB_PATH}'  # Use computed SQLite path
 
-print(f"Database path: {DB_PATH}")  # Debug print
+logger.info(f"Database path: {DB_PATH}")
 
 
 def get_engine():
     """Create and return database engine"""
-    return create_engine(DATABASE_URL, echo=False)
+    try:
+        return create_engine(DATABASE_URL, echo=False)
+    except Exception as e:
+        logger.error(f"Failed to create database engine: {str(e)}")
+        raise
 
 
 def get_session():
@@ -38,12 +54,17 @@ def get_session():
 
 
 def create_schema():
-    """Create database schema for FlowFix AI"""
+    """Create database schema for FlowFix AI with FK cascades"""
     # Ensure data directory exists
     data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
     os.makedirs(data_dir, exist_ok=True)
     
     engine = get_engine()
+    
+    # Enable foreign key constraints
+    with engine.connect() as conn:
+        conn.execute(text("PRAGMA foreign_keys = ON"))
+        conn.commit()
     
     schema_sql = """
     -- Tasks table
@@ -63,10 +84,11 @@ def create_schema():
         is_delayed BOOLEAN DEFAULT 0,
         is_overdue BOOLEAN DEFAULT 0,
         bottleneck_type TEXT,
+        reassignment_count INTEGER DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     
-    -- GPT Suggestions table
+    -- GPT Suggestions table with enhanced tracking
     CREATE TABLE IF NOT EXISTS gpt_suggestions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         task_id TEXT NOT NULL,
@@ -75,10 +97,36 @@ def create_schema():
         recommendations TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         applied BOOLEAN DEFAULT 0,
-        FOREIGN KEY (task_id) REFERENCES tasks(task_id)
+        suggested_by TEXT DEFAULT 'gpt-4o-mini',
+        gpt_model_used TEXT,
+        prompt_version TEXT DEFAULT '1.0',
+        latency_ms INTEGER,
+        response_score REAL,
+        sentiment TEXT,
+        urgency_level TEXT,
+        token_length INTEGER,
+        feedback_status TEXT DEFAULT 'pending',
+        feedback_notes TEXT DEFAULT '',
+        feedback_date TEXT DEFAULT '',
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE
     );
     
-    -- Improvement Log table
+    -- Bottleneck History table
+    CREATE TABLE IF NOT EXISTS bottleneck_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        task_id TEXT NOT NULL,
+        bottleneck_type TEXT NOT NULL,
+        severity_score REAL,
+        delay_days INTEGER,
+        priority TEXT,
+        root_cause_suggestion TEXT,
+        detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        resolved BOOLEAN DEFAULT 0,
+        resolution_time_hours REAL,
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE
+    );
+    
+    -- Improvement Log table with scoring
     CREATE TABLE IF NOT EXISTS improvement_log (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         task_id TEXT NOT NULL,
@@ -86,8 +134,11 @@ def create_schema():
         owner TEXT,
         date_applied DATE,
         impact_measured TEXT,
+        improvement_score REAL,
+        kpi_before TEXT,
+        kpi_after TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (task_id) REFERENCES tasks(task_id)
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE
     );
     
     -- Bottleneck Summary table
@@ -98,7 +149,7 @@ def create_schema():
         severity TEXT,
         detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         resolved BOOLEAN DEFAULT 0,
-        FOREIGN KEY (task_id) REFERENCES tasks(task_id)
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE
     );
     
     -- Pipeline Runs table
@@ -111,26 +162,110 @@ def create_schema():
         started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         completed_at TIMESTAMP
     );
+    
+    -- ML Predictions table
+    CREATE TABLE IF NOT EXISTS ml_predictions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        task_id TEXT NOT NULL,
+        predicted_duration REAL,
+        delay_probability REAL,
+        model_version TEXT,
+        features_used TEXT,
+        prediction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        actual_outcome TEXT,
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE
+    );
+    
+    -- ML Training Log table
+    CREATE TABLE IF NOT EXISTS ml_training_log (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        training_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        model_type TEXT,
+        model_version TEXT,
+        accuracy REAL,
+        precision_score REAL,
+        recall_score REAL,
+        f1_score REAL,
+        training_samples INTEGER,
+        features_used TEXT,
+        hyperparameters TEXT
+    );
+    
+    -- Reassignment Tracking table
+    CREATE TABLE IF NOT EXISTS task_reassignments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        task_id TEXT NOT NULL,
+        from_assignee TEXT NOT NULL,
+        to_assignee TEXT NOT NULL,
+        reason TEXT,
+        reassignment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        effectiveness_score REAL,
+        completion_improved BOOLEAN,
+        FOREIGN KEY (task_id) REFERENCES tasks(task_id) ON DELETE CASCADE
+    );
+    
+    -- Ingestion Log table
+    CREATE TABLE IF NOT EXISTS ingestion_log (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        filename TEXT NOT NULL,
+        records_added INTEGER,
+        records_failed INTEGER,
+        ingestion_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        error_details TEXT,
+        file_size_kb REAL,
+        processing_time_sec REAL
+    );
+    
+    -- Dashboard Summary KPIs table
+    CREATE TABLE IF NOT EXISTS dashboard_summary (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        metric_name TEXT NOT NULL,
+        metric_value REAL,
+        metric_category TEXT,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
     """
     
     with engine.connect() as conn:
         for statement in schema_sql.split(';'):
             if statement.strip():
-                conn.execute(text(statement))
+                try:
+                    conn.execute(text(statement))
+                except Exception as e:
+                    logger.warning(f"Schema statement warning: {str(e)}")
         conn.commit()
     
-    print("✅ Database schema created successfully")
+    logger.info("✅ Database schema created successfully")
+    logger.info(f"   Schema Version: {SCHEMA_VERSION}")
+
+
+def test_db_connection():
+    """Test database connection and return status"""
+    try:
+        engine = get_engine()
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        logger.info("✅ Database connection successful")
+        return True
+    except Exception as e:
+        logger.error(f"❌ Database connection failed: {str(e)}")
+        return False
 
 
 def execute_query(query, params=None):
-    """Execute a SQL query and return results as DataFrame"""
-    engine = get_engine()
-    with engine.connect() as conn:
-        if params:
-            result = conn.execute(text(query), params)
-        else:
-            result = conn.execute(text(query))
-        return pd.DataFrame(result.fetchall(), columns=result.keys())
+    """Execute a SQL query and return results as DataFrame with error handling"""
+    try:
+        engine = get_engine()
+        with engine.connect() as conn:
+            if params:
+                result = conn.execute(text(query), params)
+            else:
+                result = conn.execute(text(query))
+            return pd.DataFrame(result.fetchall(), columns=result.keys())
+    except SQLAlchemyError as e:
+        logger.error(f"Query execution failed: {str(e)}")
+        logger.error(f"Query: {query}")
+        raise
 
 
 def get_task_statistics():
@@ -220,8 +355,108 @@ def get_tasks_by_bottleneck():
     return execute_query(query)
 
 
+def get_summary_metrics():
+    """Get comprehensive summary metrics for dashboard"""
+    metrics = {}
+    
+    try:
+        # Basic task metrics
+        task_stats = get_task_statistics()
+        if not task_stats.empty:
+            metrics['total_tasks'] = int(task_stats['total_tasks'].iloc[0])
+            metrics['completed_tasks'] = int(task_stats['completed_tasks'].iloc[0])
+            metrics['blocked_tasks'] = int(task_stats['blocked_tasks'].iloc[0])
+            metrics['delayed_tasks'] = int(task_stats['delayed_tasks'].iloc[0])
+            metrics['avg_duration'] = float(task_stats['avg_duration'].iloc[0] or 0)
+            metrics['total_assignees'] = int(task_stats['total_assignees'].iloc[0])
+            metrics['total_projects'] = int(task_stats['total_projects'].iloc[0])
+        
+        # Bottleneck metrics
+        bottleneck_query = """
+        SELECT 
+            COUNT(DISTINCT task_id) as bottleneck_count,
+            COUNT(DISTINCT bottleneck_type) as bottleneck_types
+        FROM tasks
+        WHERE bottleneck_type IS NOT NULL AND bottleneck_type != ''
+        """
+        bottleneck_stats = execute_query(bottleneck_query)
+        if not bottleneck_stats.empty:
+            metrics['bottleneck_count'] = int(bottleneck_stats['bottleneck_count'].iloc[0] or 0)
+            metrics['bottleneck_types'] = int(bottleneck_stats['bottleneck_types'].iloc[0] or 0)
+        
+        # GPT suggestions
+        gpt_query = "SELECT COUNT(*) as suggestion_count FROM gpt_suggestions"
+        gpt_stats = execute_query(gpt_query)
+        if not gpt_stats.empty:
+            metrics['gpt_suggestions'] = int(gpt_stats['suggestion_count'].iloc[0] or 0)
+        
+        # Improvement actions
+        improvement_query = "SELECT COUNT(*) as improvement_count FROM improvement_log"
+        improvement_stats = execute_query(improvement_query)
+        if not improvement_stats.empty:
+            metrics['improvements_logged'] = int(improvement_stats['improvement_count'].iloc[0] or 0)
+        
+        # Calculate rates
+        if metrics.get('total_tasks', 0) > 0:
+            metrics['delay_rate'] = round((metrics.get('delayed_tasks', 0) / metrics['total_tasks']) * 100, 2)
+            metrics['completion_rate'] = round((metrics.get('completed_tasks', 0) / metrics['total_tasks']) * 100, 2)
+            metrics['bottleneck_rate'] = round((metrics.get('bottleneck_count', 0) / metrics['total_tasks']) * 100, 2)
+        
+        return metrics
+    
+    except Exception as e:
+        logger.error(f"Error getting summary metrics: {str(e)}")
+        return {}
+
+
+def update_dashboard_kpis():
+    """Update dashboard summary table with latest KPIs"""
+    try:
+        metrics = get_summary_metrics()
+        engine = get_engine()
+        
+        with engine.connect() as conn:
+            # Clear existing metrics
+            conn.execute(text("DELETE FROM dashboard_summary"))
+            
+            # Insert new metrics
+            for metric_name, metric_value in metrics.items():
+                category = 'count' if 'count' in metric_name or 'total' in metric_name else 'rate'
+                conn.execute(text("""
+                    INSERT INTO dashboard_summary (metric_name, metric_value, metric_category)
+                    VALUES (:name, :value, :category)
+                """), {
+                    'name': metric_name,
+                    'value': float(metric_value),
+                    'category': category
+                })
+            
+            conn.commit()
+        
+        logger.info(f"✅ Updated {len(metrics)} KPIs in dashboard_summary table")
+        return True
+    
+    except Exception as e:
+        logger.error(f"Failed to update dashboard KPIs: {str(e)}")
+        return False
+
+
 if __name__ == "__main__":
     # Test database utilities
-    print("Testing database utilities...")
+    print("\n" + "="*60)
+    print("Testing Database Utilities")
+    print("="*60 + "\n")
+    
+    # Test connection
+    test_db_connection()
+    
+    # Create schema
     create_schema()
+    
+    # Get summary metrics
+    metrics = get_summary_metrics()
+    print("\n📊 Summary Metrics:")
+    for key, value in metrics.items():
+        print(f"   {key}: {value}")
+    
     print("\n✅ Database utilities module ready")
