@@ -1,0 +1,61 @@
+# Column Mapping Configuration for FlowFix AI Ingestion
+# Maps source column names to target database schema
+
+# Trello mapping
+trello:
+  Card Name: task_name
+  Member: assignee
+  List: status
+  Due Date: end_date
+  Description: comments
+  Labels: priority
+  Board: project
+
+# Jira mapping
+jira:
+  Issue key: task_id
+  Summary: task_name
+  Assignee: assignee
+  Status: status
+  Created: created_date
+  Updated: start_date
+  Resolved: end_date
+  Priority: priority
+  Project name: project
+  Description: comments
+
+# Asana mapping
+asana:
+  Name: task_name
+  Assignee: assignee
+  Completed: status
+  Created at: created_date
+  Due on: end_date
+  Notes: comments
+  Projects: project
+
+# Monday.com mapping
+monday:
+  Name: task_name
+  Person: assignee
+  Status: status
+  Date: created_date
+  Timeline: end_date
+  Priority: priority
+  Notes: comments
+  Group: project
+
+# Generic CSV mapping (default)
+generic:
+  task_id: task_id
+  task_name: task_name
+  assignee: assignee
+  status: status
+  created_date: created_date
+  start_date: start_date
+  end_date: end_date
+  priority: priority
+  comments: comments
+  project: project
+  planned_duration: planned_duration
+  actual_duration: actual_duration

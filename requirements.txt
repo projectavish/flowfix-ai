@@ -12,3 +12,7 @@ reportlab
 jinja2
 joblib
 fpdf
+pyyaml
+streamlit
+shap
+imbalanced-learn
