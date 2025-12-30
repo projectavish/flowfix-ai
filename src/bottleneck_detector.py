@@ -1,16 +1,23 @@
 """
-Bottleneck Detection Engine for FlowFix AI
-Identifies workflow bottlenecks and classifies them by type
+Production-Grade Bottleneck Detection Engine for FlowFix AI
+Version: 2.0
+Features: Severity scoring, history logging, root cause suggestions, ML estimator, auto-reports
 """
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from sqlalchemy import text
 import os
+import logging
 from dotenv import load_dotenv
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
 from utils import get_engine, execute_query
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
@@ -18,6 +25,166 @@ load_dotenv()
 DELAY_THRESHOLD_MULTIPLIER = float(os.getenv('DELAY_THRESHOLD_MULTIPLIER', 1.5))
 START_DELAY_DAYS = int(os.getenv('START_DELAY_DAYS', 3))
 REASSIGNMENT_THRESHOLD = int(os.getenv('REASSIGNMENT_THRESHOLD', 2))
+
+
+def calculate_severity_score(delay_days, priority, status):
+    """
+    Calculate severity score (0-100) for a bottleneck
+    Based on delay days, priority level, and current status
+    """
+    score = 0.0
+    
+    # Delay component (0-50 points)
+    if delay_days > 0:
+        score += min(delay_days * 3, 50)  # Cap at 50
+    
+    # Priority component (0-30 points)
+    priority_scores = {
+        'Critical': 30,
+        'High': 20,
+        'Medium': 10,
+        'Low': 5
+    }
+    score += priority_scores.get(priority, 10)
+    
+    # Status component (0-20 points)
+    status_scores = {
+        'Blocked': 20,
+        'On Hold': 15,
+        'In Progress': 10,
+        'To Do': 5,
+        'Done': 0
+    }
+    score += status_scores.get(status, 5)
+    
+    return min(score, 100)  # Cap at 100
+
+
+def suggest_root_cause(row, bottleneck_type):
+    """
+    Suggest likely root cause based on task attributes and bottleneck type
+    """
+    suggestions = []
+    
+    if bottleneck_type == 'Blocked':
+        if pd.isna(row.get('comments')) or str(row.get('comments')).strip() == '':
+            suggestions.append("No blocking details in comments - follow up with assignee")
+        else:
+            suggestions.append("Task explicitly marked as blocked - check external dependencies")
+    
+    elif bottleneck_type == 'Duration_Anomaly':
+        if row.get('reassignment_count', 0) > 1:
+            suggestions.append("Multiple reassignments may have caused delays")
+        if row.get('priority') == 'Low':
+            suggestions.append("Low priority tasks often deprioritized - consider adjusting priority")
+        else:
+            suggestions.append("Task complexity may be underestimated - review scope")
+    
+    elif bottleneck_type == 'Start_Delay':
+        suggestions.append("Task sat in backlog too long - improve sprint planning")
+        suggestions.append("Consider automating task assignment for faster pickup")
+    
+    elif bottleneck_type == 'Assignee_Bottleneck':
+        suggestions.append(f"Assignee {row.get('assignee')} may be overloaded - check workload balance")
+        suggestions.append("Consider task reassignment or additional resources")
+    
+    elif bottleneck_type == 'Missing_Closure':
+        suggestions.append("Task marked done but no end date - enforce completion tracking")
+    
+    else:
+        suggestions.append("Review task workflow and identify blockers")
+    
+    return " | ".join(suggestions)
+
+
+def log_bottleneck_history(task_id, bottleneck_type, severity_score, delay_days, priority, root_cause):
+    """Log bottleneck to history table for tracking"""
+    engine = get_engine()
+    
+    try:
+        with engine.connect() as conn:
+            query = text("""
+                INSERT INTO bottleneck_history 
+                (task_id, bottleneck_type, severity_score, delay_days, priority, root_cause_suggestion)
+                VALUES (:task_id, :bottleneck_type, :severity_score, :delay_days, :priority, :root_cause)
+            """)
+            
+            conn.execute(query, {
+                'task_id': task_id,
+                'bottleneck_type': bottleneck_type,
+                'severity_score': severity_score,
+                'delay_days': delay_days,
+                'priority': priority,
+                'root_cause': root_cause
+            })
+            conn.commit()
+    
+    except Exception as e:
+        logger.error(f"Failed to log bottleneck history: {str(e)}")
+
+
+def train_ml_resolution_estimator(df):
+    """
+    Train ML model to predict resolution time for bottlenecks
+    Returns trained model and feature names
+    """
+    logger.info("🤖 Training ML resolution time estimator...")
+    
+    # Filter resolved bottlenecks
+    query = """
+    SELECT 
+        bh.*,
+        t.actual_duration,
+        t.status,
+        (julianday(CURRENT_TIMESTAMP) - julianday(bh.detected_at)) * 24 as hours_to_resolve
+    FROM bottleneck_history bh
+    JOIN tasks t ON bh.task_id = t.task_id
+    WHERE bh.resolved = 1
+    """
+    
+    try:
+        training_data = execute_query(query)
+        
+        if len(training_data) < 10:
+            logger.warning("Not enough resolved bottlenecks for ML training (need 10+)")
+            return None, None
+        
+        # Prepare features
+        features = pd.DataFrame({
+            'severity_score': training_data['severity_score'],
+            'delay_days': training_data['delay_days'],
+            'priority_encoded': training_data['priority'].map({'Low': 1, 'Medium': 2, 'High': 3, 'Critical': 4})
+        })
+        
+        target = training_data['hours_to_resolve']
+        
+        # Train simple linear regression
+        model = LinearRegression()
+        model.fit(features, target)
+        
+        logger.info(f"✅ ML model trained on {len(training_data)} resolved bottlenecks")
+        logger.info(f"   Model R² score: {model.score(features, target):.3f}")
+        
+        return model, features.columns.tolist()
+    
+    except Exception as e:
+        logger.error(f"ML training failed: {str(e)}")
+        return None, None
+
+
+def predict_resolution_time(model, feature_names, severity_score, delay_days, priority):
+    """Predict resolution time using trained ML model"""
+    if model is None:
+        return None
+    
+    try:
+        priority_encoded = {'Low': 1, 'Medium': 2, 'High': 3, 'Critical': 4}.get(priority, 2)
+        features = pd.DataFrame([[severity_score, delay_days, priority_encoded]], 
+                               columns=feature_names)
+        prediction = model.predict(features)[0]
+        return max(prediction, 1)  # Minimum 1 hour
+    except:
+        return None
 
 
 def load_tasks():
@@ -35,10 +202,9 @@ def load_tasks():
 
 
 def calculate_baseline_metrics(df):
-    """Calculate baseline duration metrics by assignee and project"""
-    print("📊 Calculating baseline metrics...")
+    """Calculate baseline duration metrics"""
+    logger.info("📊 Calculating baseline metrics...")
     
-    # Overall baseline
     completed_tasks = df[df['actual_duration'].notna()]
     
     baseline = {
@@ -70,353 +236,227 @@ def calculate_baseline_metrics(df):
                 'count': len(project_tasks)
             }
     
-    # By priority
-    for priority in df['priority'].unique():
-        priority_tasks = completed_tasks[completed_tasks['priority'] == priority]
-        if len(priority_tasks) > 0:
-            baseline['by_priority'][priority] = {
-                'mean': priority_tasks['actual_duration'].mean(),
-                'std': priority_tasks['actual_duration'].std(),
-                'count': len(priority_tasks)
-            }
-    
-    print(f"✅ Baseline metrics calculated")
-    print(f"   Overall mean duration: {baseline['overall_mean']:.1f} days")
-    print(f"   Overall median duration: {baseline['overall_median']:.1f} days")
+    logger.info(f"✅ Baseline: mean={baseline['overall_mean']:.1f}d, median={baseline['overall_median']:.1f}d")
     
     return baseline
 
 
-def detect_duration_delays(df, baseline):
-    """Detect tasks with abnormally long durations"""
-    print("\n🔍 Detecting duration delays...")
+def detect_all_bottlenecks(df, baseline, ml_model=None, ml_features=None):
+    """Main bottleneck detection with severity scoring and root cause"""
+    logger.info("\n🔍 Running comprehensive bottleneck detection...")
     
-    delay_flags = []
-    
-    for idx, row in df.iterrows():
-        if pd.isna(row['actual_duration']) or row['actual_duration'] < 0:
-            continue
-        
-        # Get appropriate baseline
-        assignee_baseline = baseline['by_assignee'].get(row['assignee'])
-        project_baseline = baseline['by_project'].get(row['project'])
-        
-        # Use assignee baseline if available, otherwise project or overall
-        if assignee_baseline and assignee_baseline['count'] >= 3:
-            mean = assignee_baseline['mean']
-            std = assignee_baseline['std']
-        elif project_baseline and project_baseline['count'] >= 3:
-            mean = project_baseline['mean']
-            std = project_baseline['std']
-        else:
-            mean = baseline['overall_mean']
-            std = baseline['overall_std']
-        
-        # Check if delayed
-        threshold = mean + (DELAY_THRESHOLD_MULTIPLIER * std)
-        if row['actual_duration'] > threshold:
-            delay_flags.append({
-                'task_id': row['task_id'],
-                'is_delayed': True,
-                'expected_duration': mean,
-                'actual_duration': row['actual_duration'],
-                'delay_days': row['actual_duration'] - mean
-            })
-    
-    print(f"✅ Found {len(delay_flags)} delayed tasks")
-    return delay_flags
-
-
-def detect_start_delays(df):
-    """Detect tasks with significant gap between creation and start"""
-    print("\n🔍 Detecting start delays...")
-    
-    start_delays = []
+    bottlenecks = []
     
     for idx, row in df.iterrows():
+        task_bottlenecks = []
+        
+        # Check for blocked status
+        if row['status'] == 'Blocked':
+            task_bottlenecks.append('Blocked')
+        
+        # Check duration anomaly
+        if pd.notna(row['actual_duration']) and row['actual_duration'] > 0:
+            assignee_baseline = baseline['by_assignee'].get(row['assignee'])
+            
+            if assignee_baseline and assignee_baseline['count'] >= 3:
+                mean = assignee_baseline['mean']
+                std = assignee_baseline['std']
+            else:
+                mean = baseline['overall_mean']
+                std = baseline['overall_std']
+            
+            threshold = mean + (DELAY_THRESHOLD_MULTIPLIER * std)
+            if row['actual_duration'] > threshold:
+                task_bottlenecks.append('Duration_Anomaly')
+        
+        # Check start delay
         if pd.notna(row['created_date']) and pd.notna(row['start_date']):
             gap = (row['start_date'] - row['created_date']).days
-            
             if gap > START_DELAY_DAYS:
-                start_delays.append({
-                    'task_id': row['task_id'],
-                    'start_delay_days': gap
-                })
-    
-    print(f"✅ Found {len(start_delays)} tasks with start delays")
-    return start_delays
-
-
-def detect_missing_closure(df):
-    """Detect tasks without end dates that should be completed"""
-    print("\n🔍 Detecting missing closure...")
-    
-    current_date = datetime.now()
-    missing_closure = []
-    
-    for idx, row in df.iterrows():
-        # Task has start date but no end date, and has been running for a while
-        if pd.notna(row['start_date']) and pd.isna(row['end_date']):
-            days_running = (current_date - row['start_date']).days
+                task_bottlenecks.append('Start_Delay')
+        
+        # Check assignee overload
+        if row.get('reassignment_count', 0) >= REASSIGNMENT_THRESHOLD:
+            task_bottlenecks.append('Assignee_Bottleneck')
+        
+        # Check missing closure
+        if row['status'] == 'Done' and pd.isna(row['end_date']):
+            task_bottlenecks.append('Missing_Closure')
+        
+        # If bottlenecks found, calculate severity and log
+        if task_bottlenecks:
+            bottleneck_type = ', '.join(task_bottlenecks)
+            delay_days = max(0, row.get('actual_duration', 0) - baseline['overall_mean'])
+            severity_score = calculate_severity_score(delay_days, row['priority'], row['status'])
+            root_cause = suggest_root_cause(row, task_bottlenecks[0])
             
-            # If running longer than 30 days or marked as Done but no end date
-            if days_running > 30 or row['status'] == 'Done':
-                missing_closure.append({
-                    'task_id': row['task_id'],
-                    'days_running': days_running,
-                    'status': row['status']
-                })
-    
-    print(f"✅ Found {len(missing_closure)} tasks missing closure")
-    return missing_closure
-
-
-def detect_blocked_tasks(df):
-    """Identify tasks marked as blocked"""
-    print("\n🔍 Detecting blocked tasks...")
-    
-    blocked = df[df['status'] == 'Blocked']
-    
-    blocked_list = []
-    for idx, row in blocked.iterrows():
-        blocked_list.append({
-            'task_id': row['task_id'],
-            'assignee': row['assignee'],
-            'project': row['project'],
-            'comments': row['comments']
-        })
-    
-    print(f"✅ Found {len(blocked_list)} blocked tasks")
-    return blocked_list
-
-
-def classify_bottleneck(row, delay_info, start_delays, missing_closure, blocked_tasks):
-    """Classify the type of bottleneck for a task"""
-    task_id = row['task_id']
-    
-    # Check various bottleneck indicators
-    is_delayed = any(d['task_id'] == task_id for d in delay_info)
-    has_start_delay = any(d['task_id'] == task_id for d in start_delays)
-    has_missing_closure = any(d['task_id'] == task_id for d in missing_closure)
-    is_blocked = any(d['task_id'] == task_id for d in blocked_tasks)
-    
-    # Classification logic
-    if is_blocked:
-        return 'Blocked'
-    elif has_missing_closure and row['status'] == 'Done':
-        return 'Administrative'
-    elif has_missing_closure and row['status'] == 'In_Review':
-        return 'Review_Bottleneck'
-    elif has_missing_closure:
-        return 'Stalled'
-    elif is_delayed and row['status'] == 'In_Review':
-        return 'Review_Bottleneck'
-    elif is_delayed:
-        return 'Assignee_Bottleneck'
-    elif has_start_delay:
-        return 'Resource_Availability'
-    else:
-        return None
-
-
-def update_bottleneck_flags(df, delay_info, start_delays, missing_closure, blocked_tasks):
-    """Update database with bottleneck classifications"""
-    print("\n🏷️  Classifying bottlenecks...")
-    
-    engine = get_engine()
-    updates = []
-    
-    for idx, row in df.iterrows():
-        task_id = row['task_id']
-        
-        # Classify bottleneck
-        bottleneck_type = classify_bottleneck(
-            row, delay_info, start_delays, missing_closure, blocked_tasks
-        )
-        
-        # Check if delayed
-        is_delayed = any(d['task_id'] == task_id for d in delay_info)
-        
-        if bottleneck_type or is_delayed:
-            updates.append({
-                'task_id': task_id,
-                'bottleneck_type': bottleneck_type if bottleneck_type else '',  # Empty string for Power BI compatibility
-                'is_delayed': 1 if is_delayed else 0
+            # Predict resolution time if ML model available
+            resolution_est = None
+            if ml_model:
+                resolution_est = predict_resolution_time(ml_model, ml_features, 
+                                                        severity_score, delay_days, row['priority'])
+            
+            bottlenecks.append({
+                'task_id': row['task_id'],
+                'task_name': row['task_name'],
+                'assignee': row['assignee'],
+                'project': row['project'],
+                'bottleneck_type': bottleneck_type,
+                'severity_score': severity_score,
+                'delay_days': delay_days,
+                'priority': row['priority'],
+                'status': row['status'],
+                'root_cause': root_cause,
+                'estimated_resolution_hours': resolution_est
             })
+            
+            # Log to history
+            log_bottleneck_history(row['task_id'], bottleneck_type, severity_score, 
+                                  delay_days, row['priority'], root_cause)
     
-    # Batch update database
-    if updates:
+    logger.info(f"✅ Detected {len(bottlenecks)} bottlenecks")
+    
+    return pd.DataFrame(bottlenecks)
+
+
+def update_tasks_with_bottlenecks(bottlenecks_df):
+    """Update tasks table with bottleneck information"""
+    engine = get_engine()
+    
+    try:
         with engine.connect() as conn:
-            for update in updates:
+            for _, row in bottlenecks_df.iterrows():
                 query = text("""
                     UPDATE tasks 
                     SET bottleneck_type = :bottleneck_type,
-                        is_delayed = :is_delayed
+                        is_delayed = 1
                     WHERE task_id = :task_id
                 """)
-                conn.execute(query, update)
-            conn.commit()
-    
-    print(f"✅ Updated {len(updates)} tasks with bottleneck classifications")
-    
-    # Summary by type
-    bottleneck_summary = {}
-    for update in updates:
-        btype = update['bottleneck_type']
-        if btype:
-            bottleneck_summary[btype] = bottleneck_summary.get(btype, 0) + 1
-    
-    if bottleneck_summary:
-        print("\n📈 Bottleneck Summary:")
-        for btype, count in sorted(bottleneck_summary.items(), key=lambda x: x[1], reverse=True):
-            print(f"   {btype}: {count}")
-    
-    return updates
-
-
-def save_bottleneck_summary(updates):
-    """Save bottleneck summary to database"""
-    engine = get_engine()
-    
-    with engine.connect() as conn:
-        # Clear existing summary
-        conn.execute(text("DELETE FROM bottleneck_summary"))
-        
-        # Insert new records
-        for update in updates:
-            if update['bottleneck_type']:
-                query = text("""
-                    INSERT INTO bottleneck_summary (task_id, bottleneck_type, severity)
-                    VALUES (:task_id, :bottleneck_type, :severity)
-                """)
-                
-                # Determine severity based on type
-                severity = 'High' if update['bottleneck_type'] == 'Blocked' else 'Medium'
                 
                 conn.execute(query, {
-                    'task_id': update['task_id'],
-                    'bottleneck_type': update['bottleneck_type'],
-                    'severity': severity
+                    'task_id': row['task_id'],
+                    'bottleneck_type': row['bottleneck_type']
                 })
+            
+            conn.commit()
         
-        conn.commit()
+        logger.info(f"✅ Updated {len(bottlenecks_df)} tasks with bottleneck flags")
     
-    print(f"✅ Saved bottleneck summary")
+    except Exception as e:
+        logger.error(f"Failed to update tasks: {str(e)}")
 
 
-def cluster_bottlenecks_ml(df):
-    """Apply ML clustering to find bottleneck patterns"""
-    print("\n🤖 Applying ML clustering to bottleneck patterns...")
+def generate_auto_summary_report(bottlenecks_df, output_path=None):
+    """Generate automatic text summary report of bottlenecks"""
+    if output_path is None:
+        reports_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'exports')
+        os.makedirs(reports_dir, exist_ok=True)
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        output_path = os.path.join(reports_dir, f'bottleneck_summary_{timestamp}.md')
     
-    # Filter to only tasks with bottlenecks
-    bottleneck_df = df[df['bottleneck_type'] != ''].copy()
-    
-    if len(bottleneck_df) < 10:
-        print("⚠️ Not enough bottlenecks for clustering (need at least 10)")
-        return None
-    
-    # Prepare features for clustering
-    features = []
-    
-    # Numeric features
-    if 'actual_duration' in bottleneck_df.columns:
-        features.append(bottleneck_df['actual_duration'].fillna(0))
-    
-    # Delay flag
-    if 'is_delayed' in bottleneck_df.columns:
-        features.append(bottleneck_df['is_delayed'])
-    
-    # Status encoding
-    if 'status' in bottleneck_df.columns:
-        status_map = {'To_Do': 0, 'In_Progress': 1, 'In_Review': 2, 'Done': 3, 'Blocked': 4}
-        features.append(bottleneck_df['status'].map(status_map).fillna(0))
-    
-    # Priority encoding
-    if 'priority' in bottleneck_df.columns:
-        priority_map = {'Low': 0, 'Medium': 1, 'High': 2, 'Critical': 3}
-        features.append(bottleneck_df['priority'].map(priority_map).fillna(1))
-    
-    # Stack features
-    X = np.column_stack(features)
-    
-    # Standardize features
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-    
-    # Determine optimal number of clusters
-    n_clusters = min(4, len(bottleneck_df) // 10)
-    n_clusters = max(2, n_clusters)  # At least 2 clusters
-    
-    # Apply KMeans clustering
-    kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
-    clusters = kmeans.fit_predict(X_scaled)
-    
-    # Add cluster labels
-    bottleneck_df['cluster'] = clusters
-    
-    # Analyze clusters
-    print(f"\n📊 Identified {n_clusters} bottleneck patterns:")
-    
-    for i in range(n_clusters):
-        cluster_tasks = bottleneck_df[bottleneck_df['cluster'] == i]
+    with open(output_path, 'w') as f:
+        f.write("# Bottleneck Detection Summary Report\n\n")
+        f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write("---\n\n")
         
-        print(f"\n   Pattern {i+1}:")
-        print(f"      Size: {len(cluster_tasks)} tasks")
-        print(f"      Avg Duration: {cluster_tasks['actual_duration'].mean():.1f} days")
-        print(f"      Delay Rate: {cluster_tasks['is_delayed'].mean()*100:.1f}%")
-        print(f"      Common Type: {cluster_tasks['bottleneck_type'].mode()[0] if len(cluster_tasks) > 0 else 'Unknown'}")
+        # Overall stats
+        f.write("## Overall Statistics\n\n")
+        f.write(f"- **Total Bottlenecks Detected:** {len(bottlenecks_df)}\n")
+        
+        if len(bottlenecks_df) > 0:
+            f.write(f"- **Average Severity Score:** {bottlenecks_df['severity_score'].mean():.1f}/100\n")
+            f.write(f"- **High Severity (>70):** {len(bottlenecks_df[bottlenecks_df['severity_score'] > 70])}\n")
+            f.write(f"- **Average Delay:** {bottlenecks_df['delay_days'].mean():.1f} days\n\n")
+            
+            # By type
+            f.write("## Bottlenecks by Type\n\n")
+            type_counts = bottlenecks_df['bottleneck_type'].value_counts()
+            for btype, count in type_counts.items():
+                f.write(f"- **{btype}:** {count}\n")
+            f.write("\n")
+            
+            # By assignee
+            f.write("## Bottlenecks by Assignee\n\n")
+            assignee_counts = bottlenecks_df['assignee'].value_counts().head(10)
+            for assignee, count in assignee_counts.items():
+                avg_severity = bottlenecks_df[bottlenecks_df['assignee'] == assignee]['severity_score'].mean()
+                f.write(f"- **{assignee}:** {count} bottlenecks (avg severity: {avg_severity:.1f})\n")
+            f.write("\n")
+            
+            # Top delays
+            f.write("## Top 10 Delays by Severity\n\n")
+            top_delays = bottlenecks_df.nlargest(10, 'severity_score')
+            for _, row in top_delays.iterrows():
+                f.write(f"### {row['task_name']}\n")
+                f.write(f"- **Task ID:** {row['task_id']}\n")
+                f.write(f"- **Assignee:** {row['assignee']}\n")
+                f.write(f"- **Project:** {row['project']}\n")
+                f.write(f"- **Type:** {row['bottleneck_type']}\n")
+                f.write(f"- **Severity:** {row['severity_score']:.0f}/100\n")
+                f.write(f"- **Delay:** {row['delay_days']:.1f} days\n")
+                f.write(f"- **Root Cause:** {row['root_cause']}\n")
+                if pd.notna(row.get('estimated_resolution_hours')):
+                    f.write(f"- **Est. Resolution:** {row['estimated_resolution_hours']:.1f} hours\n")
+                f.write("\n")
+            
+            # Recommendations
+            f.write("## Fix Recommendations\n\n")
+            if len(bottlenecks_df[bottlenecks_df['bottleneck_type'].str.contains('Blocked')]) > 0:
+                f.write("- **Blocked Tasks:** Schedule daily unblock meetings\n")
+            if len(bottlenecks_df[bottlenecks_df['bottleneck_type'].str.contains('Assignee')]) > 0:
+                f.write("- **Assignee Bottlenecks:** Review workload distribution and consider reassignments\n")
+            if len(bottlenecks_df[bottlenecks_df['bottleneck_type'].str.contains('Start_Delay')]) > 0:
+                f.write("- **Start Delays:** Improve sprint planning and task prioritization\n")
+            if len(bottlenecks_df[bottlenecks_df['bottleneck_type'].str.contains('Duration')]) > 0:
+                f.write("- **Duration Anomalies:** Review task complexity estimation process\n")
     
-    print("\n✅ ML clustering complete")
-    return bottleneck_df
+    logger.info(f"📄 Auto-summary report saved: {output_path}")
+    return output_path
 
 
-def analyze_bottlenecks():
-    """Main function to run complete bottleneck analysis"""
-    print("\n" + "="*60)
-    print("🔍 BOTTLENECK DETECTION ENGINE")
-    print("="*60 + "\n")
+def run_bottleneck_detection(save_report=True):
+    """Main execution function"""
+    logger.info("\n" + "="*70)
+    logger.info("🔍 BOTTLENECK DETECTION ENGINE v2.0")
+    logger.info("="*70 + "\n")
     
-    # Load tasks
+    # Load data
     df = load_tasks()
-    print(f"📊 Loaded {len(df)} tasks from database\n")
+    logger.info(f"📊 Loaded {len(df)} tasks")
     
     # Calculate baselines
     baseline = calculate_baseline_metrics(df)
     
-    # Run detection algorithms
-    delay_info = detect_duration_delays(df, baseline)
-    start_delays = detect_start_delays(df)
-    missing_closure = detect_missing_closure(df)
-    blocked_tasks = detect_blocked_tasks(df)
+    # Train ML model
+    ml_model, ml_features = train_ml_resolution_estimator(df)
     
-    # Update flags and classifications
-    updates = update_bottleneck_flags(df, delay_info, start_delays, missing_closure, blocked_tasks)
+    # Detect bottlenecks
+    bottlenecks_df = detect_all_bottlenecks(df, baseline, ml_model, ml_features)
     
-    # Save summary
-    save_bottleneck_summary(updates)
+    if len(bottlenecks_df) > 0:
+        # Update database
+        update_tasks_with_bottlenecks(bottlenecks_df)
+        
+        # Generate report
+        if save_report:
+            generate_auto_summary_report(bottlenecks_df)
+        
+        # Print summary
+        logger.info("\n📊 SUMMARY")
+        logger.info("="*70)
+        logger.info(f"Total Bottlenecks: {len(bottlenecks_df)}")
+        logger.info(f"Avg Severity: {bottlenecks_df['severity_score'].mean():.1f}/100")
+        logger.info(f"High Severity (>70): {len(bottlenecks_df[bottlenecks_df['severity_score'] > 70])}")
+        logger.info("\nTop Bottleneck Types:")
+        for btype, count in bottlenecks_df['bottleneck_type'].value_counts().head(5).items():
+            logger.info(f"  - {btype}: {count}")
+    else:
+        logger.info("✅ No bottlenecks detected!")
     
-    # Apply ML clustering (optional advanced analysis)
-    cluster_bottlenecks_ml(df)
+    logger.info("\n" + "="*70 + "\n")
     
-    print("\n" + "="*60)
-    print("✅ BOTTLENECK ANALYSIS COMPLETE")
-    print("="*60 + "\n")
-    
-    return {
-        'total_bottlenecks': len(updates),
-        'delayed_tasks': len(delay_info),
-        'start_delays': len(start_delays),
-        'missing_closure': len(missing_closure),
-        'blocked_tasks': len(blocked_tasks)
-    }
+    return bottlenecks_df
 
 
 if __name__ == "__main__":
-    result = analyze_bottlenecks()
-    
-    print("\n📋 Final Summary:")
-    print(f"   Total Bottlenecks Detected: {result['total_bottlenecks']}")
-    print(f"   Duration Delays: {result['delayed_tasks']}")
-    print(f"   Start Delays: {result['start_delays']}")
-    print(f"   Missing Closure: {result['missing_closure']}")
-    print(f"   Blocked Tasks: {result['blocked_tasks']}")
+    run_bottleneck_detection()
