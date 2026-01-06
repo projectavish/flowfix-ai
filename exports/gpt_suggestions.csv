@@ -1,0 +1,49 @@
+id,task_id,task_name,assignee,project,bottleneck_type,suggestion_text,root_causes,recommendations,applied,created_at
+6,TASK-0137,Review Orchestrate Intuitive Technologies,Mei,Website Revamp,Assignee_Bottleneck,"ROOT CAUSES:
+1. Mei may have an excessive workload or competing priorities that prevent her from focusing on the review task, leading to delays.
+2. Lack of clear communication or understanding of the task requirements may result in uncertainty, causing Mei to postpone the review.
+
+RECOMMENDATIONS:
+1. Conduct a workload assessment for Mei to identify and redistribute tasks if necessary, ensuring she has the capacity to prioritize the review.
+2. Schedule a brief meeting with Mei to clarify the expectations and requirements for the review, providing her with the necessary context and resources.
+3. Implement regular check-ins or progress updates for high-priority tasks, allowing for early identification of potential delays and enabling timely adjustments.","[""1. Mei may have an excessive workload or competing priorities that prevent her from focusing on the review task, leading to delays."", ""2. Lack of clear communication or understanding of the task requirements may result in uncertainty, causing Mei to postpone the review.""]","[""1. Conduct a workload assessment for Mei to identify and redistribute tasks if necessary, ensuring she has the capacity to prioritize the review."", ""2. Schedule a brief meeting with Mei to clarify the expectations and requirements for the review, providing her with the necessary context and resources."", ""3. Implement regular check-ins or progress updates for high-priority tasks, allowing for early identification of potential delays and enabling timely adjustments.""]",0,2026-01-05 21:21:46
+5,TASK-0572,Deploy Evolve Value-Added E-Business,Anjali,Marketing Campaign,Blocked,"ROOT CAUSES:
+1. Lack of necessary resources or tools required for deployment.
+2. Dependencies on other teams or stakeholders that have not been met.
+
+RECOMMENDATIONS:
+1. Conduct a resource assessment to identify and allocate any missing tools or personnel needed for the deployment.
+2. Establish clear communication channels with all stakeholders to ensure that dependencies are addressed promptly and that everyone is aligned on timelines.
+3. Implement a regular check-in process (e.g., daily stand-ups) to monitor progress, identify potential blockers early, and facilitate quick resolution of issues.","[""1. Lack of necessary resources or tools required for deployment."", ""2. Dependencies on other teams or stakeholders that have not been met.""]","[""1. Conduct a resource assessment to identify and allocate any missing tools or personnel needed for the deployment."", ""2. Establish clear communication channels with all stakeholders to ensure that dependencies are addressed promptly and that everyone is aligned on timelines."", ""3. Implement a regular check-in process (e.g., daily stand-ups) to monitor progress, identify potential blockers early, and facilitate quick resolution of issues.""]",0,2026-01-05 21:21:22
+4,TASK-0149,Deploy Envisioneer Web-Enabled Content,Carlos,Website Revamp,Assignee_Bottleneck,"ROOT CAUSES:
+1. Carlos may have been overloaded with multiple high-priority tasks, leading to delays in the deployment process.
+2. There may have been a lack of clear communication or resources needed for the deployment, causing inefficiencies in workflow.
+
+RECOMMENDATIONS:
+1. Implement a workload assessment tool to monitor task assignments and ensure that no single team member is overloaded with high-priority tasks.
+2. Establish regular check-in meetings to facilitate clear communication among team members and address any resource needs or roadblocks promptly.
+3. Create a standardized deployment checklist that outlines all necessary steps and resources, ensuring that Carlos and others have a clear roadmap to follow, reducing ambiguity and potential delays.","[""1. Carlos may have been overloaded with multiple high-priority tasks, leading to delays in the deployment process."", ""2. There may have been a lack of clear communication or resources needed for the deployment, causing inefficiencies in workflow.""]","[""1. Implement a workload assessment tool to monitor task assignments and ensure that no single team member is overloaded with high-priority tasks."", ""2. Establish regular check-in meetings to facilitate clear communication among team members and address any resource needs or roadblocks promptly."", ""3. Create a standardized deployment checklist that outlines all necessary steps and resources, ensuring that Carlos and others have a clear roadmap to follow, reducing ambiguity and potential delays.""]",0,2026-01-05 21:21:19
+3,TASK-0845,Test Redefine Seamless Metrics,Sara,App Launch,Assignee_Bottleneck,"ROOT CAUSES:
+1. Sara may be overloaded with tasks, leading to delays in completing high-priority assignments like ""Test Redefine Seamless Metrics.""
+2. Lack of clarity or resources regarding the task requirements could be causing hesitation or slow progress.
+
+RECOMMENDATIONS:
+1. Conduct a workload assessment for Sara to redistribute tasks if necessary, ensuring she has a manageable workload.
+2. Schedule a brief meeting with Sara to clarify the task requirements and provide any additional resources or support she may need to proceed efficiently.
+3. Implement regular check-ins or progress updates for high-priority tasks to identify potential bottlenecks early and address them proactively.","[""1. Sara may be overloaded with tasks, leading to delays in completing high-priority assignments like \""Test Redefine Seamless Metrics.\"""", ""2. Lack of clarity or resources regarding the task requirements could be causing hesitation or slow progress.""]","[""1. Conduct a workload assessment for Sara to redistribute tasks if necessary, ensuring she has a manageable workload."", ""2. Schedule a brief meeting with Sara to clarify the task requirements and provide any additional resources or support she may need to proceed efficiently."", ""3. Implement regular check-ins or progress updates for high-priority tasks to identify potential bottlenecks early and address them proactively.""]",0,2026-01-05 21:20:49
+2,TASK-0839,Design Enhance Open-Source Supply-Chains,Omar,App Launch,Blocked,"ROOT CAUSES:
+1. Lack of clear requirements or specifications for the design enhancements, leading to confusion and delays.
+2. Insufficient resources or support for Omar, such as access to necessary tools or collaboration with other team members.
+
+RECOMMENDATIONS:
+1. Conduct a requirements-gathering session with stakeholders to clarify expectations and specifications for the design enhancements.
+2. Assign a mentor or provide additional resources to Omar to ensure he has the support needed to overcome obstacles and maintain progress.
+3. Implement regular check-ins or stand-up meetings to monitor progress and address any emerging issues promptly, fostering better communication within the team.","[""1. Lack of clear requirements or specifications for the design enhancements, leading to confusion and delays."", ""2. Insufficient resources or support for Omar, such as access to necessary tools or collaboration with other team members.""]","[""1. Conduct a requirements-gathering session with stakeholders to clarify expectations and specifications for the design enhancements."", ""2. Assign a mentor or provide additional resources to Omar to ensure he has the support needed to overcome obstacles and maintain progress."", ""3. Implement regular check-ins or stand-up meetings to monitor progress and address any emerging issues promptly, fostering better communication within the team.""]",0,2026-01-05 21:20:45
+1,TASK-0525,Write Empower Bleeding-Edge Metrics,Sara,App Launch,Review_Bottleneck,"ROOT CAUSES:
+1. Insufficient clarity on review criteria or expectations, leading to prolonged feedback cycles.
+2. Limited availability of reviewers or stakeholders, causing delays in the review process.
+
+RECOMMENDATIONS:
+1. Establish clear review guidelines and criteria at the start of the task to streamline feedback and ensure all reviewers are aligned.
+2. Schedule dedicated review sessions with all stakeholders involved to ensure timely feedback and minimize waiting periods.
+3. Implement a staggered review process where smaller components of the task are reviewed incrementally, allowing for quicker iterations and reducing the overall review time.","[""1. Insufficient clarity on review criteria or expectations, leading to prolonged feedback cycles."", ""2. Limited availability of reviewers or stakeholders, causing delays in the review process.""]","[""1. Establish clear review guidelines and criteria at the start of the task to streamline feedback and ensure all reviewers are aligned."", ""2. Schedule dedicated review sessions with all stakeholders involved to ensure timely feedback and minimize waiting periods."", ""3. Implement a staggered review process where smaller components of the task are reviewed incrementally, allowing for quicker iterations and reducing the overall review time.""]",0,2026-01-05 21:20:40
