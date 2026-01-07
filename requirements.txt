@@ -16,3 +16,4 @@ pyyaml
 streamlit
 shap
 imbalanced-learn
+openpyxl

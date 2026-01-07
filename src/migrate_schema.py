@@ -101,8 +101,8 @@ def migrate_schema():
     else:
         logger.info("  - Table already exists")
     
-    # 4. Create bottleneck_history table if missing
-    logger.info("\n[4/5] Creating bottleneck_history table...")
+    # 4. Create/update bottleneck_history table
+    logger.info("\n[4/5] Creating/updating bottleneck_history table...")
     if 'bottleneck_history' not in existing_tables:
         try:
             conn.execute(text("""
@@ -111,6 +111,9 @@ def migrate_schema():
                     task_id TEXT NOT NULL,
                     bottleneck_type TEXT,
                     severity_score INTEGER,
+                    delay_days FLOAT DEFAULT 0,
+                    priority TEXT,
+                    root_cause_suggestion TEXT,
                     detected_date TEXT,
                     resolution_date TEXT,
                     resolution_action TEXT,
@@ -125,7 +128,24 @@ def migrate_schema():
         except Exception as e:
             logger.warning(f"  ✗ Could not create table: {e}")
     else:
-        logger.info("  - Table already exists")
+        # Add missing columns to existing table
+        result = conn.execute(text("PRAGMA table_info(bottleneck_history)"))
+        bn_columns = [row[1] for row in result.fetchall()]
+        
+        bn_migrations = {
+            'delay_days': 'FLOAT DEFAULT 0',
+            'priority': 'TEXT DEFAULT NULL',
+            'root_cause_suggestion': 'TEXT DEFAULT NULL'
+        }
+        
+        for col, definition in bn_migrations.items():
+            if col not in bn_columns:
+                try:
+                    conn.execute(text(f"ALTER TABLE bottleneck_history ADD COLUMN {col} {definition}"))
+                    logger.info(f"  ✓ Added column: {col}")
+                    migrations_applied += 1
+                except Exception as e:
+                    logger.warning(f"  ✗ Could not add {col}: {e}")
     
     # 5. Create ml_training_log table if missing
     logger.info("\n[5/5] Creating ml_training_log table...")
