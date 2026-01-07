@@ -38,42 +38,36 @@ def add_feedback_columns():
     engine = get_engine()
     
     with engine.connect() as conn:
-        # Check if columns already exist
+        # Check which columns exist
         result = conn.execute(text("PRAGMA table_info(gpt_suggestions)"))
-        columns = [row[1] for row in result.fetchall()]
+        existing_columns = [row[1] for row in result.fetchall()]
         
-        if 'feedback_status' not in columns:
-            logger.info("Adding feedback columns to database...")
-            
-            conn.execute(text("""
-                ALTER TABLE gpt_suggestions 
-                ADD COLUMN feedback_status TEXT DEFAULT 'pending'
-            """))
-            
-            conn.execute(text("""
-                ALTER TABLE gpt_suggestions 
-                ADD COLUMN feedback_notes TEXT DEFAULT ''
-            """))
-            
-            conn.execute(text("""
-                ALTER TABLE gpt_suggestions 
-                ADD COLUMN feedback_date TEXT DEFAULT ''
-            """))
-            
-            conn.execute(text("""
-                ALTER TABLE gpt_suggestions 
-                ADD COLUMN was_helpful INTEGER DEFAULT NULL
-            """))
-            
-            conn.execute(text("""
-                ALTER TABLE gpt_suggestions 
-                ADD COLUMN applied_action TEXT DEFAULT ''
-            """))
-            
+        # Define all required feedback columns
+        required_columns = {
+            'feedback_status': "TEXT DEFAULT 'pending'",
+            'feedback_notes': "TEXT DEFAULT ''",
+            'feedback_date': "TEXT DEFAULT ''",
+            'was_helpful': "INTEGER DEFAULT NULL",
+            'applied_action': "TEXT DEFAULT ''"
+        }
+        
+        columns_added = []
+        
+        # Add missing columns
+        for col_name, col_definition in required_columns.items():
+            if col_name not in existing_columns:
+                try:
+                    conn.execute(text(f"ALTER TABLE gpt_suggestions ADD COLUMN {col_name} {col_definition}"))
+                    columns_added.append(col_name)
+                    logger.info(f"Added column: {col_name}")
+                except Exception as e:
+                    logger.warning(f"Could not add column {col_name}: {e}")
+        
+        if columns_added:
             conn.commit()
-            logger.info("✅ Feedback columns added successfully")
+            logger.info(f"✅ Added {len(columns_added)} feedback columns: {', '.join(columns_added)}")
         else:
-            logger.info("Feedback columns already exist")
+            logger.info("All feedback columns already exist")
 
 
 def validate_feedback_input(task_id: str, status: str) -> bool:
