@@ -36,6 +36,9 @@ else:
 
 logger.info(f"Database path: {DB_PATH}")
 
+# Auto-migration flag (set to False to disable automatic schema updates)
+AUTO_MIGRATE = os.getenv('AUTO_MIGRATE', 'true').lower() == 'true'
+
 
 def get_engine():
     """Create and return database engine"""
