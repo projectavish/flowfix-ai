@@ -146,7 +146,7 @@ def mark_suggestion_feedback(
             })
             conn.commit()
         
-        logger.info(f"✅ Marked suggestion for task {task_id} as {status}")
+        logger.info(f"[SUCCESS] Marked suggestion for task {task_id} as {status}")
         return True
         
     except Exception as e:
@@ -378,9 +378,9 @@ def get_applied_suggestions(limit: int = 20) -> pd.DataFrame:
         
         was_helpful = row['was_helpful']
         if was_helpful == 1:
-            print(f"  Rating: ✅ Helpful")
+            print(f"  Rating: [YES] Helpful")
         elif was_helpful == 0:
-            print(f"  Rating: ❌ Not Helpful")
+            print(f"  Rating: [NO] Not Helpful")
         
         if row['feedback_notes']:
             print(f"  Notes: {row['feedback_notes']}")
@@ -484,8 +484,8 @@ def export_feedback_to_csv(output_path: str = 'exports/feedback_report.csv'):
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
         df.to_csv(output_path, index=False)
-        logger.info(f"✅ Feedback exported to {output_path}")
-        print(f"\n✅ Feedback data exported: {output_path}")
+        logger.info(f"[SUCCESS] Feedback exported to {output_path}")
+        print(f"\n[SUCCESS] Feedback data exported: {output_path}")
         print(f"   Total records: {len(df)}")
         
     except Exception as e:
@@ -534,8 +534,8 @@ def view_feedback_interactive(status: Optional[str] = None, limit: int = 10):
     print(f"\nShowing {len(df)} feedback records:\n")
     
     for idx, row in df.iterrows():
-        helpful_icon = "✅" if row['was_helpful'] == 1 else ("❌" if row['was_helpful'] == 0 else "⏳")
-        status_icon = "📝" if row['feedback_status'] == 'pending' else ("✓" if row['feedback_status'] == 'applied' else "✗")
+        helpful_icon = "[YES]" if row['was_helpful'] == 1 else ("[NO]" if row['was_helpful'] == 0 else "[PENDING]")
+        status_icon = "[PENDING]" if row['feedback_status'] == 'pending' else ("[APPLIED]" if row['feedback_status'] == 'applied' else "[REJECTED]")
         
         print(f"{idx+1}. {status_icon} {row['task_id']} | {row['feedback_status'].upper()}")
         print(f"   Assignee: {row['assignee']} | Task Status: {row['task_status']} | Helpful: {helpful_icon}")

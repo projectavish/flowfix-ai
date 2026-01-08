@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 def get_baseline_metrics():
     """Calculate current baseline metrics"""
-    logger.info("📊 Calculating baseline metrics...")
+    logger.info("[STATS] Calculating baseline metrics...")
     
     query = """
     SELECT 
@@ -55,7 +55,7 @@ def get_baseline_metrics():
         'completed_count': int(result['completed_count'])
     }
     
-    logger.info(f"✅ Baseline captured:")
+    logger.info(f"[SUCCESS] Baseline captured:")
     logger.info(f"   Total Tasks: {metrics['total_tasks']}")
     logger.info(f"   Avg Duration: {metrics['avg_duration']:.2f} days")
     logger.info(f"   Delay Rate: {metrics['delay_rate']:.1f}%")
@@ -157,7 +157,7 @@ def save_improvement_log(
             })
             conn.commit()
         
-        logger.info(f"✅ Improvement logged for task {task_id}")
+        logger.info(f"[SUCCESS] Improvement logged for task {task_id}")
         if improvement_score:
             logger.info(f"   Improvement Score: {improvement_score:.1f}/100")
         if improvement_pct:
@@ -204,7 +204,7 @@ def mark_suggestion_applied(task_id: str, action_description: str) -> bool:
             })
             conn.commit()
         
-        logger.info(f"✅ Marked suggestion for task {task_id} as applied")
+        logger.info(f"[SUCCESS] Marked suggestion for task {task_id} as applied")
         return True
     
     except Exception as e:
@@ -224,7 +224,7 @@ def compare_metrics(before: Dict, after: Dict) -> Dict:
         dict: Comparison results
     """
     logger.info("\n" + "="*60)
-    logger.info("📈 IMPROVEMENT ANALYSIS")
+    logger.info("[STATS] IMPROVEMENT ANALYSIS")
     logger.info("="*60 + "\n")
     
     # Duration comparison
@@ -251,13 +251,13 @@ def compare_metrics(before: Dict, after: Dict) -> Dict:
     logger.info(f"\n   Overall Improvement Score: {improvement_score:.1f}/100")
     
     if improvement_score >= 80:
-        logger.info("   Status: ✅ Excellent Improvement!")
+        logger.info("   Status: [SUCCESS] Excellent Improvement!")
     elif improvement_score >= 60:
-        logger.info("   Status: ✅ Significant Improvement!")
+        logger.info("   Status: [SUCCESS] Significant Improvement!")
     elif improvement_score >= 50:
-        logger.info("   Status: ✓ Positive Improvement")
+        logger.info("   Status: [INFO] Positive Improvement")
     else:
-        logger.info("   Status: ⚠️ Needs More Action")
+        logger.info("   Status: [WARNING] Needs More Action")
     
     results = {
         'duration_change_days': duration_change,
@@ -301,10 +301,10 @@ def get_improvement_history(limit: int = 50) -> pd.DataFrame:
     df = execute_query(query)
     
     if len(df) == 0:
-        logger.info("📋 No improvements logged yet")
+        logger.info("[INFO] No improvements logged yet")
         return df
     
-    logger.info(f"\n📋 Improvement History ({len(df)} actions):")
+    logger.info(f"\n[INFO] Improvement History ({len(df)} actions):")
     for _, row in df.head(10).iterrows():
         logger.info(f"\n   {row['date_applied']}")
         logger.info(f"   Task: {row['task_id']} - {row['task_name'][:40] if row['task_name'] else 'N/A'}")
@@ -361,14 +361,13 @@ def get_improvement_kpis() -> Dict:
 
 
 def generate_improvement_report() -> Dict:
-    """
-    Generate comprehensive improvement report
+    """"Generate comprehensive improvement report
     
     Returns:
         dict: Report data
     """
     logger.info("\n" + "="*60)
-    logger.info("📊 IMPROVEMENT TRACKING REPORT")
+    logger.info("[STATS] IMPROVEMENT TRACKING REPORT")
     logger.info("="*60 + "\n")
     
     # Get current metrics
@@ -390,20 +389,20 @@ def generate_improvement_report() -> Dict:
     
     suggestions = execute_query(query).iloc[0]
     
-    logger.info(f"\n📈 Improvement Summary:")
+    logger.info(f"\n[STATS] Improvement Summary:")
     logger.info(f"   Total Actions: {kpis['total_improvements']}")
     logger.info(f"   Avg Improvement Score: {kpis['avg_improvement_score']:.1f}/100")
     logger.info(f"   Excellent Improvements: {kpis['excellent_count']}")
     logger.info(f"   Significant Improvements: {kpis['significant_count']}")
     
-    logger.info(f"\n🤖 GPT Suggestions:")
+    logger.info(f"\n[AI] GPT Suggestions:")
     logger.info(f"   Total Generated: {int(suggestions['total_suggestions'])}")
     logger.info(f"   Applied: {int(suggestions['applied_count'])}")
     if suggestions['total_suggestions'] > 0:
         apply_rate = suggestions['applied_count'] / suggestions['total_suggestions'] * 100
         logger.info(f"   Apply Rate: {apply_rate:.1f}%")
     
-    logger.info(f"\n📊 Current Metrics:")
+    logger.info(f"\n[STATS] Current Metrics:")
     logger.info(f"   Delay Rate: {current['delay_rate']:.1f}%")
     logger.info(f"   Bottleneck Rate: {current['bottleneck_rate']:.1f}%")
     logger.info(f"   Avg Duration: {current['avg_duration']:.1f} days")
@@ -441,9 +440,9 @@ def cli_log_improvement():
     )
     
     if success:
-        print(f"\n✅ Improvement logged successfully!")
+        print(f"\n[SUCCESS] Improvement logged successfully!")
     else:
-        print(f"\n❌ Failed to log improvement")
+        print(f"\n[ERROR] Failed to log improvement")
 
 
 def cli_mark_applied():
@@ -457,7 +456,7 @@ def cli_mark_applied():
     success = mark_suggestion_applied(args.task_id, args.action)
     
     if success:
-        print(f"\n✅ Suggestion marked as applied!")
+        print(f"\n[SUCCESS] Suggestion marked as applied!")
         # Also log to improvement_log
         save_improvement_log(
             task_id=args.task_id,
@@ -465,12 +464,12 @@ def cli_mark_applied():
             owner='User'
         )
     else:
-        print(f"\n❌ Failed to mark suggestion")
+        print(f"\n[ERROR] Failed to mark suggestion")
 
 
 def cli_compare():
     """CLI command to compare metrics"""
-    print("\n📊 Comparing baseline metrics...\n")
+    print("\n[STATS] Comparing baseline metrics...\n")
     
     # For demo, get metrics from 7 days ago vs now
     # In production, you'd store historical snapshots
@@ -494,7 +493,7 @@ def cli_kpis():
     """CLI command to show KPIs"""
     kpis = get_improvement_kpis()
     
-    print("\n📊 Improvement KPIs:")
+    print("\n[STATS] Improvement KPIs:")
     print(f"   Total Improvements: {kpis['total_improvements']}")
     print(f"   Avg Score: {kpis['avg_improvement_score']:.1f}/100")
     print(f"   Excellent (≥80): {kpis['excellent_count']}")

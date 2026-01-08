@@ -128,7 +128,7 @@ def train_ml_resolution_estimator(df):
     Train ML model to predict resolution time for bottlenecks
     Returns trained model and feature names
     """
-    logger.info("🤖 Training ML resolution time estimator...")
+    logger.info("[ML] Training ML resolution time estimator...")
     
     # Filter resolved bottlenecks
     query = """
@@ -136,10 +136,10 @@ def train_ml_resolution_estimator(df):
         bh.*,
         t.actual_duration,
         t.status,
-        (julianday(CURRENT_TIMESTAMP) - julianday(bh.detected_at)) * 24 as hours_to_resolve
+        (julianday(CURRENT_TIMESTAMP) - julianday(bh.detected_date)) * 24 as hours_to_resolve
     FROM bottleneck_history bh
     JOIN tasks t ON bh.task_id = t.task_id
-    WHERE bh.resolved = 1
+    WHERE bh.resolution_date IS NOT NULL
     """
     
     try:
@@ -162,7 +162,7 @@ def train_ml_resolution_estimator(df):
         model = LinearRegression()
         model.fit(features, target)
         
-        logger.info(f"✅ ML model trained on {len(training_data)} resolved bottlenecks")
+        logger.info(f"[SUCCESS] ML model trained on {len(training_data)} resolved bottlenecks")
         logger.info(f"   Model R² score: {model.score(features, target):.3f}")
         
         return model, features.columns.tolist()
@@ -203,7 +203,7 @@ def load_tasks():
 
 def calculate_baseline_metrics(df):
     """Calculate baseline duration metrics"""
-    logger.info("📊 Calculating baseline metrics...")
+    logger.info("[STATS] Calculating baseline metrics...")
     
     completed_tasks = df[df['actual_duration'].notna()]
     
@@ -236,14 +236,14 @@ def calculate_baseline_metrics(df):
                 'count': len(project_tasks)
             }
     
-    logger.info(f"✅ Baseline: mean={baseline['overall_mean']:.1f}d, median={baseline['overall_median']:.1f}d")
+    logger.info(f"[SUCCESS] Baseline: mean={baseline['overall_mean']:.1f}d, median={baseline['overall_median']:.1f}d")
     
     return baseline
 
 
 def detect_all_bottlenecks(df, baseline, ml_model=None, ml_features=None):
     """Main bottleneck detection with severity scoring and root cause"""
-    logger.info("\n🔍 Running comprehensive bottleneck detection...")
+    logger.info("\n[INFO] Running comprehensive bottleneck detection...")
     
     bottlenecks = []
     
@@ -314,7 +314,7 @@ def detect_all_bottlenecks(df, baseline, ml_model=None, ml_features=None):
             log_bottleneck_history(row['task_id'], bottleneck_type, severity_score, 
                                   delay_days, row['priority'], root_cause)
     
-    logger.info(f"✅ Detected {len(bottlenecks)} bottlenecks")
+    logger.info(f"[SUCCESS] Detected {len(bottlenecks)} bottlenecks")
     
     return pd.DataFrame(bottlenecks)
 
@@ -340,7 +340,7 @@ def update_tasks_with_bottlenecks(bottlenecks_df):
             
             conn.commit()
         
-        logger.info(f"✅ Updated {len(bottlenecks_df)} tasks with bottleneck flags")
+        logger.info(f"[SUCCESS] Updated {len(bottlenecks_df)} tasks with bottleneck flags")
     
     except Exception as e:
         logger.error(f"Failed to update tasks: {str(e)}")
@@ -410,19 +410,19 @@ def generate_auto_summary_report(bottlenecks_df, output_path=None):
             if len(bottlenecks_df[bottlenecks_df['bottleneck_type'].str.contains('Duration')]) > 0:
                 f.write("- **Duration Anomalies:** Review task complexity estimation process\n")
     
-    logger.info(f"📄 Auto-summary report saved: {output_path}")
+    logger.info(f"[REPORT] Auto-summary report saved: {output_path}")
     return output_path
 
 
 def run_bottleneck_detection(save_report=True):
     """Main execution function"""
     logger.info("\n" + "="*70)
-    logger.info("🔍 BOTTLENECK DETECTION ENGINE v2.0")
+    logger.info("[INFO] BOTTLENECK DETECTION ENGINE v2.0")
     logger.info("="*70 + "\n")
     
     # Load data
     df = load_tasks()
-    logger.info(f"📊 Loaded {len(df)} tasks")
+    logger.info(f"[STATS] Loaded {len(df)} tasks")
     
     # Calculate baselines
     baseline = calculate_baseline_metrics(df)
@@ -442,7 +442,7 @@ def run_bottleneck_detection(save_report=True):
             generate_auto_summary_report(bottlenecks_df)
         
         # Print summary
-        logger.info("\n📊 SUMMARY")
+        logger.info("\n[STATS] SUMMARY")
         logger.info("="*70)
         logger.info(f"Total Bottlenecks: {len(bottlenecks_df)}")
         logger.info(f"Avg Severity: {bottlenecks_df['severity_score'].mean():.1f}/100")
@@ -451,7 +451,7 @@ def run_bottleneck_detection(save_report=True):
         for btype, count in bottlenecks_df['bottleneck_type'].value_counts().head(5).items():
             logger.info(f"  - {btype}: {count}")
     else:
-        logger.info("✅ No bottlenecks detected!")
+        logger.info("[SUCCESS] No bottlenecks detected!")
     
     logger.info("\n" + "="*70 + "\n")
     

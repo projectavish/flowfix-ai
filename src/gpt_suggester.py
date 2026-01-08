@@ -68,7 +68,7 @@ def get_bottlenecked_tasks(include_severity=True):
                 (SELECT severity_score 
                  FROM bottleneck_history bh 
                  WHERE bh.task_id = t.task_id 
-                 ORDER BY bh.detected_at DESC 
+                 ORDER BY bh.detected_date DESC 
                  LIMIT 1), 50
             ) as severity_score
         FROM tasks t
@@ -466,10 +466,10 @@ def save_suggestion(task_id, suggestion_text, parsed_data, latency_ms, prompt_ve
     query = text("""
         INSERT INTO gpt_suggestions 
         (task_id, suggestion_text, root_causes, recommendations,
-         prompt_version, gpt_model_used, latency_ms, sentiment, urgency_level,
+         prompt_version, model_used, sentiment, urgency,
          quality_score, needs_manual_review)
         VALUES (:task_id, :suggestion_text, :root_causes, :recommendations,
-                :prompt_version, :model, :latency, :sentiment, :urgency,
+                :prompt_version, :model, :sentiment, :urgency,
                 :quality_score, :needs_review)
     """)
     
@@ -482,7 +482,6 @@ def save_suggestion(task_id, suggestion_text, parsed_data, latency_ms, prompt_ve
                 'recommendations': recommendations_json,
                 'prompt_version': prompt_version,
                 'model': GPT_MODEL,
-                'latency': latency_ms,
                 'sentiment': sentiment,
                 'urgency': urgency,
                 'quality_score': quality_score,
@@ -508,7 +507,7 @@ def trigger_high_severity_alert(task_id, severity_score, suggestion_text):
     Trigger alert for high-severity suggestions
     Could send email, Slack notification, etc.
     """
-    logger.warning(f"🚨 HIGH SEVERITY ALERT: Task {task_id} (severity: {severity_score})")
+    logger.warning(f"[WARNING] HIGH SEVERITY ALERT: Task {task_id} (severity: {severity_score})")
     logger.warning(f"   Suggestion: {suggestion_text[:100]}...")
     
     # In production, you could:
@@ -540,14 +539,14 @@ def trigger_high_severity_alert(task_id, severity_score, suggestion_text):
 def generate_suggestions(limit=None, use_ab_testing=False):
     """Main function to generate GPT suggestions for bottlenecked tasks"""
     print("\n" + "="*60)
-    print("🤖 GPT SUGGESTION ENGINE v2.0")
+    print("[AI] GPT SUGGESTION ENGINE v2.0")
     print("="*60 + "\n")
     
     # Check API key
     try:
         client = initialize_openai()
     except ValueError as e:
-        print(f"❌ {str(e)}")
+        print(f"[ERROR] {str(e)}")
         print("\nTo use GPT suggestions:")
         print("1. Copy .env.example to .env")
         print("2. Add your OpenAI API key to .env")
@@ -555,21 +554,21 @@ def generate_suggestions(limit=None, use_ab_testing=False):
         return
     
     # Get bottlenecked tasks
-    print("📊 Fetching bottlenecked tasks...")
+    print("[STATS] Fetching bottlenecked tasks...")
     tasks = get_bottlenecked_tasks(include_severity=True)
     
     if len(tasks) == 0:
-        print("✅ No new bottlenecked tasks found requiring suggestions")
+        print("[SUCCESS] No new bottlenecked tasks found requiring suggestions")
         return
     
     if limit:
         tasks = tasks.head(limit)
     
-    print(f"✅ Found {len(tasks)} tasks needing suggestions")
+    print(f"[SUCCESS] Found {len(tasks)} tasks needing suggestions")
     if use_ab_testing:
-        print(f"🔬 A/B testing enabled - alternating between prompt versions\n")
+        print(f"[INFO] A/B testing enabled - alternating between prompt versions\n")
     else:
-        print(f"📝 Using prompt version: {PROMPT_VERSION}\n")
+        print(f"[INFO] Using prompt version: {PROMPT_VERSION}\n")
     
     # Generate suggestions
     success_count = 0
@@ -609,15 +608,15 @@ def generate_suggestions(limit=None, use_ab_testing=False):
                 # Check if high severity
                 if severity >= HIGH_SEVERITY_THRESHOLD:
                     high_severity_count += 1
-                    print(f"   🚨 HIGH SEVERITY task flagged for review")
+                    print(f"   [WARNING] HIGH SEVERITY task flagged for review")
                 
-                print(f"   ✅ Suggestion saved (latency: {latency_ms}ms, version: {prompt_version})")
+                print(f"   [SUCCESS] Suggestion saved (latency: {latency_ms}ms, version: {prompt_version})")
             else:
                 error_count += 1
-                print(f"   ❌ Error saving suggestion")
+                print(f"   [ERROR] Error saving suggestion")
         else:
             error_count += 1
-            print(f"   ❌ Error: {error_msg}")
+            print(f"   [ERROR] Error: {error_msg}")
         
         print()
     
@@ -625,14 +624,14 @@ def generate_suggestions(limit=None, use_ab_testing=False):
     avg_latency = total_latency / success_count if success_count > 0 else 0
     
     print("\n" + "="*60)
-    print("📊 SUGGESTION GENERATION COMPLETE")
+    print("[STATS] SUGGESTION GENERATION COMPLETE")
     print("="*60)
-    print(f"✅ Successful: {success_count}")
-    print(f"❌ Errors: {error_count}")
-    print(f"📝 Total: {len(tasks)}")
-    print(f"⚡ Avg Latency: {avg_latency:.0f}ms")
+    print(f"[SUCCESS] Successful: {success_count}")
+    print(f"[ERROR] Errors: {error_count}")
+    print(f"[INFO] Total: {len(tasks)}")
+    print(f"[INFO] Avg Latency: {avg_latency:.0f}ms")
     if high_severity_count > 0:
-        print(f"🚨 High Severity Alerts: {high_severity_count}")
+        print(f"[WARNING] High Severity Alerts: {high_severity_count}")
     print("\n")
 
 
@@ -650,10 +649,9 @@ def export_suggestions_to_csv():
         g.root_causes,
         g.recommendations,
         g.prompt_version,
-        g.gpt_model_used,
-        g.latency_ms,
+        g.model_used,
         g.sentiment,
-        g.urgency_level,
+        g.urgency,
         g.quality_score,
         g.needs_manual_review,
         g.applied,
@@ -673,7 +671,7 @@ def export_suggestions_to_csv():
     output_path = os.path.join(exports_dir, f"gpt_suggestions_{timestamp}.csv")
     df.to_csv(output_path, index=False)
     
-    print(f"✅ Exported {len(df)} suggestions to {output_path}")
+    print(f"[SUCCESS] Exported {len(df)} suggestions to {output_path}")
     return output_path
 
 

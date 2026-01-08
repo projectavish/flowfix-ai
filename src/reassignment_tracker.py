@@ -52,17 +52,23 @@ def record_reassignment(task_id, old_assignee, new_assignee, reason='', triggere
             # Insert reassignment record
             conn.execute(text("""
                 INSERT INTO task_reassignments 
-                (task_id, old_assignee, new_assignee, reason, 
-                 status_before_reassignment, duration_before_reassignment,
-                 was_delayed_before, triggered_by, reassigned_at)
-                VALUES (:task_id, :old_assignee, :new_assignee, :reason,
-                        :status_before, :duration_before, :was_delayed, :triggered_by, :reassigned_at)
+                (task_id, from_assignee, to_assignee, reason, 
+                 status_before, status_after, triggered_by, was_delayed_before, 
+                 duration_before_reassignment, reassignment_date)
+                VALUES (:task_id, :from_assignee, :to_assignee, :reason,
+                        :status_before, :status_after, :triggered_by, :was_delayed, :duration_before, :reassignment_date)
             """), {
                 'task_id': task_id,
-                'old_assignee': old_assignee,
-                'new_assignee': new_assignee,
+                'from_assignee': old_assignee,
+                'to_assignee': new_assignee,
                 'reason': reason,
                 'status_before': status_before,
+                'status_after': '',
+                'triggered_by': triggered_by,
+                'was_delayed': was_delayed,
+                'duration_before': duration_before,
+                'reassignment_date': datetime.now().isoformat()
+            })
                 'duration_before': duration_before,
                 'was_delayed': was_delayed,
                 'triggered_by': triggered_by,
@@ -82,7 +88,7 @@ def record_reassignment(task_id, old_assignee, new_assignee, reason='', triggere
             
             conn.commit()
         
-        logger.info(f"✅ Task {task_id} reassigned: {old_assignee} → {new_assignee}")
+        logger.info(f"[SUCCESS] Task {task_id} reassigned: {old_assignee} → {new_assignee}")
         return True
     
     except Exception as e:
@@ -104,7 +110,7 @@ def suggest_reassignment_from_bottleneck(task_id, bottleneck_type, assignee):
     Returns:
         dict: Suggestion with new_assignee and reason
     """
-    logger.info(f"🔍 Analyzing reassignment options for {task_id} (bottleneck: {bottleneck_type})")
+    logger.info(f"[INFO] Analyzing reassignment options for {task_id} (bottleneck: {bottleneck_type})")
     
     # Find assignees with lower workload and better performance
     query = text("""
@@ -149,7 +155,7 @@ def suggest_reassignment_from_bottleneck(task_id, bottleneck_type, assignee):
             'confidence': 'high' if best_candidate['delay_rate'] < 0.3 else 'medium'
         }
         
-        logger.info(f"💡 Suggestion: Reassign to {suggestion['suggested_assignee']} ({suggestion['confidence']} confidence)")
+        logger.info(f"[SUGGESTION] Suggestion: Reassign to {suggestion['suggested_assignee']} ({suggestion['confidence']} confidence)")
         
         return suggestion
     
@@ -170,7 +176,7 @@ def auto_reassign_high_delay_predictions(threshold_probability=0.7):
     Returns:
         list: Tasks that were reassigned
     """
-    logger.info(f"🤖 Checking ML predictions for high-risk tasks (threshold: {threshold_probability})")
+    logger.info(f"[ML] Checking ML predictions for high-risk tasks (threshold: {threshold_probability})")
     
     # Get recent predictions with high delay probability
     query = text("""
@@ -229,7 +235,7 @@ def auto_reassign_high_delay_predictions(threshold_probability=0.7):
                 if success:
                     reassigned.append(task['task_id'])
         
-        logger.info(f"✅ Auto-reassigned {len(reassigned)} tasks based on ML predictions")
+        logger.info(f"[SUCCESS] Auto-reassigned {len(reassigned)} tasks based on ML predictions")
         return reassigned
     
     except Exception as e:
@@ -290,7 +296,7 @@ def weekly_workload_rebalancing():
     Can be run as CRON job or scheduled task
     """
     logger.info("\n" + "="*60)
-    logger.info("🔄 WEEKLY WORKLOAD REBALANCING")
+    logger.info("[INFO] WEEKLY WORKLOAD REBALANCING")
     logger.info("="*60 + "\n")
     
     # Get current workload distribution
@@ -326,7 +332,7 @@ def weekly_workload_rebalancing():
     overloaded = workload[workload['active_tasks'] > threshold]
     
     if len(overloaded) == 0:
-        logger.info("✅ Workload is well balanced")
+        logger.info("[SUCCESS] Workload is well balanced")
         return
     
     logger.info(f"Overloaded Assignees (>{threshold:.1f} tasks):")
@@ -345,7 +351,7 @@ def weekly_workload_rebalancing():
         logger.info(f"   {row['assignee']}: {int(row['active_tasks'])} tasks")
     
     # Suggest reassignments
-    logger.info("\n📋 Reassignment Suggestions:")
+    logger.info("\n[INFO] Reassignment Suggestions:")
     
     reassignment_count = 0
     
@@ -382,8 +388,8 @@ def weekly_workload_rebalancing():
             # Record suggestion (not auto-executing for safety)
             reassignment_count += 1
     
-    logger.info(f"\n💡 Total suggestions: {reassignment_count}")
-    logger.info("⚠️  Review and approve manually before applying\n")
+    logger.info(f"\n[SUGGESTION] Total suggestions: {reassignment_count}")
+    logger.info("[WARNING] Review and approve manually before applying\n")
 
 
 def calculate_reassignment_effectiveness():
@@ -396,7 +402,7 @@ def calculate_reassignment_effectiveness():
         dict: Effectiveness metrics
     """
     logger.info("\n" + "="*60)
-    logger.info("📊 REASSIGNMENT EFFECTIVENESS ANALYSIS")
+    logger.info("[STATS] REASSIGNMENT EFFECTIVENESS ANALYSIS")
     logger.info("="*60 + "\n")
     
     # Get completed tasks that were reassigned
@@ -462,7 +468,7 @@ def calculate_reassignment_effectiveness():
         'effectiveness_score': float((delay_improvement / was_delayed_before * 100) if was_delayed_before > 0 else 0)
     }
     
-    logger.info(f"\n✅ Overall Effectiveness Score: {metrics['effectiveness_score']:.1f}%\n")
+    logger.info(f"\n[SUCCESS] Overall Effectiveness Score: {metrics['effectiveness_score']:.1f}%\n")
     
     return metrics
 
@@ -470,7 +476,7 @@ def calculate_reassignment_effectiveness():
 def get_reassignment_statistics():
     """Get comprehensive reassignment statistics"""
     logger.info("\n" + "="*60)
-    logger.info("📈 REASSIGNMENT STATISTICS")
+    logger.info("[STATS] REASSIGNMENT STATISTICS")
     logger.info("="*60 + "\n")
     
     # Total reassignments
@@ -521,10 +527,10 @@ def get_reassignment_statistics():
     # Top assignees receiving tasks
     received_query = """
         SELECT 
-            new_assignee,
+            to_assignee,
             COUNT(*) as received_count
         FROM task_reassignments
-        GROUP BY new_assignee
+        GROUP BY to_assignee
         ORDER BY received_count DESC
         LIMIT 5
     """
@@ -532,15 +538,15 @@ def get_reassignment_statistics():
     
     logger.info("\nTop Assignees (Received Tasks):")
     for _, row in received.iterrows():
-        logger.info(f"   {row['new_assignee']}: {int(row['received_count'])} tasks")
+        logger.info(f"   {row['to_assignee']}: {int(row['received_count'])} tasks")
     
     # Top assignees giving away tasks
     given_query = """
         SELECT 
-            old_assignee,
+            from_assignee,
             COUNT(*) as given_count
         FROM task_reassignments
-        GROUP BY old_assignee
+        GROUP BY from_assignee
         ORDER BY given_count DESC
         LIMIT 5
     """
@@ -548,7 +554,7 @@ def get_reassignment_statistics():
     
     logger.info("\nTop Assignees (Gave Away Tasks):")
     for _, row in given.iterrows():
-        logger.info(f"   {row['old_assignee']}: {int(row['given_count'])} tasks")
+        logger.info(f"   {row['from_assignee']}: {int(row['given_count'])} tasks")
 
 
 def generate_reassignment_report():
@@ -562,7 +568,7 @@ def generate_reassignment_report():
     
     # Show recent reassignments
     logger.info("\n" + "="*60)
-    logger.info("📋 RECENT REASSIGNMENTS (Last 10)")
+    logger.info("[INFO] RECENT REASSIGNMENTS (Last 10)")
     logger.info("="*60 + "\n")
     
     recent = get_reassignment_history(limit=10)

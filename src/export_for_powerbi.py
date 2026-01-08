@@ -42,7 +42,7 @@ def get_export_filename(base_name: str = 'powerbi_data', with_timestamp: bool = 
 
 def export_tasks_sheet() -> Optional[pd.DataFrame]:
     """Export tasks with all relevant fields"""
-    logger.info("📋 Exporting Tasks sheet...")
+    logger.info("[INFO] Exporting Tasks sheet...")
     
     query = """
     SELECT 
@@ -65,16 +65,16 @@ def export_tasks_sheet() -> Optional[pd.DataFrame]:
     
     try:
         df = execute_query(query)
-        logger.info(f"   ✓ Exported {len(df)} tasks")
+        logger.info(f"   [SUCCESS] Exported {len(df)} tasks")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting tasks: {e}")
+        logger.error(f"   [ERROR] Error exporting tasks: {e}")
         return None
 
 
 def export_bottlenecks_sheet() -> Optional[pd.DataFrame]:
     """Export bottleneck analysis"""
-    logger.info("🚨 Exporting Bottlenecks sheet...")
+    logger.info("[WARNING] Exporting Bottlenecks sheet...")
     
     query = """
     SELECT 
@@ -86,26 +86,26 @@ def export_bottlenecks_sheet() -> Optional[pd.DataFrame]:
         bh.bottleneck_type,
         bh.severity_score,
         bh.root_cause_suggestion,
-        bh.detected_at,
+        bh.detected_date,
         t.actual_duration,
         t.is_delayed
     FROM bottleneck_history bh
     JOIN tasks t ON bh.task_id = t.task_id
-    ORDER BY bh.detected_at DESC
+    ORDER BY bh.detected_date DESC
     """
     
     try:
         df = execute_query(query)
-        logger.info(f"   ✓ Exported {len(df)} bottleneck records")
+        logger.info(f"   [SUCCESS] Exported {len(df)} bottleneck records")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting bottlenecks: {e}")
+        logger.error(f"   [ERROR] Error exporting bottlenecks: {e}")
         return None
 
 
 def export_gpt_suggestions_sheet() -> Optional[pd.DataFrame]:
     """Export GPT suggestions with feedback fields"""
-    logger.info("🤖 Exporting GPT Suggestions sheet...")
+    logger.info("[AI] Exporting GPT Suggestions sheet...")
     
     # Fix: Use correct column names (root_causes, recommendations plural)
     query = """
@@ -119,30 +119,28 @@ def export_gpt_suggestions_sheet() -> Optional[pd.DataFrame]:
         g.root_causes,
         g.recommendations,
         g.prompt_version,
-        g.gpt_model_used,
+        g.model_used,
         g.sentiment,
-        g.urgency_level,
+        g.urgency,
         g.quality_score,
         g.applied,
-        g.applied_date,
         g.applied_action,
         g.created_at,
-        fb.feedback_status,
-        fb.feedback_comment,
-        fb.feedback_date,
-        fb.was_helpful
+        g.feedback_status,
+        g.feedback_notes,
+        g.feedback_date,
+        g.was_helpful
     FROM gpt_suggestions g
     JOIN tasks t ON g.task_id = t.task_id
-    LEFT JOIN feedback_log fb ON g.task_id = fb.task_id AND fb.feedback_type = 'gpt_suggestion'
     ORDER BY g.created_at DESC
     """
     
     try:
         df = execute_query(query)
-        logger.info(f"   ✓ Exported {len(df)} GPT suggestions")
+        logger.info(f"   [SUCCESS] Exported {len(df)} GPT suggestions")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting GPT suggestions: {e}")
+        logger.error(f"   [ERROR] Error exporting GPT suggestions: {e}")
         # Try fallback query without feedback fields
         try:
             fallback_query = """
@@ -160,16 +158,16 @@ def export_gpt_suggestions_sheet() -> Optional[pd.DataFrame]:
             JOIN tasks t ON g.task_id = t.task_id
             """
             df = execute_query(fallback_query)
-            logger.warning(f"   ⚠ Used fallback query, exported {len(df)} suggestions")
+            logger.warning(f"   [WARNING] Used fallback query, exported {len(df)} suggestions")
             return df
         except Exception as e2:
-            logger.error(f"   ✗ Fallback also failed: {e2}")
+            logger.error(f"   [ERROR] Fallback also failed: {e2}")
             return None
 
 
 def export_improvements_sheet() -> Optional[pd.DataFrame]:
     """Export improvement tracking data"""
-    logger.info("📈 Exporting Improvements sheet...")
+    logger.info("[STATS] Exporting Improvements sheet...")
     
     query = """
     SELECT 
@@ -192,47 +190,47 @@ def export_improvements_sheet() -> Optional[pd.DataFrame]:
     
     try:
         df = execute_query(query)
-        logger.info(f"   ✓ Exported {len(df)} improvement records")
+        logger.info(f"   [SUCCESS] Exported {len(df)} improvement records")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting improvements: {e}")
+        logger.error(f"   [ERROR] Error exporting improvements: {e}")
         return None
 
 
 def export_reassignments_sheet() -> Optional[pd.DataFrame]:
     """Export task reassignment history"""
-    logger.info("🔄 Exporting Reassignments sheet...")
+    logger.info("[INFO] Exporting Reassignments sheet...")
     
     query = """
     SELECT 
         tr.task_id,
         t.task_name,
         t.project,
-        tr.old_assignee,
-        tr.new_assignee,
+        tr.from_assignee,
+        tr.to_assignee,
         tr.reason,
         tr.triggered_by,
-        tr.reassigned_at,
+        tr.reassignment_date,
         tr.was_delayed_before,
         t.is_delayed as is_delayed_after,
         t.status as current_status
     FROM task_reassignments tr
     JOIN tasks t ON tr.task_id = t.task_id
-    ORDER BY tr.reassigned_at DESC
+    ORDER BY tr.reassignment_date DESC
     """
     
     try:
         df = execute_query(query)
-        logger.info(f"   ✓ Exported {len(df)} reassignment records")
+        logger.info(f"   [SUCCESS] Exported {len(df)} reassignment records")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting reassignments: {e}")
+        logger.error(f"   [ERROR] Error exporting reassignments: {e}")
         return None
 
 
 def export_ml_predictions_sheet() -> Optional[pd.DataFrame]:
     """Export ML predictions"""
-    logger.info("🤖 Exporting ML Predictions sheet...")
+    logger.info("[ML] Exporting ML Predictions sheet...")
     
     query = """
     SELECT 
@@ -241,29 +239,32 @@ def export_ml_predictions_sheet() -> Optional[pd.DataFrame]:
         t.assignee,
         t.project,
         mp.model_type,
-        mp.prediction_value,
+        mp.predicted_duration,
+        mp.predicted_delay_prob,
         mp.confidence_score,
         mp.model_version,
-        mp.predicted_at,
+        mp.prediction_date,
+        mp.actual_outcome,
+        mp.prediction_correct,
         t.actual_duration,
         t.is_delayed
     FROM ml_predictions mp
     JOIN tasks t ON mp.task_id = t.task_id
-    ORDER BY mp.predicted_at DESC
+    ORDER BY mp.prediction_date DESC
     """
     
     try:
         df = execute_query(query)
-        logger.info(f"   ✓ Exported {len(df)} ML predictions")
+        logger.info(f"   [SUCCESS] Exported {len(df)} ML predictions")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting ML predictions: {e}")
+        logger.error(f"   [ERROR] Error exporting ML predictions: {e}")
         return None
 
 
 def export_summary_metrics_sheet() -> Optional[pd.DataFrame]:
     """Export summary metrics"""
-    logger.info("📊 Exporting Summary Metrics sheet...")
+    logger.info("[STATS] Exporting Summary Metrics sheet...")
     
     query = """
     SELECT 
@@ -285,10 +286,10 @@ def export_summary_metrics_sheet() -> Optional[pd.DataFrame]:
         # Add timestamp
         df['export_timestamp'] = datetime.now().isoformat()
         
-        logger.info(f"   ✓ Exported summary metrics")
+        logger.info(f"   [SUCCESS] Exported summary metrics")
         return df
     except Exception as e:
-        logger.error(f"   ✗ Error exporting summary metrics: {e}")
+        logger.error(f"   [ERROR] Error exporting summary metrics: {e}")
         return None
 
 
@@ -304,7 +305,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
         bool: Success status
     """
     logger.info("\n" + "="*60)
-    logger.info("📊 POWER BI DATA EXPORT - Starting")
+    logger.info("[STATS] POWER BI DATA EXPORT - Starting")
     logger.info("="*60 + "\n")
     
     # Generate filename
@@ -335,7 +336,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
                 df.to_excel(writer, sheet_name='Bottlenecks', index=False)
                 sheets_exported += 1
             else:
-                logger.warning("   ⚠ Skipping Bottlenecks sheet (no data or error)")
+                logger.warning("   [WARNING] Skipping Bottlenecks sheet (no data or error)")
             
             # 3. GPT Suggestions (with feedback fields)
             df = export_gpt_suggestions_sheet()
@@ -343,7 +344,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
                 df.to_excel(writer, sheet_name='GPT_Suggestions', index=False)
                 sheets_exported += 1
             else:
-                logger.warning("   ⚠ Skipping GPT Suggestions sheet (no data or error)")
+                logger.warning("   [WARNING] Skipping GPT Suggestions sheet (no data or error)")
             
             # 4. Improvements (NEW)
             df = export_improvements_sheet()
@@ -351,7 +352,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
                 df.to_excel(writer, sheet_name='Improvements', index=False)
                 sheets_exported += 1
             else:
-                logger.warning("   ⚠ Skipping Improvements sheet (no data or error)")
+                logger.warning("   [WARNING] Skipping Improvements sheet (no data or error)")
             
             # 5. Reassignments (NEW)
             df = export_reassignments_sheet()
@@ -359,7 +360,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
                 df.to_excel(writer, sheet_name='Reassignments', index=False)
                 sheets_exported += 1
             else:
-                logger.warning("   ⚠ Skipping Reassignments sheet (no data or error)")
+                logger.warning("   [WARNING] Skipping Reassignments sheet (no data or error)")
             
             # 6. ML Predictions (NEW)
             df = export_ml_predictions_sheet()
@@ -367,7 +368,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
                 df.to_excel(writer, sheet_name='ML_Predictions', index=False)
                 sheets_exported += 1
             else:
-                logger.warning("   ⚠ Skipping ML Predictions sheet (no data or error)")
+                logger.warning("   [WARNING] Skipping ML Predictions sheet (no data or error)")
             
             # 7. Summary Metrics
             df = export_summary_metrics_sheet()
@@ -378,14 +379,14 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
                 sheets_failed += 1
         
         logger.info("\n" + "="*60)
-        logger.info("✅ POWER BI DATA EXPORT - Complete")
+        logger.info("[SUCCESS] POWER BI DATA EXPORT - Complete")
         logger.info("="*60)
-        logger.info(f"\n📁 Excel file created: {excel_path}")
-        logger.info(f"📊 Sheets exported: {sheets_exported}")
+        logger.info(f"\n[INFO] Excel file created: {excel_path}")
+        logger.info(f"[STATS] Sheets exported: {sheets_exported}")
         if sheets_failed > 0:
-            logger.warning(f"⚠️  Sheets failed: {sheets_failed}")
+            logger.warning(f"[WARNING] Sheets failed: {sheets_failed}")
         
-        logger.info("\n📌 Power BI Instructions:")
+        logger.info("\n[INFO] Power BI Instructions:")
         logger.info("   1. Open Power BI Desktop")
         logger.info("   2. Click 'Get Data' → 'Excel'")
         logger.info(f"   3. Select file: {excel_path}")
@@ -396,7 +397,7 @@ def export_to_powerbi(filename: Optional[str] = None, include_timestamp: bool = 
         return True
     
     except Exception as e:
-        logger.error(f"\n❌ Fatal error during export: {e}")
+        logger.error(f"\n[ERROR] Fatal error during export: {e}")
         return False
 
 

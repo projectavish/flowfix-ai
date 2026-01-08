@@ -91,7 +91,7 @@ def validate_row(row, row_num):
 
 def clean_and_validate_data(df, source_type='generic'):
     """Clean, normalize, and validate imported data"""
-    logger.info("🧹 Cleaning and validating data...")
+    logger.info("[INFO] Cleaning and validating data...")
     
     # Load column mapping
     column_mappings = load_column_mapping()
@@ -166,9 +166,9 @@ def clean_and_validate_data(df, source_type='generic'):
     # Separate valid and failed data
     valid_df = df.loc[valid_indices].copy()
     
-    logger.info(f"✅ Valid records: {len(valid_df)}")
+    logger.info(f"[SUCCESS] Valid records: {len(valid_df)}")
     if failed_rows:
-        logger.warning(f"⚠️  Failed records: {len(failed_rows)}")
+        logger.warning(f"[WARNING] Failed records: {len(failed_rows)}")
     
     return valid_df, failed_rows
 
@@ -186,7 +186,7 @@ def save_failed_rows(failed_rows, filename):
     output_path = os.path.join(exports_dir, f'failed_rows_{timestamp}.csv')
     failed_df.to_csv(output_path, index=False)
     
-    logger.info(f"💾 Failed rows saved to: {output_path}")
+    logger.info(f"[INFO] Failed rows saved to: {output_path}")
     return output_path
 
 
@@ -195,7 +195,7 @@ def merge_or_append_data(df, mode='merge', dry_run=False):
     engine = get_engine()
     
     if dry_run:
-        logger.info("🔍 DRY RUN MODE - No data will be written")
+        logger.info("[INFO] DRY RUN MODE - No data will be written")
         logger.info(f"   Would process {len(df)} records")
         logger.info(f"   Mode: {mode}")
         return 0
@@ -204,7 +204,7 @@ def merge_or_append_data(df, mode='merge', dry_run=False):
     
     with engine.connect() as conn:
         if mode == 'replace':
-            logger.warning("⚠️  REPLACE mode - clearing existing data")
+            logger.warning("[WARNING] REPLACE mode - clearing existing data")
             conn.execute(text("DELETE FROM tasks"))
             conn.commit()
         
@@ -300,7 +300,7 @@ def log_ingestion(filename, records_added, records_failed, file_size_kb, process
             })
             conn.commit()
         
-        logger.info("✅ Ingestion logged to database")
+        logger.info("[SUCCESS] Ingestion logged to database")
     except Exception as e:
         logger.error(f"Failed to log ingestion: {str(e)}")
 
@@ -318,7 +318,7 @@ def ingest_file(filepath, source_type='generic', mode='merge', dry_run=False):
     start_time = datetime.now()
     
     logger.info("\n" + "="*70)
-    logger.info("📥 PRODUCTION DATA INGESTION")
+    logger.info("[INFO] PRODUCTION DATA INGESTION")
     logger.info("="*70)
     logger.info(f"File: {filepath}")
     logger.info(f"Source Type: {source_type}")
@@ -339,10 +339,10 @@ def ingest_file(filepath, source_type='generic', mode='merge', dry_run=False):
             raise ValueError("Unsupported file format. Use CSV or Excel.")
         
         file_size_kb = os.path.getsize(filepath) / 1024
-        logger.info(f"📊 Loaded {len(df)} records ({file_size_kb:.2f} KB)")
+        logger.info(f"[STATS] Loaded {len(df)} records ({file_size_kb:.2f} KB)")
     
     except Exception as e:
-        logger.error(f"❌ Failed to load file: {str(e)}")
+        logger.error(f"[ERROR] Failed to load file: {str(e)}")
         return False
     
     # Clean and validate
@@ -370,13 +370,13 @@ def ingest_file(filepath, source_type='generic', mode='merge', dry_run=False):
     
     # Summary
     logger.info("\n" + "="*70)
-    logger.info("📊 INGESTION SUMMARY")
+    logger.info("[STATS] INGESTION SUMMARY")
     logger.info("="*70)
-    logger.info(f"✅ Valid records processed: {len(valid_df)}")
-    logger.info(f"➕ Records added/updated: {records_added}")
-    logger.info(f"❌ Failed records: {len(failed_rows)}")
-    logger.info(f"⏱️  Processing time: {processing_time:.2f}s")
-    logger.info(f"📈 Rate: {len(valid_df)/processing_time:.0f} records/sec")
+    logger.info(f"[SUCCESS] Valid records processed: {len(valid_df)}")
+    logger.info(f"[INFO] Records added/updated: {records_added}")
+    logger.info(f"[ERROR] Failed records: {len(failed_rows)}")
+    logger.info(f"[INFO] Processing time: {processing_time:.2f}s")
+    logger.info(f"[STATS] Rate: {len(valid_df)/processing_time:.0f} records/sec")
     logger.info("="*70 + "\n")
     
     return True

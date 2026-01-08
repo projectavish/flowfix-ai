@@ -586,7 +586,7 @@ def generate_pdf_report(output_path: Optional[str] = None, include_charts: bool 
         Path to generated PDF
     """
     print("\n" + "="*80)
-    print("📄 GENERATING COMPREHENSIVE PDF REPORT")
+    print("[REPORT] GENERATING COMPREHENSIVE PDF REPORT")
     print("="*80 + "\n")
     
     # Validate and generate safe file path
@@ -699,7 +699,7 @@ or contact your system administrator.
         pdf.output(output_path)
         file_size = os.path.getsize(output_path) / 1024
         
-        print(f"\n✅ PDF report generated successfully!")
+        print(f"\n[SUCCESS] PDF report generated successfully!")
         print(f"   Location: {output_path}")
         print(f"   File size: {file_size:.1f} KB")
         print(f"   Pages: {pdf.page_no()}")
@@ -728,7 +728,7 @@ def cli():
     # Generate report
     try:
         report_path = generate_pdf_report(args.output, include_charts=not args.no_charts)
-        print(f"\n📊 Report ready: {report_path}")
+        print(f"\n[STATS] Report ready: {report_path}")
         
     except Exception as e:
         logger.error(f"Failed to generate report: {e}")

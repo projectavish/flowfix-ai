@@ -27,7 +27,7 @@ try:
     SHAP_AVAILABLE = True
 except ImportError:
     SHAP_AVAILABLE = False
-    print("⚠️  SHAP not available. Install with: pip install shap")
+    print("[WARNING] SHAP not available. Install with: pip install shap")
 
 # Configure logging
 logging.basicConfig(
@@ -47,7 +47,7 @@ MODEL_VERSION = "1.1"
 
 def load_training_data():
     """Load and prepare data for ML training"""
-    logger.info("📊 Loading training data...")
+    logger.info("[STATS] Loading training data...")
     
     query = """
     SELECT 
@@ -69,7 +69,7 @@ def load_training_data():
     """
     
     df = execute_query(query)
-    logger.info(f"✅ Loaded {len(df)} completed tasks")
+    logger.info(f"[SUCCESS] Loaded {len(df)} completed tasks")
     
     return df
 
@@ -86,7 +86,7 @@ def engineer_features(df):
     - has_bottleneck: Binary flag if task had bottleneck
     - reassignment_flag: Binary flag if task was reassigned
     """
-    logger.info("🔧 Engineering features...")
+    logger.info("[INFO] Engineering features...")
     
     df = df.copy()
     
@@ -156,7 +156,7 @@ def engineer_features(df):
     df['assignee_delay_rate'] = df['assignee_delay_rate'].fillna(0)
     df['project_delay_rate'] = df['project_delay_rate'].fillna(0)
     
-    logger.info("✅ Feature engineering complete")
+    logger.info("[SUCCESS] Feature engineering complete")
     
     return df, label_encoders
 
@@ -180,7 +180,7 @@ def log_training_run(model_type, metrics, feature_importance, version=MODEL_VERS
                 'features': json.dumps(feature_importance)
             })
             conn.commit()
-        logger.info(f"✅ Logged training run for {model_type}")
+        logger.info(f"[SUCCESS] Logged training run for {model_type}")
     except Exception as e:
         logger.error(f"Failed to log training run: {e}")
 
@@ -192,7 +192,7 @@ def create_shap_visualizations(model, X_train, X_test, feature_cols, model_type)
         return
     
     try:
-        logger.info(f"🎨 Generating SHAP visualizations for {model_type}...")
+        logger.info(f"[INFO] Generating SHAP visualizations for {model_type}...")
         
         # Create explainer
         explainer = shap.TreeExplainer(model)
@@ -223,7 +223,7 @@ def create_shap_visualizations(model, X_train, X_test, feature_cols, model_type)
         plt.close()
         logger.info(f"   Saved importance plot: {bar_path}")
         
-        logger.info("✅ SHAP visualizations created")
+        logger.info("[SUCCESS] SHAP visualizations created")
         
     except Exception as e:
         logger.error(f"Error creating SHAP visualizations: {e}")
@@ -253,7 +253,7 @@ def find_optimal_threshold(y_true, y_proba):
 def train_duration_predictor(df, label_encoders):
     """Train regression model to predict task duration"""
     logger.info("\n" + "="*60)
-    logger.info("🤖 Training Duration Prediction Model")
+    logger.info("[ML] Training Duration Prediction Model")
     logger.info("="*60 + "\n")
     
     # Select features (enhanced)
@@ -320,7 +320,7 @@ def train_duration_predictor(df, label_encoders):
     train_r2 = r2_score(y_train, y_pred_train)
     test_r2 = r2_score(y_test, y_pred_test)
     
-    logger.info("\n📊 Model Performance:")
+    logger.info("\n[STATS] Model Performance:")
     logger.info(f"   Train MAE: {train_mae:.2f} days")
     logger.info(f"   Test MAE: {test_mae:.2f} days")
     logger.info(f"   CV MAE: {cv_mae:.2f} days")
@@ -386,8 +386,8 @@ def train_duration_predictor(df, label_encoders):
         'trained_at': datetime.now().isoformat()
     }, latest_path)
     
-    logger.info(f"\n✅ Model saved to {model_path}")
-    logger.info(f"✅ Latest model saved to {latest_path}")
+    logger.info(f"\n[SUCCESS] Model saved to {model_path}")
+    logger.info(f"[SUCCESS] Latest model saved to {latest_path}")
     
     return model, feature_cols
 
@@ -395,7 +395,7 @@ def train_duration_predictor(df, label_encoders):
 def train_delay_classifier(df, label_encoders):
     """Train classification model to predict if task will be delayed"""
     logger.info("\n" + "="*60)
-    logger.info("🤖 Training Delay Classification Model")
+    logger.info("[ML] Training Delay Classification Model")
     logger.info("="*60 + "\n")
     
     # Select features (enhanced)
@@ -474,14 +474,14 @@ def train_delay_classifier(df, label_encoders):
     # Find optimal threshold
     optimal_threshold, threshold_metrics = find_optimal_threshold(y_test, y_proba_test)
     
-    logger.info("\n📊 Model Performance:")
+    logger.info("\n[STATS] Model Performance:")
     logger.info(f"   Train Accuracy: {train_acc:.3f}")
     logger.info(f"   Test Accuracy: {test_acc:.3f}")
     logger.info(f"   CV Accuracy: {cv_acc:.3f}")
     logger.info(f"   ROC AUC: {roc_auc:.3f}")
     logger.info(f"   Optimal Threshold: {optimal_threshold:.3f}")
     
-    logger.info("\n📋 Classification Report (Test Set):")
+    logger.info("\n[INFO] Classification Report (Test Set):")
     print(classification_report(y_test, y_pred_test, 
                                 target_names=['Not Delayed', 'Delayed']))
     
@@ -543,8 +543,8 @@ def train_delay_classifier(df, label_encoders):
         'trained_at': datetime.now().isoformat()
     }, latest_path)
     
-    logger.info(f"\n✅ Model saved to {model_path}")
-    logger.info(f"✅ Latest model saved to {latest_path}")
+    logger.info(f"\n[SUCCESS] Model saved to {model_path}")
+    logger.info(f"[SUCCESS] Latest model saved to {latest_path}")
     
     return model, feature_cols
 
@@ -569,7 +569,7 @@ def save_prediction_to_db(task_id, model_type, prediction, confidence=None):
                 'version': MODEL_VERSION
             })
             conn.commit()
-        logger.info(f"✅ Saved prediction for {task_id}")
+        logger.info(f"[SUCCESS] Saved prediction for {task_id}")
         return True
     except Exception as e:
         logger.error(f"Failed to save prediction: {e}")
@@ -612,7 +612,7 @@ def predict_new_task(task_data, model_type='duration', save_to_db=True):
 def train_all_models():
     """Train all ML models with full production features"""
     print("\n" + "="*60)
-    print("🚀 STARTING ML MODEL TRAINING - Production Grade")
+    print("[ML] STARTING ML MODEL TRAINING - Production Grade")
     print(f"   Version: {MODEL_VERSION}")
     print("="*60 + "\n")
     
@@ -620,13 +620,13 @@ def train_all_models():
     df = load_training_data()
     
     if len(df) < 50:
-        logger.warning("⚠️  Warning: Limited training data. Results may not be reliable.")
+        logger.warning("[WARNING] Warning: Limited training data. Results may not be reliable.")
     
     # Engineer features
     df, label_encoders = engineer_features(df)
     
     # Validation and export
-    logger.info("\n📊 Data Validation:")
+    logger.info("\n[STATS] Data Validation:")
     logger.info(f"   Total samples: {len(df)}")
     logger.info(f"   Features engineered: {len([c for c in df.columns if '_encoded' in c or 'avg_' in c or 'std_' in c])}")
     logger.info(f"   Missing values: {df.isnull().sum().sum()}")
@@ -643,15 +643,15 @@ def train_all_models():
     delay_model, delay_features = train_delay_classifier(df, label_encoders)
     
     print("\n" + "="*60)
-    print("✅ ALL MODELS TRAINED SUCCESSFULLY")
+    print("[SUCCESS] ALL MODELS TRAINED SUCCESSFULLY")
     print("="*60)
-    print(f"\n📦 Models saved in '{MODEL_DIR}/' directory:")
+    print(f"\n[INFO] Models saved in '{MODEL_DIR}/' directory:")
     print(f"   - duration_predictor_v{MODEL_VERSION}_*.pkl")
     print(f"   - delay_classifier_v{MODEL_VERSION}_*.pkl")
     print(f"   - duration_predictor_latest.pkl")
     print(f"   - delay_classifier_latest.pkl")
     if SHAP_AVAILABLE:
-        print(f"\n🎨 SHAP visualizations saved in '{SHAP_DIR}/' directory")
+        print(f"\n[INFO] SHAP visualizations saved in '{SHAP_DIR}/' directory")
     print("\n")
     
     return {

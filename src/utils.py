@@ -238,7 +238,7 @@ def create_schema():
                     logger.warning(f"Schema statement warning: {str(e)}")
         conn.commit()
     
-    logger.info("✅ Database schema created successfully")
+    logger.info("[SUCCESS] Database schema created successfully")
     logger.info(f"   Schema Version: {SCHEMA_VERSION}")
 
 
@@ -248,10 +248,10 @@ def test_db_connection():
         engine = get_engine()
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))
-        logger.info("✅ Database connection successful")
+        logger.info("[SUCCESS] Database connection successful")
         return True
     except Exception as e:
-        logger.error(f"❌ Database connection failed: {str(e)}")
+        logger.error(f"[ERROR] Database connection failed: {str(e)}")
         return False
 
 
@@ -436,7 +436,7 @@ def update_dashboard_kpis():
             
             conn.commit()
         
-        logger.info(f"✅ Updated {len(metrics)} KPIs in dashboard_summary table")
+        logger.info(f"[SUCCESS] Updated {len(metrics)} KPIs in dashboard_summary table")
         return True
     
     except Exception as e:
@@ -458,8 +458,8 @@ if __name__ == "__main__":
     
     # Get summary metrics
     metrics = get_summary_metrics()
-    print("\n📊 Summary Metrics:")
+    print("\n[STATS] Summary Metrics:")
     for key, value in metrics.items():
         print(f"   {key}: {value}")
     
-    print("\n✅ Database utilities module ready")
+    print("\n[SUCCESS] Database utilities module ready")
