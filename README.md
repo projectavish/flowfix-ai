@@ -1,3 +1,7 @@
+
+### Note: This project is actively evolving. Documentation and features are being refined as part of ongoing development.
+
+
 # FlowFix AI - Production Workflow Analysis System
 
 AI-powered workflow analysis system that identifies bottlenecks, predicts delays, and provides actionable recommendations to improve team productivity.
