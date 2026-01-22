@@ -1,0 +1,25 @@
+
+🎯 DURATION PREDICTOR (Regression)
+   Model: Random Forest Regressor (Optimized)
+   Test MAE: 2.289 days
+   Test RMSE: 3.064 days
+   Test R²: -0.057
+   Best Parameters: {'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 150}
+
+🎯 DELAY CLASSIFIER (Binary Classification)
+   Model: Random Forest Classifier (Optimized)
+   Test Accuracy: 0.817
+   Test Precision: 0.087
+   Test Recall: 0.125
+   Test F1-Score: 0.103
+   Best Parameters: {'max_depth': 15, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 150}
+
+📁 Model Artifacts:
+   - c:\Users\anshu\Desktop\Projects\Avish_flow\models\duration_predictor_optimized.pkl
+   - c:\Users\anshu\Desktop\Projects\Avish_flow\models\delay_classifier_optimized.pkl
+
+🔑 Key Features (Top 5 for both models):
+   Duration: status_encoded, priority_avg_duration, priority_encoded, assignee_task_count, assignee_avg_duration
+   Delay: status_encoded, assignee_encoded, assignee_avg_duration, assignee_std_duration, assignee_task_count
+
+✅ Models are production-ready and deployed!

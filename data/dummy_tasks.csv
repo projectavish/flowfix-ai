@@ -1,0 +1,501 @@
+task_id,task_name,assignee,status,priority,project,actual_duration,is_delayed,bottleneck_type,reassignment_count,comments,start_date,end_date
+1,Drive frictionless e-services,user3,Blocked,Low,Project_C,6.29,0,Resource Shortage,0,,2025-11-29,2025-12-06
+2,Harness robust roi,user4,Assigned,High,Project_J,3.449480603153564,1,Resource Shortage,1,Production well strong note reveal prove.,2025-11-30,2025-12-04
+3,Benchmark open-source platforms,user1,In Progress,Medium,Project_A,11.39,0,Technical Issue,3,,2025-11-10,2025-11-21
+4,Productize robust vortals,user8,Blocked,Medium,Project_A,4.84,0,,3,Style machine important here sound approach although.,2025-08-01,2025-08-05
+5,Drive 24/365 e-commerce,user3,Completed,High,Project_G,4.27,0,Dependency,1,Clear though blood hundred factor protect never.,2025-09-07,2025-09-11
+6,Brand robust experiences,user1,Blocked,Medium,Project_D,15.467266313166945,1,Technical Issue,1,,2026-01-19,2026-02-02
+7,Deliver collaborative vortals,user6,In Progress,Low,Project_D,8.919451082915275,1,Resource Shortage,0,,2025-09-15,2025-09-21
+8,Re-intermediate virtual markets,user5,Blocked,High,Project_B,10.43,0,Approval,2,Require this box.,2025-12-22,2026-01-02
+9,Implement back-end architectures,user9,Assigned,Low,Project_A,1.95,0,,0,,2025-08-05,2025-08-07
+10,Synergize magnetic convergence,user10,Assigned,Medium,Project_I,12.6,0,Approval,0,Thousand business suffer only.,2025-12-17,2025-12-30
+11,Incubate vertical systems,user9,In Progress,Medium,Project_B,8.65,0,Technical Issue,1,Other billion rich.,2025-12-25,2026-01-04
+12,Morph robust systems,user6,In Progress,High,Project_G,13.033339184642186,1,Technical Issue,0,Culture term rule which voice must pick.,2025-09-13,2025-09-24
+13,Empower bricks-and-clicks web-readiness,user6,In Progress,High,Project_E,11.52,0,Resource Shortage,1,Require new somebody trade.,2025-09-27,2025-10-10
+14,Engage next-generation interfaces,user3,In Progress,Medium,Project_J,2.5026412397679474,1,Dependency,3,Author any walk brother in everything positive.,2025-12-20,2025-12-22
+15,Exploit dynamic systems,user5,Blocked,Low,Project_C,2.57,0,Approval,0,Generation later certain try.,2025-12-22,2025-12-24
+16,Extend transparent convergence,user4,Blocked,Low,Project_D,5.500809107003918,1,Technical Issue,0,,2025-10-22,2025-10-25
+17,Implement dynamic e-markets,user7,Assigned,Low,Project_J,5.226712908160362,1,Approval,0,Despite for pull.,2025-11-27,2025-12-01
+18,Implement clicks-and-mortar web-readiness,user8,In Progress,Medium,Project_A,3.39,0,Approval,0,Should reduce field when knowledge.,2025-11-23,2025-11-26
+19,Scale front-end e-commerce,user4,Completed,Low,Project_I,5.27,0,Dependency,1,Take or always social road crime lead throughout.,2026-01-20,2026-01-25
+20,Deploy customized metrics,user5,Blocked,High,Project_A,8.613518892115048,1,Resource Shortage,1,,2025-10-10,2025-10-19
+21,Facilitate seamless e-business,user9,In Progress,Medium,Project_B,16.02833803110309,1,Technical Issue,0,Director time direction.,2026-01-02,2026-01-15
+22,Drive global users,user2,In Progress,High,Project_E,12.13,0,Technical Issue,0,Question power whole rest enough blood site.,2025-10-27,2025-11-10
+23,Facilitate strategic users,user3,Blocked,Low,Project_I,3.7,0,Dependency,1,,2025-11-08,2025-11-12
+24,Maximize plug-and-play convergence,user10,Assigned,Medium,Project_H,4.59,0,Approval,1,Red employee indeed research report most either.,2025-07-24,2025-07-29
+25,Leverage compelling systems,user2,Assigned,Medium,Project_A,8.01,0,Resource Shortage,0,Myself military community.,2025-09-18,2025-09-27
+26,Empower transparent e-business,user6,Assigned,High,Project_F,13.66,0,Technical Issue,2,,2025-07-24,2025-08-08
+27,Syndicate back-end applications,user10,Blocked,Medium,Project_B,13.012194479152614,1,,3,Probably investment gas industry next commercial.,2025-11-10,2025-11-23
+28,Aggregate sticky solutions,user9,In Progress,High,Project_I,15.168344904680858,1,Approval,0,,2025-12-26,2026-01-08
+29,Envisioneer rich solutions,user10,Assigned,High,Project_I,14.56,0,Resource Shortage,1,,2025-08-11,2025-08-26
+30,Deploy b2b vortals,user8,In Progress,Medium,Project_B,6.38,0,,1,Change recognize might want thought.,2025-10-17,2025-10-25
+31,Incubate viral synergies,user8,Completed,Medium,Project_J,3.447960660095531,1,Technical Issue,0,Be range city professional bill minute.,2025-11-07,2025-11-10
+32,Integrate best-of-breed communities,user5,Completed,High,Project_C,14.668578191954907,1,Resource Shortage,1,Heavy member character out sit hear strong until.,2025-08-03,2025-08-17
+33,Integrate world-class deliverables,user6,Completed,High,Project_C,5.838834051100873,1,Resource Shortage,3,Phone program billion people rather thousand.,2025-09-04,2025-09-08
+34,E-enable distributed content,user9,Blocked,High,Project_H,11.001319557494382,1,Resource Shortage,0,Political thing stand he.,2025-10-29,2025-11-08
+35,Benchmark clicks-and-mortar convergence,user2,Assigned,High,Project_H,6.17,0,Dependency,0,Rule live audience worry couple again then show.,2025-11-29,2025-12-07
+36,Engineer back-end channels,user9,In Progress,Medium,Project_H,12.47,0,Resource Shortage,1,Front eye task make third.,2025-12-31,2026-01-13
+37,Monetize innovative partnerships,user3,Blocked,Medium,Project_J,13.764432647161254,1,Resource Shortage,1,Recently important the you.,2026-01-02,2026-01-17
+38,Incubate viral portals,user10,Completed,High,Project_F,1.94,0,Technical Issue,0,Population boy billion lay role.,2025-07-30,2025-07-31
+39,Redefine rich functionalities,user1,In Progress,High,Project_A,1.25,0,,0,,2025-12-19,2025-12-20
+40,Extend cutting-edge schemas,user2,Completed,Low,Project_G,6.16,0,Technical Issue,3,Knowledge shoulder impact think.,2025-08-26,2025-09-02
+41,Aggregate interactive roi,user5,Completed,High,Project_G,8.09,0,Technical Issue,0,,2025-11-21,2025-12-01
+42,Engage 24/7 mindshare,user3,In Progress,Medium,Project_I,8.56,0,Dependency,1,Network adult give carry win good section.,2025-09-13,2025-09-21
+43,Innovate out-of-the-box action-items,user10,Assigned,Medium,Project_B,4.97,0,Resource Shortage,1,Head avoid thought good political here.,2025-10-07,2025-10-12
+44,Morph user-centric applications,user8,Blocked,Medium,Project_I,2.79,0,Approval,0,Wait shoulder story experience us bank yeah.,2025-09-05,2025-09-09
+45,Visualize one-to-one synergies,user2,Completed,Medium,Project_B,4.531798598483706,1,Dependency,0,Whole design sure recent stage reflect parent.,2025-09-23,2025-09-26
+46,Empower interactive communities,user6,Assigned,Medium,Project_G,2.51,0,Dependency,0,Quality sport hard many speech help event.,2025-12-22,2025-12-24
+47,Deliver sticky partnerships,user3,Assigned,High,Project_F,12.535232556761418,1,Resource Shortage,0,,2025-09-01,2025-09-14
+48,Seize real-time schemas,user10,Assigned,Medium,Project_B,7.84,0,,3,Lead her safe list heavy consumer term.,2025-08-21,2025-08-30
+49,Transition impactful platforms,user7,Blocked,Low,Project_C,8.297698858676512,1,Technical Issue,0,,2025-10-29,2025-11-05
+50,Leverage mission-critical methodologies,user3,Completed,High,Project_J,5.41,0,Resource Shortage,0,,2025-11-10,2025-11-16
+51,Iterate back-end initiatives,user5,Completed,Medium,Project_B,4.95,0,Dependency,1,,2025-08-17,2025-08-22
+52,Engineer impactful platforms,user6,Completed,Medium,Project_D,14.97,0,Resource Shortage,1,,2025-12-13,2025-12-28
+53,Synergize wireless web services,user9,Blocked,Medium,Project_D,8.958956500740166,1,Dependency,0,,2025-09-11,2025-09-20
+54,Expedite 24/365 supply-chains,user2,Blocked,High,Project_G,14.544098963088523,1,Approval,0,Cup future meeting mother impact simple anything.,2025-08-30,2025-09-13
+55,Iterate customized networks,user5,Completed,High,Project_D,7.607446085162781,1,Technical Issue,3,Happen perform store always prevent stuff.,2025-09-11,2025-09-20
+56,Monetize ubiquitous technologies,user5,In Progress,Medium,Project_G,10.66,0,Resource Shortage,0,Congress street purpose might floor sign effort.,2025-12-12,2025-12-23
+57,Enhance granular supply-chains,user1,In Progress,Medium,Project_A,2.47,0,Dependency,3,Recently because and line body.,2025-07-29,2025-08-02
+58,Repurpose user-centric methodologies,user6,Blocked,High,Project_A,10.82,0,Resource Shortage,0,Skill sound free why.,2026-01-12,2026-01-24
+59,Redefine wireless roi,user8,Blocked,Medium,Project_A,1.71,0,Technical Issue,0,Play space to class computer study happy.,2025-11-23,2025-11-25
+60,Revolutionize innovative platforms,user7,Blocked,Medium,Project_H,8.92,0,,1,,2025-12-25,2026-01-02
+61,Integrate holistic mindshare,user1,In Progress,High,Project_I,2.62,0,Approval,0,,2025-11-11,2025-11-15
+62,Grow out-of-the-box web services,user7,Completed,High,Project_J,11.31,0,Technical Issue,0,Modern example story ten.,2025-09-26,2025-10-07
+63,Engage interactive metrics,user4,Blocked,High,Project_A,4.64,0,Dependency,0,Realize month light image weight head.,2025-08-19,2025-08-23
+64,Re-intermediate real-time initiatives,user8,In Progress,Low,Project_A,6.51,0,,0,Two little outside blood occur.,2025-08-08,2025-08-14
+65,Empower bleeding-edge systems,user7,Blocked,High,Project_E,5.26,0,,1,Hit thing note no my sell.,2025-11-27,2025-12-03
+66,Drive dot-com infrastructures,user8,Assigned,Low,Project_C,4.2,0,Technical Issue,0,,2026-01-19,2026-01-24
+67,Iterate 24/365 technologies,user10,Blocked,High,Project_B,2.36,0,,2,,2025-09-25,2025-09-27
+68,Synergize back-end models,user5,Completed,Medium,Project_A,9.881274327461552,1,Dependency,1,,2025-09-06,2025-09-14
+69,Cultivate impactful applications,user6,Blocked,Low,Project_G,6.92,0,Resource Shortage,2,,2025-09-25,2025-10-02
+70,Implement visionary functionalities,user2,In Progress,Low,Project_B,5.91,0,Resource Shortage,0,,2025-11-16,2025-11-21
+71,Re-intermediate mission-critical action-items,user3,Assigned,Medium,Project_I,12.843767934080747,1,Resource Shortage,0,,2025-08-20,2025-09-03
+72,Generate global technologies,user6,Blocked,Medium,Project_J,6.752357624810324,1,Resource Shortage,0,,2026-01-09,2026-01-16
+73,Exploit value-added technologies,user4,Blocked,Low,Project_I,5.48,0,Approval,0,,2025-08-25,2025-08-30
+74,Enhance value-added applications,user6,Blocked,Medium,Project_I,7.96,0,Dependency,0,Buy player measure among woman individual.,2025-08-23,2025-09-01
+75,Expedite revolutionary methodologies,user5,Blocked,Low,Project_J,3.85,0,Resource Shortage,0,Against ten else door near though.,2025-08-09,2025-08-14
+76,Engineer plug-and-play methodologies,user9,In Progress,Medium,Project_D,8.46,0,Dependency,2,To remain grow movie I.,2025-10-03,2025-10-11
+77,Enhance virtual e-commerce,user8,Assigned,Medium,Project_A,12.326708042968136,1,Approval,0,Star physical rise sure use.,2025-08-06,2025-08-18
+78,Aggregate clicks-and-mortar supply-chains,user1,Assigned,Medium,Project_G,11.534772430091046,1,,3,,2025-08-16,2025-08-27
+79,Drive cross-platform platforms,user6,Completed,Low,Project_I,1.77,0,Technical Issue,1,,2025-07-27,2025-07-30
+80,Repurpose seamless technologies,user4,Blocked,Medium,Project_A,9.57,0,Resource Shortage,3,Soon story manage worker.,2025-10-10,2025-10-19
+81,Repurpose enterprise bandwidth,user5,Blocked,High,Project_I,7.103085358123481,1,Approval,3,,2025-07-31,2025-08-07
+82,Envisioneer real-time e-tailers,user2,Assigned,Low,Project_D,3.1,0,Technical Issue,0,Speech specific nothing church floor whom former.,2025-12-06,2025-12-11
+83,Orchestrate integrated infrastructures,user1,Completed,Low,Project_C,6.9447984430703,1,Resource Shortage,0,,2025-08-22,2025-08-27
+84,Repurpose out-of-the-box e-services,user8,Assigned,Low,Project_J,5.64,0,Resource Shortage,1,Religious mind beat apply network sing.,2025-09-06,2025-09-13
+85,Enhance web-enabled vortals,user1,Completed,Medium,Project_C,10.16,0,Dependency,0,,2025-10-29,2025-11-09
+86,Enhance robust info-mediaries,user9,In Progress,Medium,Project_D,8.67,0,Technical Issue,1,,2025-12-29,2026-01-07
+87,Streamline holistic e-services,user1,Blocked,Medium,Project_D,16.8747201939721,1,Technical Issue,0,Start certainly single here wall protect.,2025-08-27,2025-09-12
+88,Matrix dynamic communities,user10,Completed,Medium,Project_G,15.442950079982104,1,,0,,2025-10-23,2025-11-08
+89,Brand world-class niches,user1,Blocked,Medium,Project_J,14.067973998550876,1,Approval,0,,2025-08-05,2025-08-20
+90,Redefine magnetic portals,user4,In Progress,High,Project_G,7.72,0,Dependency,0,Deal sign yes add.,2025-09-14,2025-09-21
+91,Monetize clicks-and-mortar solutions,user1,Assigned,Medium,Project_G,6.526728842886593,1,,0,,2025-08-12,2025-08-17
+92,Expedite 24/7 users,user9,Assigned,Medium,Project_H,12.844422302999119,1,Dependency,1,Control small body strong budget team environment.,2025-09-07,2025-09-18
+93,Incentivize web-enabled relationships,user4,In Progress,Low,Project_B,5.376649793279325,1,Dependency,1,Cultural authority once movement one left fast.,2025-10-18,2025-10-22
+94,Deliver bleeding-edge mindshare,user4,Blocked,Medium,Project_B,14.911538308277898,1,Approval,0,Before woman a analysis feeling couple.,2025-12-09,2025-12-23
+95,Iterate global infrastructures,user10,In Progress,Medium,Project_F,9.81,0,Approval,1,,2025-11-18,2025-11-27
+96,Grow clicks-and-mortar portals,user6,In Progress,Low,Project_E,4.669587058644873,1,Approval,0,Move wide well month range.,2025-11-29,2025-12-03
+97,Matrix intuitive markets,user2,In Progress,Low,Project_J,3.61,0,,2,Democrat visit my light arm.,2025-09-25,2025-09-30
+98,Embrace killer action-items,user7,Assigned,Medium,Project_H,4.2881839715518355,1,,0,,2025-10-21,2025-10-22
+99,Orchestrate 24/365 deliverables,user8,Assigned,High,Project_I,14.25,0,Resource Shortage,2,Region news drop.,2025-10-23,2025-11-06
+100,Morph distributed methodologies,user5,In Progress,Medium,Project_I,5.465675859034334,1,Dependency,0,Event lawyer hold each.,2026-01-05,2026-01-09
+101,Grow holistic e-tailers,user1,Completed,High,Project_G,14.27,0,Approval,0,Fine either information black.,2025-10-20,2025-11-03
+102,Synergize distributed e-business,user1,Blocked,Medium,Project_F,8.56,0,Technical Issue,0,Rather officer use activity ahead Democrat.,2025-08-06,2025-08-15
+103,Brand ubiquitous deliverables,user10,Blocked,Medium,Project_J,14.851583907453174,1,Technical Issue,1,Capital art stuff place every relationship.,2026-01-02,2026-01-16
+104,Engage innovative supply-chains,user3,In Progress,Low,Project_A,5.192686502444237,1,,3,,2025-12-03,2025-12-08
+105,Cultivate virtual supply-chains,user9,Blocked,Low,Project_C,3.64,0,Dependency,3,Avoid whole management program sense itself best.,2026-01-10,2026-01-14
+106,Expedite bleeding-edge eyeballs,user7,Blocked,High,Project_J,10.105426345088555,1,Dependency,0,,2025-10-31,2025-11-10
+107,Target enterprise supply-chains,user1,Assigned,Medium,Project_B,6.538925703193317,1,Approval,1,Common small pass now head business return.,2025-11-03,2025-11-09
+108,Productize wireless models,user10,In Progress,Medium,Project_B,11.77,0,Dependency,1,Customer cause court full about field.,2025-10-08,2025-10-19
+109,Re-intermediate ubiquitous networks,user3,In Progress,Medium,Project_I,3.17,0,Resource Shortage,0,Next his during finish foot.,2025-07-31,2025-08-03
+110,Incubate innovative mindshare,user7,In Progress,Low,Project_J,4.71,0,Technical Issue,1,,2026-01-08,2026-01-13
+111,Empower back-end models,user3,Blocked,High,Project_H,4.901592835042861,1,Dependency,0,Challenge walk summer firm development identify.,2025-08-17,2025-08-19
+112,Implement integrated convergence,user2,Assigned,Low,Project_B,0.58,0,Technical Issue,0,Run keep clear choose structure within.,2025-07-28,2025-07-29
+113,Generate enterprise users,user4,Blocked,Medium,Project_E,11.26,0,Technical Issue,0,Same capital anything person.,2026-01-18,2026-01-29
+114,Incubate global supply-chains,user1,Assigned,Medium,Project_F,10.85,0,,2,Movement there claim development gas pay beautiful.,2025-09-19,2025-09-30
+115,Deliver one-to-one infrastructures,user7,In Progress,High,Project_G,7.700520090111713,1,Dependency,3,,2025-08-31,2025-09-05
+116,Strategize enterprise e-services,user3,Assigned,High,Project_D,5.363215224858523,1,,1,,2025-10-11,2025-10-15
+117,Expedite user-centric content,user2,Assigned,High,Project_F,15.123584159110699,1,Approval,0,Democrat within final.,2025-08-06,2025-08-19
+118,Embrace efficient architectures,user8,Completed,Low,Project_H,6.83784091081182,1,Approval,1,Account fear particular turn.,2025-10-11,2025-10-17
+119,Mesh cross-platform info-mediaries,user8,Assigned,Medium,Project_D,10.08,0,Technical Issue,0,Factor wind their stage.,2025-09-22,2025-10-03
+120,Leverage strategic supply-chains,user10,Blocked,High,Project_F,11.74294258414185,1,,0,,2025-11-07,2025-11-18
+121,Cultivate out-of-the-box solutions,user5,Completed,Medium,Project_D,12.07310169488402,1,Dependency,1,,2025-07-22,2025-08-03
+122,Innovate collaborative systems,user5,Completed,Low,Project_D,2.81,0,Dependency,1,,2025-10-18,2025-10-20
+123,Deliver revolutionary channels,user3,Completed,High,Project_G,8.686352200407397,1,Technical Issue,0,West list should fall.,2026-01-10,2026-01-17
+124,Transition virtual methodologies,user5,Assigned,Medium,Project_I,1.81,0,Technical Issue,1,,2025-08-02,2025-08-03
+125,Scale plug-and-play supply-chains,user2,In Progress,High,Project_B,3.088622223190152,1,,0,You consider term red.,2025-11-09,2025-11-10
+126,Aggregate open-source architectures,user7,Completed,Medium,Project_B,8.14,0,,1,,2025-12-15,2025-12-24
+127,Expedite collaborative info-mediaries,user9,Completed,Low,Project_B,3.24,0,Resource Shortage,0,,2025-09-02,2025-09-05
+128,Morph world-class experiences,user7,Assigned,High,Project_J,1.87,0,,1,Phone third improve range check.,2025-09-14,2025-09-15
+129,Scale extensible e-services,user3,In Progress,Low,Project_J,6.57,0,Approval,1,,2025-08-27,2025-09-04
+130,Re-contextualize collaborative functionalities,user2,Assigned,Medium,Project_F,5.81,0,Approval,0,Allow without throughout participant woman through majority sense.,2025-09-29,2025-10-05
+131,Drive seamless models,user3,In Progress,High,Project_G,11.088567338070018,1,Resource Shortage,1,Five shake focus why few stock.,2025-12-10,2025-12-19
+132,Optimize dynamic deliverables,user9,Blocked,High,Project_A,6.04,0,Dependency,0,,2025-09-13,2025-09-19
+133,E-enable rich partnerships,user9,In Progress,Medium,Project_G,11.42,0,,3,Wish watch particularly organization no during total.,2025-08-31,2025-09-13
+134,Unleash interactive communities,user9,Assigned,High,Project_C,14.38530602070125,1,Resource Shortage,3,Laugh design admit compare career.,2025-11-21,2025-12-05
+135,Disintermediate cross-platform relationships,user1,Assigned,High,Project_B,14.266580124694107,1,,1,Girl within owner audience feeling condition cold.,2025-08-29,2025-09-13
+136,Strategize bleeding-edge roi,user2,Completed,Medium,Project_E,6.96,0,Technical Issue,2,,2025-07-26,2025-08-01
+137,Extend visionary infrastructures,user7,Assigned,Medium,Project_E,11.619645276462759,1,Technical Issue,0,Dinner goal food or politics professor.,2025-12-31,2026-01-12
+138,Envisioneer distributed networks,user9,Assigned,Medium,Project_I,10.571601471085192,1,Approval,0,Food several improve sound opportunity born.,2025-11-19,2025-11-28
+139,Enable real-time relationships,user7,Assigned,Medium,Project_F,13.5,0,,1,College he senior.,2025-07-27,2025-08-10
+140,Incubate end-to-end paradigms,user9,Blocked,High,Project_G,12.812413519803293,1,Resource Shortage,1,,2026-01-18,2026-02-01
+141,Evolve best-of-breed bandwidth,user9,Assigned,Medium,Project_A,12.410568833822298,1,,3,Scientist clear man.,2025-11-07,2025-11-18
+142,Morph best-of-breed roi,user8,Blocked,Low,Project_B,1.8545410927218997,1,,0,Material like your stuff speech meeting value.,2025-08-09,2025-08-10
+143,Leverage bricks-and-clicks roi,user2,Blocked,High,Project_F,2.71,0,,2,Site focus environmental girl purpose yes.,2025-12-03,2025-12-06
+144,Engage b2b solutions,user1,Assigned,Low,Project_H,2.5187328949005443,1,Technical Issue,2,,2025-12-04,2025-12-06
+145,Synthesize value-added synergies,user2,In Progress,High,Project_F,12.83194483409846,1,,0,Respond set about door with whether citizen.,2025-11-19,2025-12-01
+146,Iterate transparent supply-chains,user4,In Progress,Medium,Project_A,7.113551846139539,1,Approval,0,,2025-11-06,2025-11-12
+147,Transform leading-edge roi,user7,Assigned,Low,Project_E,5.47,0,Technical Issue,1,,2025-12-05,2025-12-12
+148,Facilitate dynamic partnerships,user5,Assigned,Medium,Project_C,14.76,0,Approval,1,Author main husband color newspaper.,2025-12-03,2025-12-18
+149,Transform killer supply-chains,user3,Completed,Low,Project_B,5.133849148912994,1,Approval,1,Better few increase teacher mission music specific send.,2025-11-21,2025-11-24
+150,Matrix seamless experiences,user3,In Progress,Medium,Project_H,7.73,0,Dependency,1,,2025-09-02,2025-09-11
+151,Productize strategic vortals,user7,In Progress,High,Project_I,8.89,0,,0,Safe low represent back without tax agree.,2025-11-07,2025-11-17
+152,Incentivize back-end web services,user2,In Progress,Medium,Project_B,9.63,0,Approval,0,,2025-10-30,2025-11-08
+153,Brand enterprise users,user9,In Progress,Medium,Project_I,3.85,0,Dependency,0,Allow piece material people each marriage season friend.,2025-07-29,2025-08-01
+154,Enhance synergistic metrics,user8,Blocked,Low,Project_D,4.22,0,Dependency,3,Kind officer buy including community this player.,2025-09-30,2025-10-05
+155,Leverage back-end architectures,user4,Blocked,Medium,Project_B,10.33,0,Resource Shortage,0,Authority avoid soldier consumer treatment oil mind.,2025-12-31,2026-01-10
+156,Streamline magnetic channels,user10,Assigned,Medium,Project_D,2.13,0,Dependency,0,Whom manager look.,2025-10-30,2025-11-02
+157,Engineer collaborative e-tailers,user5,Assigned,Medium,Project_G,9.64765159838623,1,,1,Relate hundred go none.,2025-11-02,2025-11-10
+158,Visualize scalable metrics,user9,Completed,Medium,Project_H,14.98216940023779,1,Approval,1,Cell decade place pattern rich.,2025-09-01,2025-09-16
+159,Cultivate front-end info-mediaries,user9,In Progress,Medium,Project_G,7.53,0,Technical Issue,2,,2025-10-28,2025-11-04
+160,Cultivate revolutionary markets,user10,Blocked,Medium,Project_A,1.79,0,Technical Issue,1,Ball live join for skill same soldier.,2025-11-24,2025-11-27
+161,Expedite granular synergies,user2,Blocked,High,Project_I,14.86404510141227,1,,2,Build modern culture available play along here.,2025-09-13,2025-09-27
+162,Enable world-class e-markets,user6,Completed,High,Project_G,2.94,0,Technical Issue,0,Call authority character there.,2025-11-30,2025-12-02
+163,Syndicate innovative supply-chains,user10,In Progress,Medium,Project_D,10.07,0,Approval,0,,2025-08-28,2025-09-09
+164,Leverage end-to-end infrastructures,user3,Blocked,High,Project_D,3.1783709810477623,1,Dependency,0,Set option explain job wrong.,2025-10-25,2025-10-28
+165,Aggregate collaborative convergence,user6,Blocked,Medium,Project_F,2.52,0,Resource Shortage,2,,2025-08-30,2025-09-01
+166,Engineer b2c niches,user9,In Progress,Low,Project_G,6.63,0,,1,,2025-09-18,2025-09-25
+167,Revolutionize rich convergence,user5,Completed,High,Project_A,6.55,0,Technical Issue,0,Receive physical process glass.,2025-12-20,2025-12-26
+168,Engage end-to-end e-commerce,user10,Blocked,Low,Project_C,8.10094481356789,1,Approval,0,,2025-12-31,2026-01-07
+169,Matrix extensible initiatives,user9,Blocked,Low,Project_D,4.17,0,Technical Issue,1,Voice truth leave born sound hope long.,2025-11-19,2025-11-23
+170,Productize front-end platforms,user8,In Progress,Medium,Project_E,8.74,0,Approval,0,Itself best enter right him south.,2025-10-20,2025-10-30
+171,Engineer virtual partnerships,user1,Assigned,Low,Project_B,8.675067887167163,1,Resource Shortage,0,,2025-08-28,2025-09-03
+172,Orchestrate b2c portals,user6,Assigned,Medium,Project_H,3.83,0,Technical Issue,0,Decision adult less building.,2025-09-25,2025-09-30
+173,Optimize interactive experiences,user1,Blocked,Medium,Project_C,3.62,0,Approval,0,Our human actually section.,2026-01-18,2026-01-22
+174,Reinvent collaborative synergies,user1,Completed,High,Project_A,10.12,0,Dependency,1,Reveal begin move partner speak.,2025-08-12,2025-08-24
+175,Harness web-enabled e-commerce,user3,In Progress,Medium,Project_J,10.059141665365875,1,Resource Shortage,1,,2025-07-27,2025-08-07
+176,Target next-generation mindshare,user2,Blocked,Low,Project_B,1.26,0,Dependency,2,Can listen concern recent.,2025-12-30,2026-01-02
+177,Mesh integrated e-markets,user6,In Progress,High,Project_E,3.93,0,,3,,2025-11-02,2025-11-07
+178,Benchmark innovative deliverables,user2,In Progress,High,Project_A,11.876064012026987,1,,0,Meeting future how live growth factor newspaper.,2025-07-26,2025-08-07
+179,Mesh sticky partnerships,user3,Assigned,Medium,Project_B,11.875515339270228,1,Technical Issue,1,Most should smile high sometimes throughout late.,2025-12-20,2025-12-28
+180,E-enable transparent synergies,user8,In Progress,Low,Project_C,5.191697298358513,1,Approval,0,Material others before middle central price reality group.,2025-09-29,2025-10-03
+181,Enable sticky users,user3,Blocked,Low,Project_B,8.139009359400278,1,Approval,0,Star they avoid first.,2026-01-08,2026-01-16
+182,Reinvent collaborative initiatives,user2,In Progress,Medium,Project_B,9.592585135222638,1,Approval,0,,2025-10-08,2025-10-17
+183,Reinvent enterprise e-tailers,user10,In Progress,Medium,Project_E,8.57,0,Technical Issue,2,,2026-01-06,2026-01-14
+184,Engineer open-source e-tailers,user6,Assigned,Medium,Project_C,4.57,0,,0,Find smile factor player base choose.,2025-12-30,2026-01-04
+185,Maximize enterprise functionalities,user7,Assigned,Medium,Project_H,14.09,0,Technical Issue,0,Attention end likely letter floor process.,2025-07-28,2025-08-11
+186,Synthesize cutting-edge relationships,user1,Assigned,Medium,Project_A,7.394436834235287,1,Resource Shortage,1,Knowledge fear evidence information professional action.,2025-08-31,2025-09-07
+187,Maximize revolutionary technologies,user5,In Progress,Low,Project_E,1.2,0,Approval,1,,2025-08-03,2025-08-06
+188,Target impactful infrastructures,user7,Blocked,Medium,Project_G,13.34,0,Approval,0,,2025-07-31,2025-08-15
+189,Visualize collaborative portals,user9,In Progress,Low,Project_I,1.36,0,Approval,0,,2025-12-11,2025-12-12
+190,Syndicate collaborative e-markets,user8,Blocked,Medium,Project_J,6.31,0,Technical Issue,0,Require whatever notice change rock hour product.,2025-11-18,2025-11-25
+191,Harness next-generation niches,user1,Assigned,High,Project_J,7.729067394514409,1,Technical Issue,0,Vote fish ahead.,2025-12-30,2026-01-07
+192,Cultivate visionary schemas,user4,Blocked,Medium,Project_B,2.33,0,Resource Shortage,0,Capital door successful theory company this us.,2025-11-15,2025-11-17
+193,Implement efficient metrics,user10,Blocked,Low,Project_F,6.26,0,Technical Issue,0,Home collection least our again young executive.,2025-09-09,2025-09-15
+194,Scale vertical deliverables,user2,Blocked,Medium,Project_F,9.29,0,Dependency,0,,2025-10-09,2025-10-19
+195,Unleash next-generation web-readiness,user5,Blocked,High,Project_J,8.12,0,Dependency,0,Score major Mr late leader subject about.,2025-10-23,2025-11-02
+196,Mesh bleeding-edge models,user2,Assigned,Low,Project_G,4.4,0,Technical Issue,0,,2025-10-09,2025-10-14
+197,Deploy extensible vortals,user7,Blocked,Medium,Project_J,16.383925117844946,1,,3,,2025-09-24,2025-10-09
+198,Enable proactive paradigms,user2,Completed,Medium,Project_I,12.21,0,Dependency,3,Product member kind.,2025-09-09,2025-09-22
+199,Syndicate visionary action-items,user6,In Progress,High,Project_J,3.37,0,Dependency,0,Actually success should can.,2025-10-11,2025-10-16
+200,E-enable wireless functionalities,user7,Blocked,Medium,Project_F,5.37,0,Technical Issue,0,,2025-12-30,2026-01-04
+201,Brand enterprise networks,user5,Completed,Low,Project_A,7.142627372334947,1,Approval,0,Will past property response hundred energy look.,2025-11-06,2025-11-14
+202,Disintermediate compelling communities,user5,In Progress,High,Project_F,7.44,0,Approval,0,Series season two put itself down one.,2026-01-20,2026-01-27
+203,Drive intuitive vortals,user1,Blocked,Medium,Project_B,6.83,0,Technical Issue,3,Remain develop institution husband certainly care.,2025-11-07,2025-11-13
+204,Exploit out-of-the-box models,user7,In Progress,Medium,Project_I,12.118502072761437,1,Technical Issue,0,Benefit force reason culture project.,2025-12-31,2026-01-12
+205,Mesh customized convergence,user1,Blocked,Medium,Project_C,1.8,0,,0,High position up some service maybe spring.,2025-09-06,2025-09-08
+206,Re-contextualize out-of-the-box models,user9,In Progress,High,Project_D,4.73,0,Resource Shortage,0,Wall follow property conference.,2025-11-14,2025-11-20
+207,Integrate user-centric partnerships,user8,Blocked,Low,Project_F,5.61,0,Technical Issue,0,Health quickly tell speak occur.,2025-08-07,2025-08-14
+208,Integrate back-end vortals,user3,Blocked,Low,Project_D,5.414434589300978,1,Resource Shortage,0,Yeah without spend difference half defense science.,2025-11-08,2025-11-12
+209,Re-intermediate sticky action-items,user1,In Progress,High,Project_J,13.145469605168124,1,Approval,0,Yet especially finally executive skill.,2025-09-23,2025-10-06
+210,Cultivate next-generation architectures,user3,Completed,Medium,Project_J,11.54,0,Dependency,0,Institution wait his control.,2025-11-07,2025-11-19
+211,Synthesize b2b supply-chains,user4,Completed,High,Project_G,9.26,0,,0,,2026-01-05,2026-01-15
+212,Disintermediate web-enabled models,user2,Assigned,High,Project_J,1.62,0,Technical Issue,3,Today analysis condition staff window fast national present.,2025-09-11,2025-09-13
+213,Evolve integrated users,user6,Completed,Medium,Project_F,5.64,0,Dependency,0,,2025-10-18,2025-10-23
+214,Synergize front-end functionalities,user3,Assigned,Low,Project_G,3.49,0,Approval,0,Political firm reality question cost up.,2025-12-15,2025-12-18
+215,Target enterprise partnerships,user6,Assigned,Medium,Project_H,8.12,0,Approval,0,Might likely guy thought imagine resource style.,2025-09-14,2025-09-24
+216,Exploit plug-and-play solutions,user5,Blocked,High,Project_D,4.52,0,Dependency,3,,2025-08-20,2025-08-26
+217,Cultivate 24/7 initiatives,user6,Blocked,Medium,Project_D,12.61,0,Dependency,1,Begin hard focus form laugh.,2025-09-06,2025-09-20
+218,Iterate vertical action-items,user1,In Progress,High,Project_A,5.86,0,Resource Shortage,0,Seem wife activity morning ever world campaign.,2025-09-11,2025-09-16
+219,Disintermediate e-business functionalities,user9,Blocked,Low,Project_H,4.880601615133579,1,Resource Shortage,0,,2025-11-24,2025-11-30
+220,Incubate viral e-services,user9,Assigned,High,Project_A,10.01,0,Approval,0,Sign nature fine believe exist ten guess amount.,2025-11-21,2025-12-03
+221,Mesh compelling convergence,user3,In Progress,Medium,Project_E,10.338927208711631,1,,0,Suggest Republican mind sort enjoy issue.,2025-12-05,2025-12-15
+222,Aggregate real-time applications,user7,Assigned,High,Project_I,9.937235990805135,1,,0,Role model mission there.,2025-09-12,2025-09-20
+223,Utilize seamless applications,user5,Completed,Medium,Project_A,9.16,0,Approval,3,Century and save war claim score food.,2025-09-19,2025-09-30
+224,Utilize best-of-breed users,user5,In Progress,Medium,Project_D,12.95,0,,1,Simply individual yourself carry citizen move begin.,2025-12-31,2026-01-14
+225,Engage viral info-mediaries,user7,Assigned,Low,Project_F,3.89573412495323,1,Resource Shortage,0,Movie business attack budget.,2025-07-23,2025-07-27
+226,Facilitate cross-media initiatives,user9,Completed,Medium,Project_G,9.06,0,Technical Issue,2,Indeed name everyone pattern.,2025-10-30,2025-11-08
+227,Expedite ubiquitous portals,user2,Assigned,High,Project_F,12.138023258619869,1,Dependency,0,Responsibility method number ever either life president.,2025-09-24,2025-10-04
+228,Mesh seamless models,user5,Assigned,High,Project_A,2.51,0,Approval,0,Meeting girl on significant anything relate.,2025-08-14,2025-08-17
+229,Reinvent vertical channels,user8,In Progress,Medium,Project_C,9.873379304503947,1,,0,Leader that without child half sister economy.,2025-08-25,2025-09-03
+230,Architect extensible platforms,user3,In Progress,Medium,Project_H,9.62013919274756,1,Dependency,0,,2025-07-30,2025-08-08
+231,Aggregate 24/7 solutions,user1,Assigned,Medium,Project_E,15.08162008379317,1,Dependency,1,,2025-09-05,2025-09-19
+232,Aggregate granular communities,user7,Blocked,Medium,Project_B,7.127080650829972,1,Approval,0,,2025-09-13,2025-09-20
+233,Aggregate dynamic metrics,user9,Assigned,Medium,Project_J,4.24,0,Dependency,0,Involve from national capital boy trial.,2025-12-18,2025-12-24
+234,Benchmark integrated eyeballs,user3,Blocked,Medium,Project_C,12.17,0,,0,Situation find focus hot decade eye there second.,2025-07-30,2025-08-11
+235,Productize front-end interfaces,user4,Blocked,Medium,Project_B,4.26,0,Dependency,0,Vote all chance themselves example.,2026-01-12,2026-01-16
+236,Visualize distributed niches,user8,In Progress,High,Project_A,3.1666398133015408,1,,1,Baby nothing commercial million whether according story.,2025-12-26,2025-12-28
+237,Synergize web-enabled interfaces,user7,In Progress,Medium,Project_D,10.56,0,,1,Republican we such year senior receive open.,2025-12-10,2025-12-22
+238,Strategize front-end web-readiness,user8,In Progress,Medium,Project_F,8.124101368138543,1,Resource Shortage,1,,2025-08-24,2025-09-01
+239,Re-intermediate customized users,user9,In Progress,High,Project_C,12.53114317334669,1,,3,Answer assume community out.,2025-09-21,2025-10-02
+240,Reinvent compelling mindshare,user6,In Progress,Low,Project_C,4.66,0,Dependency,2,,2025-08-21,2025-08-27
+241,Optimize seamless vortals,user7,Assigned,Low,Project_G,4.805040111494094,1,Dependency,0,,2025-10-29,2025-11-03
+242,Morph 24/7 systems,user7,Blocked,Medium,Project_C,5.57,0,,0,Price hundred few.,2025-12-26,2026-01-01
+243,Architect one-to-one niches,user4,Assigned,Medium,Project_G,5.54,0,Approval,2,Cup he soldier woman home support human.,2026-01-19,2026-01-25
+244,Drive plug-and-play paradigms,user2,In Progress,Medium,Project_F,10.028322641834075,1,Dependency,0,Fast speak pattern drive often.,2025-11-25,2025-12-02
+245,Empower impactful web services,user4,Assigned,Low,Project_C,2.0,0,Resource Shortage,0,,2025-10-07,2025-10-11
+246,Drive ubiquitous paradigms,user1,Assigned,Low,Project_J,4.553833375611749,1,,3,Effect continue front minute possible deal instead I.,2026-01-08,2026-01-14
+247,Engineer enterprise partnerships,user4,Blocked,Low,Project_H,3.8510769798124334,1,Approval,0,Different loss audience campaign late.,2025-09-24,2025-09-27
+248,Re-contextualize b2b niches,user1,Completed,Medium,Project_G,1.51,0,,0,,2025-09-14,2025-09-17
+249,Deliver scalable bandwidth,user1,In Progress,Medium,Project_F,3.59,0,Approval,0,Authority field then president.,2026-01-18,2026-01-23
+250,Extend turn-key e-commerce,user4,Blocked,Low,Project_I,4.32,0,,0,Ahead many certainly other kid today.,2025-09-28,2025-10-04
+251,Re-contextualize next-generation metrics,user7,In Progress,Low,Project_G,6.86,0,Approval,0,Will job at.,2025-12-08,2025-12-16
+252,Innovate holistic metrics,user4,In Progress,Medium,Project_G,10.069318131109359,1,Dependency,0,Want organization result often.,2025-10-27,2025-11-03
+253,Disintermediate clicks-and-mortar action-items,user9,Assigned,Medium,Project_C,15.769983621985805,1,,0,Outside rise need possible.,2025-08-15,2025-08-31
+254,Whiteboard customized users,user7,Blocked,Medium,Project_I,5.063787095023935,1,Technical Issue,1,Spring approach help you there.,2025-12-08,2025-12-11
+255,Transform back-end channels,user4,In Progress,High,Project_D,5.25,0,Resource Shortage,0,,2025-12-06,2025-12-11
+256,Deliver transparent relationships,user8,Blocked,Medium,Project_J,2.17,0,Resource Shortage,3,Media last college fly challenge action.,2025-12-03,2025-12-05
+257,Generate distributed partnerships,user5,Completed,Low,Project_J,2.84,0,Dependency,1,Stand out most food range.,2026-01-12,2026-01-14
+258,Deliver revolutionary niches,user2,Blocked,High,Project_H,14.662666831747433,1,Dependency,3,Television think animal training write compare with there.,2025-10-17,2025-10-30
+259,Enhance cross-media methodologies,user6,Completed,Medium,Project_F,4.540636563892793,1,Technical Issue,0,Staff easy war season guess.,2025-09-12,2025-09-16
+260,Envisioneer mission-critical action-items,user2,Completed,Low,Project_B,1.84,0,Resource Shortage,0,Go machine pass down try.,2025-09-25,2025-09-27
+261,Strategize end-to-end models,user10,Completed,Medium,Project_E,11.63,0,Approval,0,Herself story national pretty professional course partner.,2026-01-05,2026-01-17
+262,Target customized technologies,user4,Assigned,Low,Project_E,4.83,0,Approval,0,Trade relationship as loss.,2025-10-30,2025-11-04
+263,Visualize sticky communities,user9,Completed,Medium,Project_E,7.221792729481143,1,,0,,2025-12-07,2025-12-15
+264,Extend one-to-one paradigms,user5,Completed,Low,Project_J,1.69,0,,0,,2025-08-18,2025-08-19
+265,Transition dynamic bandwidth,user10,Blocked,Medium,Project_G,12.216915098152795,1,Approval,0,Player travel clear could strategy option soon.,2025-12-17,2025-12-29
+266,Transform end-to-end partnerships,user2,Blocked,High,Project_J,10.57,0,,0,On door under case them want.,2025-08-03,2025-08-13
+267,Benchmark global e-markets,user9,Assigned,Medium,Project_G,12.0,0,,0,Baby least tell.,2025-10-23,2025-11-04
+268,Enhance turn-key solutions,user8,Blocked,High,Project_H,5.02,0,Dependency,0,,2026-01-07,2026-01-14
+269,Orchestrate integrated roi,user2,Completed,Medium,Project_H,3.79,0,Resource Shortage,0,Ready compare experience too claim business.,2025-07-27,2025-07-31
+270,Engage b2c web services,user4,Blocked,Medium,Project_F,13.53,0,Approval,0,,2025-09-24,2025-10-08
+271,Scale bleeding-edge deliverables,user9,Assigned,Low,Project_D,5.43,0,Resource Shortage,0,Hard hope maybe series religious.,2025-12-12,2025-12-18
+272,Revolutionize end-to-end technologies,user1,Completed,Low,Project_I,5.7850736356172465,1,Technical Issue,1,Town quite vote require drug each.,2025-12-22,2025-12-26
+273,Syndicate killer niches,user10,Assigned,High,Project_I,6.033347853395226,1,Technical Issue,0,,2025-07-25,2025-07-29
+274,Streamline cross-platform schemas,user6,In Progress,High,Project_D,15.052937792669816,1,Dependency,0,Tend foreign major wear media especially.,2025-09-15,2025-09-30
+275,Iterate one-to-one e-business,user2,Completed,Medium,Project_C,3.8972127813935646,1,Resource Shortage,1,Interview network strategy gun.,2025-11-26,2025-11-29
+276,Aggregate e-business technologies,user4,Completed,Medium,Project_I,2.4746653366367313,1,Technical Issue,0,Indicate month if drop nice politics wall.,2025-11-05,2025-11-06
+277,Matrix killer roi,user6,In Progress,Low,Project_H,4.19,0,,0,,2025-12-26,2025-12-31
+278,Evolve e-business vortals,user3,In Progress,Medium,Project_E,14.65,0,Dependency,1,Model million charge accept church many shake.,2025-07-26,2025-08-11
+279,Iterate robust experiences,user2,In Progress,Low,Project_A,5.770500656894399,1,Approval,2,Them first environment soldier.,2025-10-07,2025-10-11
+280,Architect back-end bandwidth,user7,In Progress,Low,Project_D,6.19,0,Approval,0,Must option my experience.,2025-09-10,2025-09-16
+281,Scale enterprise bandwidth,user6,In Progress,Medium,Project_J,11.2,0,Resource Shortage,0,One dark guess computer such card language.,2025-11-30,2025-12-13
+282,Implement strategic action-items,user2,Completed,High,Project_C,8.43,0,Approval,0,Trouble crime go hold news.,2025-08-22,2025-08-31
+283,Repurpose mission-critical action-items,user6,In Progress,Low,Project_F,8.708638100023599,1,,2,They name respond would model strong candidate his.,2025-12-07,2025-12-14
+284,Re-intermediate enterprise e-services,user5,In Progress,Low,Project_E,6.641741975104959,1,Dependency,3,Possible by hospital another reflect reality.,2025-09-15,2025-09-22
+285,Seize plug-and-play relationships,user5,Completed,Medium,Project_A,12.15,0,Technical Issue,0,,2026-01-02,2026-01-14
+286,Disintermediate bleeding-edge models,user1,Completed,High,Project_E,6.95,0,Technical Issue,1,,2025-08-12,2025-08-20
+287,Maximize visionary metrics,user4,Blocked,Medium,Project_D,16.88898248794393,1,Dependency,2,Energy gas not resource rich over.,2025-11-28,2025-12-13
+288,Transition world-class initiatives,user7,In Progress,Medium,Project_H,13.03,0,Dependency,0,Machine agreement partner example third election federal.,2025-08-19,2025-09-02
+289,Transition ubiquitous models,user7,Blocked,High,Project_H,15.69646983312967,1,Approval,0,Nice fire want still take result.,2025-07-23,2025-08-08
+290,E-enable web-enabled solutions,user3,Blocked,High,Project_C,10.422379732101518,1,Approval,1,Prepare information can bad.,2025-08-27,2025-09-07
+291,Reinvent user-centric solutions,user7,Blocked,Medium,Project_B,6.129169319673782,1,Technical Issue,3,Community skin push want wall process.,2025-10-03,2025-10-08
+292,Transform frictionless technologies,user8,Blocked,Low,Project_J,1.34,0,Technical Issue,0,Daughter realize mother total.,2025-08-11,2025-08-12
+293,Orchestrate bleeding-edge initiatives,user5,Blocked,Medium,Project_F,14.82,0,Technical Issue,1,,2025-09-01,2025-09-16
+294,Incentivize turn-key vortals,user6,Blocked,Medium,Project_B,14.562996491052642,1,Resource Shortage,2,Beyond father moment must onto air.,2026-01-05,2026-01-18
+295,Engineer real-time e-business,user9,In Progress,Low,Project_D,0.5,0,Resource Shortage,0,,2026-01-11,2026-01-13
+296,Implement 24/7 roi,user8,Assigned,Medium,Project_A,8.486686138067059,1,Approval,1,,2025-11-16,2025-11-23
+297,Deploy interactive partnerships,user6,In Progress,Medium,Project_H,15.963272871407458,1,Approval,0,Become player what under way author fear.,2025-09-02,2025-09-16
+298,Re-contextualize vertical users,user1,Blocked,Medium,Project_F,10.8,0,Technical Issue,2,,2025-10-16,2025-10-26
+299,Drive user-centric users,user5,Completed,Medium,Project_D,14.691236853994294,1,Technical Issue,1,Themselves two staff staff receive hear tell son.,2025-07-31,2025-08-15
+300,Cultivate dynamic portals,user6,In Progress,Medium,Project_B,1.7727636188780016,1,Dependency,0,Seven including speech spring dinner on.,2025-08-07,2025-08-09
+301,Brand cutting-edge metrics,user5,Blocked,Medium,Project_C,14.21,0,Resource Shortage,3,,2025-11-16,2025-12-02
+302,Monetize killer info-mediaries,user7,In Progress,Medium,Project_A,12.125806351551244,1,,2,Participant share suffer several nothing.,2025-09-08,2025-09-19
+303,Expedite best-of-breed infrastructures,user1,In Progress,Medium,Project_H,4.969493962919755,1,Resource Shortage,0,Feel someone find himself somebody picture.,2025-08-26,2025-08-30
+304,Disintermediate one-to-one niches,user8,Blocked,Medium,Project_J,8.94,0,Technical Issue,0,Science thought act memory.,2025-12-13,2025-12-23
+305,Cultivate bleeding-edge architectures,user5,Blocked,Medium,Project_B,1.92370258376732,1,,2,Affect first nothing may place make live.,2025-09-27,2025-09-29
+306,Harness impactful channels,user5,In Progress,Low,Project_D,1.52,0,Approval,1,Thus room design although.,2025-11-02,2025-11-05
+307,Transition sticky web services,user7,Completed,Medium,Project_C,11.767140522587306,1,,2,,2025-09-30,2025-10-11
+308,Transition integrated methodologies,user8,Blocked,Medium,Project_B,9.31836107430296,1,Technical Issue,2,,2025-11-10,2025-11-19
+309,Productize 24/365 synergies,user4,Blocked,Medium,Project_G,14.35,0,Approval,3,,2025-08-30,2025-09-15
+310,Revolutionize real-time platforms,user8,Blocked,Medium,Project_D,5.597274547599117,1,,0,Toward evidence reflect deep break.,2025-11-29,2025-12-03
+311,Generate cutting-edge metrics,user8,Completed,Low,Project_I,8.252455001692821,1,Resource Shortage,0,,2025-11-21,2025-11-29
+312,Re-intermediate synergistic interfaces,user6,Completed,Low,Project_A,3.1479763785124186,1,Technical Issue,0,Impact tend relationship free.,2025-11-30,2025-12-03
+313,Seize rich portals,user6,Assigned,High,Project_A,3.39,0,Dependency,2,Role evidence others sort benefit order.,2025-12-26,2025-12-30
+314,Disintermediate proactive relationships,user4,Assigned,Medium,Project_A,13.91,0,Approval,0,Herself check drug quality list another speak.,2025-11-12,2025-11-25
+315,Extend best-of-breed partnerships,user2,Blocked,Medium,Project_F,1.04,0,Dependency,0,,2025-10-30,2025-11-01
+316,Optimize cutting-edge architectures,user5,Blocked,High,Project_C,14.052880497395117,1,Dependency,1,Chair season bit simply office word.,2025-09-01,2025-09-13
+317,Redefine collaborative markets,user8,In Progress,Low,Project_G,6.340417303949497,1,Approval,0,,2026-01-01,2026-01-07
+318,Innovate efficient architectures,user4,Completed,Medium,Project_G,7.439914676686657,1,Resource Shortage,0,,2025-08-21,2025-08-27
+319,Innovate value-added relationships,user6,Assigned,Medium,Project_I,10.98,0,Approval,0,International who memory blue fish lot.,2025-10-11,2025-10-23
+320,Transition intuitive infrastructures,user8,In Progress,Low,Project_C,2.82,0,Approval,0,,2025-12-11,2025-12-15
+321,Synthesize b2c networks,user5,Completed,High,Project_C,5.584947680402788,1,Dependency,3,Quality power house bad wife clear.,2026-01-17,2026-01-23
+322,Drive scalable e-tailers,user10,In Progress,High,Project_F,8.96,0,Resource Shortage,1,,2025-09-06,2025-09-15
+323,Revolutionize plug-and-play channels,user2,Blocked,Medium,Project_D,11.661064898675686,1,Approval,0,Century grow yourself.,2025-10-29,2025-11-10
+324,Streamline granular info-mediaries,user4,Blocked,High,Project_A,14.84,0,,0,May over together.,2025-12-09,2025-12-25
+325,Drive frictionless models,user8,Blocked,High,Project_E,9.006384846002842,1,,0,Decision economic national inside than.,2026-01-10,2026-01-16
+326,Leverage holistic schemas,user4,Blocked,High,Project_H,5.697885560623842,1,Resource Shortage,0,Much nice appear tonight including rise arrive almost.,2025-08-07,2025-08-13
+327,Re-contextualize dynamic methodologies,user10,Blocked,Medium,Project_G,6.254999992605265,1,Dependency,0,Building treatment each actually attorney because.,2025-12-14,2025-12-20
+328,Enhance robust schemas,user2,In Progress,Medium,Project_A,8.59,0,,0,Result office process citizen raise.,2025-08-01,2025-08-11
+329,Harness turn-key web-readiness,user10,Blocked,High,Project_F,3.34,0,,0,,2025-08-07,2025-08-10
+330,Maximize plug-and-play initiatives,user1,In Progress,High,Project_E,9.72,0,,0,,2026-01-03,2026-01-14
+331,Benchmark best-of-breed users,user7,In Progress,High,Project_J,12.04,0,Approval,0,Throw trouble market participant tend before.,2025-10-11,2025-10-25
+332,Drive enterprise architectures,user3,Completed,Medium,Project_B,4.351233029031293,1,,1,Bag success network seem seven compare new.,2026-01-12,2026-01-15
+333,Evolve cutting-edge functionalities,user9,Blocked,Medium,Project_B,1.437295461820236,1,,2,Fund decade however goal.,2025-11-26,2025-11-27
+334,Redefine granular bandwidth,user5,Completed,High,Project_A,11.514842794542801,1,Approval,0,,2025-11-10,2025-11-19
+335,Evolve open-source communities,user3,Blocked,Medium,Project_C,4.47,0,Technical Issue,0,Three fact few one hotel authority.,2026-01-04,2026-01-10
+336,Re-intermediate compelling networks,user9,Assigned,Medium,Project_A,7.04,0,,0,,2025-10-13,2025-10-21
+337,Leverage wireless markets,user4,Blocked,Medium,Project_B,9.456954539294326,1,Dependency,0,,2025-09-27,2025-10-05
+338,Enable 24/7 roi,user7,Completed,Medium,Project_H,3.243047548386223,1,Dependency,2,Various black second across career read.,2025-12-19,2025-12-21
+339,Incubate intuitive paradigms,user8,Blocked,Medium,Project_D,3.6151030862214464,1,Resource Shortage,0,,2025-10-22,2025-10-25
+340,Revolutionize revolutionary relationships,user7,In Progress,Medium,Project_G,4.39,0,,2,Question similar during night pressure system become professional.,2025-09-08,2025-09-12
+341,Strategize end-to-end relationships,user3,Completed,Medium,Project_A,13.34,0,Technical Issue,0,Address hair opportunity clear care keep.,2025-10-02,2025-10-16
+342,Synthesize end-to-end web-readiness,user8,Blocked,High,Project_J,3.76,0,,0,Form another home not pay throughout.,2026-01-10,2026-01-13
+343,Exploit end-to-end deliverables,user7,Blocked,High,Project_J,4.25,0,Approval,0,Pass determine push drug face organization huge science.,2025-12-13,2025-12-18
+344,Leverage plug-and-play e-business,user9,Completed,Low,Project_J,0.61,0,Dependency,0,,2026-01-16,2026-01-16
+345,Envisioneer extensible systems,user2,Completed,Medium,Project_I,11.73,0,Resource Shortage,0,Scene majority nature.,2025-11-28,2025-12-10
+346,Productize leading-edge supply-chains,user6,Completed,Medium,Project_A,2.85,0,,0,Name just resource purpose.,2025-07-28,2025-07-31
+347,Syndicate wireless bandwidth,user9,In Progress,Medium,Project_B,12.71,0,Approval,0,Key itself position plant southern write election turn.,2025-12-01,2025-12-15
+348,Architect out-of-the-box eyeballs,user5,In Progress,High,Project_J,2.8158316897334528,1,Dependency,0,,2025-10-14,2025-10-16
+349,Architect proactive interfaces,user7,Completed,High,Project_J,14.86,0,Dependency,0,Activity away buy between suggest new.,2025-12-20,2026-01-05
+350,Envisioneer bleeding-edge action-items,user7,Blocked,Medium,Project_D,16.26793140042547,1,Dependency,1,Myself type picture plan heart each.,2025-11-08,2025-11-22
+351,Revolutionize 24/365 e-business,user10,Assigned,Medium,Project_A,6.676895475645329,1,Resource Shortage,0,General past every alone democratic himself kitchen detail.,2025-08-07,2025-08-11
+352,Envisioneer end-to-end e-business,user8,Assigned,Medium,Project_I,12.377723599953676,1,Dependency,1,Point evening knowledge behind serve draw save.,2025-11-04,2025-11-15
+353,Envisioneer dynamic relationships,user10,Blocked,Low,Project_C,1.71,0,Technical Issue,2,Range require information wind.,2025-08-11,2025-08-14
+354,Redefine cutting-edge experiences,user10,In Progress,High,Project_C,4.876847577604897,1,Approval,0,Suggest behind maybe shake.,2025-09-10,2025-09-14
+355,Extend transparent e-markets,user4,Assigned,Medium,Project_J,11.19,0,Dependency,0,Yet myself how never.,2025-08-10,2025-08-22
+356,Innovate innovative paradigms,user7,In Progress,High,Project_D,14.462722364049307,1,Approval,3,,2025-09-16,2025-09-30
+357,Morph impactful web services,user9,In Progress,High,Project_A,11.512602661308227,1,,0,,2025-12-31,2026-01-08
+358,Facilitate impactful platforms,user2,Completed,Medium,Project_F,14.794455553994926,1,Technical Issue,1,Water want read feel camera.,2025-09-02,2025-09-17
+359,Incentivize virtual communities,user1,Blocked,Medium,Project_E,10.43,0,,3,,2025-12-29,2026-01-10
+360,Expedite world-class channels,user5,Completed,High,Project_J,6.471371458381404,1,,1,International fine at they poor already.,2025-09-03,2025-09-09
+361,Unleash compelling e-business,user7,In Progress,High,Project_I,2.248557886593085,1,Technical Issue,1,,2025-10-20,2025-10-23
+362,Unleash innovative architectures,user8,Assigned,Medium,Project_H,10.39,0,,1,Poor probably hard her space agree allow room.,2025-08-14,2025-08-24
+363,Unleash intuitive e-commerce,user9,Blocked,High,Project_I,8.74,0,Technical Issue,2,Open bank operation Mrs heavy enjoy.,2025-12-28,2026-01-07
+364,Morph cross-platform content,user5,Completed,Medium,Project_J,3.06,0,Dependency,2,,2025-12-27,2025-12-31
+365,Integrate intuitive interfaces,user9,Completed,Low,Project_H,5.9416959342043185,1,,0,,2025-09-08,2025-09-13
+366,Facilitate leading-edge vortals,user1,In Progress,High,Project_G,8.28,0,Resource Shortage,0,,2025-08-29,2025-09-08
+367,Drive efficient mindshare,user2,Assigned,Medium,Project_I,8.379977548953736,1,Approval,1,Picture than important pass cause.,2025-11-29,2025-12-06
+368,Whiteboard open-source communities,user7,Completed,Medium,Project_B,11.979139023498174,1,Resource Shortage,0,Official particular message president production threat.,2025-09-19,2025-09-29
+369,Leverage clicks-and-mortar platforms,user6,Completed,Medium,Project_G,13.49,0,Resource Shortage,2,Realize data indeed return dark.,2025-09-07,2025-09-21
+370,Re-intermediate seamless portals,user8,Assigned,Low,Project_C,4.75,0,Dependency,1,Politics low else purpose.,2026-01-05,2026-01-09
+371,Syndicate out-of-the-box e-commerce,user8,Completed,Medium,Project_B,7.19,0,Dependency,0,Thought put reason glass nature environmental.,2025-11-30,2025-12-07
+372,Engage wireless technologies,user5,In Progress,High,Project_G,15.162187956760173,1,,3,Toward find score modern.,2025-11-25,2025-12-10
+373,Innovate ubiquitous e-tailers,user2,Blocked,Medium,Project_F,2.54,0,,0,Administration final place high local several thus.,2025-10-15,2025-10-19
+374,Unleash global channels,user6,Completed,Medium,Project_B,8.51,0,Approval,1,Make beat small.,2025-10-05,2025-10-14
+375,Morph revolutionary schemas,user5,Blocked,Medium,Project_B,13.8465146396074,1,Approval,2,,2025-12-08,2025-12-20
+376,Extend wireless methodologies,user9,Blocked,Medium,Project_F,14.34,0,Resource Shortage,0,Gas song play believe trip budget you.,2026-01-19,2026-02-02
+377,Re-intermediate cross-media applications,user3,In Progress,Low,Project_H,3.38,0,Technical Issue,2,Best fish current activity.,2025-08-12,2025-08-17
+378,Drive synergistic partnerships,user7,Assigned,High,Project_A,3.06,0,,2,Thus have myself relationship.,2026-01-03,2026-01-08
+379,Iterate scalable functionalities,user6,Assigned,Medium,Project_I,3.9546594336090077,1,,0,Than appear hundred training.,2025-10-16,2025-10-18
+380,Unleash out-of-the-box initiatives,user2,Blocked,Medium,Project_F,7.98,0,Technical Issue,0,Note perhaps attack explain executive air.,2025-09-10,2025-09-18
+381,Redefine dot-com methodologies,user2,In Progress,Medium,Project_D,12.094602923209353,1,Resource Shortage,1,Guy these medical.,2025-12-29,2026-01-09
+382,Redefine back-end roi,user5,Completed,Medium,Project_B,7.98,0,,1,Certain reduce agreement agency simply also represent.,2025-10-14,2025-10-21
+383,Monetize value-added eyeballs,user7,Blocked,High,Project_E,4.009653829971013,1,Approval,0,Body behavior huge.,2025-10-08,2025-10-11
+384,Harness proactive info-mediaries,user9,In Progress,Medium,Project_A,5.46,0,Technical Issue,2,Minute third beat thousand half perform result.,2025-09-08,2025-09-14
+385,Integrate b2c web-readiness,user3,In Progress,Low,Project_B,1.18,0,Dependency,0,,2025-07-23,2025-07-26
+386,Extend compelling bandwidth,user9,Assigned,Low,Project_E,0.56,0,Dependency,0,Product education focus change main seem.,2026-01-15,2026-01-17
+387,Maximize frictionless web services,user8,Blocked,Medium,Project_I,5.84,0,Technical Issue,1,Report write rule close local sell analysis.,2025-10-02,2025-10-08
+388,Evolve e-business supply-chains,user5,Completed,Low,Project_H,5.51,0,Resource Shortage,1,Head exist couple voice provide seem minute.,2026-01-07,2026-01-14
+389,Optimize magnetic e-services,user4,In Progress,Medium,Project_D,15.797225158293646,1,Technical Issue,0,,2025-08-22,2025-09-05
+390,Envisioneer virtual e-business,user1,In Progress,Medium,Project_H,14.93,0,Technical Issue,0,Yourself boy general from must structure statement.,2025-07-24,2025-08-09
+391,Grow clicks-and-mortar convergence,user5,Assigned,High,Project_B,6.78,0,Dependency,0,,2025-09-05,2025-09-13
+392,Cultivate extensible synergies,user1,In Progress,Low,Project_D,1.4235281162011386,1,Technical Issue,0,Exist successful leader attack land prove.,2026-01-08,2026-01-08
+393,Deploy value-added interfaces,user1,Blocked,Low,Project_E,5.11,0,Dependency,0,,2025-08-11,2025-08-16
+394,Innovate sticky functionalities,user6,In Progress,Low,Project_C,5.5,0,Technical Issue,0,Serious see ball spend he when go third.,2025-08-17,2025-08-22
+395,Architect open-source schemas,user2,Completed,High,Project_E,2.92,0,Technical Issue,0,,2025-10-13,2025-10-15
+396,Evolve open-source partnerships,user8,Blocked,Medium,Project_J,5.35,0,Approval,3,Collection three international.,2025-12-27,2026-01-03
+397,Incubate granular web-readiness,user8,Assigned,High,Project_E,7.15,0,Approval,0,Land plant recently.,2026-01-02,2026-01-11
+398,Incentivize frictionless web-readiness,user3,Blocked,Medium,Project_H,8.865731779257262,1,Approval,0,Growth none today science member too recognize.,2025-11-10,2025-11-18
+399,Embrace e-business solutions,user6,Blocked,High,Project_J,11.61,0,Resource Shortage,0,,2025-08-19,2025-09-01
+400,Engineer interactive portals,user3,Blocked,Medium,Project_G,11.24,0,,2,Special feel security begin federal.,2025-10-11,2025-10-24
+401,Iterate visionary architectures,user7,Blocked,High,Project_C,11.47,0,Dependency,1,,2025-07-27,2025-08-09
+402,Harness end-to-end markets,user1,In Progress,Medium,Project_J,13.85,0,Approval,0,Walk might condition minute artist four.,2025-11-15,2025-11-29
+403,Matrix efficient platforms,user4,Blocked,Medium,Project_E,13.31,0,Dependency,1,Stop from finally individual pattern end perhaps.,2025-10-15,2025-10-30
+404,Innovate revolutionary metrics,user5,In Progress,Medium,Project_C,4.4149256498558165,1,Resource Shortage,3,,2025-08-14,2025-08-17
+405,Leverage distributed relationships,user2,Assigned,Medium,Project_G,14.137342877361455,1,,1,Sort close someone follow old every.,2025-11-11,2025-11-22
+406,Integrate bleeding-edge users,user10,Completed,Medium,Project_G,5.23,0,Technical Issue,0,,2025-08-20,2025-08-25
+407,Harness one-to-one e-tailers,user5,Completed,Low,Project_H,0.85,0,,0,,2025-07-26,2025-07-26
+408,Revolutionize ubiquitous models,user4,In Progress,Medium,Project_E,13.01,0,Technical Issue,0,Hard room above candidate write pay blue.,2025-10-20,2025-11-02
+409,Productize user-centric relationships,user6,Completed,Medium,Project_E,4.15,0,Resource Shortage,0,Chair one media key similar tough study identify.,2025-08-13,2025-08-19
+410,Exploit virtual schemas,user8,Completed,High,Project_I,6.78,0,Resource Shortage,0,,2025-09-10,2025-09-18
+411,Synergize world-class content,user5,Assigned,High,Project_A,9.47,0,,0,,2025-10-18,2025-10-28
+412,Deploy viral platforms,user1,In Progress,Medium,Project_A,6.7,0,Resource Shortage,0,,2025-11-15,2025-11-22
+413,Implement vertical info-mediaries,user8,In Progress,Low,Project_E,6.9,0,Approval,1,,2026-01-15,2026-01-21
+414,Monetize 24/7 roi,user4,Assigned,High,Project_J,8.68,0,Resource Shortage,0,Natural general series discover who page accept.,2025-11-10,2025-11-18
+415,Cultivate holistic platforms,user4,Assigned,Medium,Project_G,5.52,0,,0,,2025-08-29,2025-09-03
+416,Incubate viral markets,user3,Assigned,Medium,Project_F,5.32,0,Dependency,1,Reveal measure consumer front send.,2025-08-03,2025-08-10
+417,Repurpose compelling action-items,user9,Completed,Medium,Project_B,16.074985702987536,1,,0,Strong manager free he.,2025-10-14,2025-10-30
+418,Transition end-to-end methodologies,user1,Assigned,High,Project_D,9.989795927618257,1,Dependency,0,Article body sound recently area manage.,2026-01-10,2026-01-19
+419,Exploit seamless e-commerce,user4,Assigned,Low,Project_A,6.96,0,Dependency,0,Road skill civil seem worker despite its enter.,2025-10-03,2025-10-11
+420,Matrix scalable markets,user9,Completed,Medium,Project_I,14.34508816721975,1,Resource Shortage,0,,2025-12-18,2025-12-31
+421,Strategize mission-critical portals,user10,Completed,Medium,Project_J,14.02,0,Dependency,0,Many through which.,2025-08-15,2025-08-30
+422,Visualize virtual paradigms,user6,In Progress,Medium,Project_A,1.74,0,,0,Oil head word before challenge allow many.,2025-07-22,2025-07-24
+423,Deliver holistic synergies,user9,Completed,Low,Project_A,0.8,0,,0,,2025-10-31,2025-11-01
+424,Benchmark frictionless deliverables,user10,Blocked,Medium,Project_J,6.44,0,Resource Shortage,0,,2025-08-30,2025-09-07
+425,Productize turn-key technologies,user7,Assigned,Medium,Project_H,13.815142123491906,1,,1,Guess measure but first and conference.,2025-11-13,2025-11-24
+426,Monetize transparent schemas,user2,Assigned,High,Project_B,5.722380843804679,1,,1,,2025-11-13,2025-11-18
+427,Syndicate cutting-edge users,user7,In Progress,High,Project_B,14.811955039630057,1,,0,Memory middle sell piece share ability.,2025-08-13,2025-08-27
+428,Redefine best-of-breed roi,user3,In Progress,Medium,Project_C,5.036987239301018,1,,1,Approach perform mouth young simply.,2025-12-20,2025-12-25
+429,Grow killer web services,user1,Assigned,Medium,Project_I,16.21917705747001,1,,0,Wonder population seven important.,2025-12-22,2026-01-04
+430,Deliver frictionless portals,user5,Assigned,Medium,Project_H,2.42,0,,3,Media five church executive.,2025-12-10,2025-12-12
+431,Innovate leading-edge roi,user2,In Progress,Medium,Project_H,2.43,0,Approval,0,Your east child life kitchen share receive.,2025-11-16,2025-11-18
+432,Implement collaborative synergies,user2,Blocked,Low,Project_J,2.69,0,Technical Issue,0,News alone total born candidate factor.,2025-12-21,2025-12-24
+433,Deliver revolutionary web-readiness,user3,Assigned,Medium,Project_G,14.41,0,Technical Issue,1,,2025-09-19,2025-10-05
+434,Leverage b2c eyeballs,user8,Assigned,Low,Project_J,6.18,0,Technical Issue,3,,2026-01-02,2026-01-10
+435,Implement wireless platforms,user8,Assigned,High,Project_A,2.89,0,Approval,0,,2025-12-29,2026-01-02
+436,Mesh end-to-end roi,user2,Completed,Low,Project_G,1.6317773896117294,1,Resource Shortage,1,Traditional itself new task hit southern notice.,2025-07-23,2025-07-24
+437,Enable dynamic channels,user2,In Progress,High,Project_B,13.96,0,,0,Paper student order experience option.,2025-10-22,2025-11-06
+438,Unleash mission-critical e-business,user6,Assigned,Low,Project_F,6.66,0,,0,,2026-01-01,2026-01-07
+439,Visualize real-time relationships,user5,Completed,Medium,Project_F,1.25,0,,3,Direction involve control no certainly service.,2025-08-17,2025-08-20
+440,Enable web-enabled synergies,user2,Blocked,High,Project_H,3.66,0,,0,,2025-08-27,2025-08-30
+441,Engage clicks-and-mortar e-commerce,user6,In Progress,Low,Project_G,1.14,0,Dependency,3,Film room summer fund dog rock agree her.,2025-09-13,2025-09-14
+442,Grow distributed models,user4,In Progress,High,Project_E,8.62,0,Approval,0,,2025-12-18,2025-12-26
+443,Visualize global networks,user1,Completed,Low,Project_D,4.848392362820711,1,Approval,0,Rich north paper information everything college trade summer.,2025-12-14,2025-12-17
+444,Scale extensible relationships,user6,Assigned,Medium,Project_H,11.849739319168437,1,Resource Shortage,0,Change great billion law couple member.,2025-09-09,2025-09-19
+445,Embrace scalable paradigms,user1,Blocked,High,Project_F,15.0,0,Dependency,1,East man white would easy raise.,2025-10-25,2025-11-11
+446,Synthesize world-class interfaces,user6,In Progress,High,Project_J,12.17,0,Technical Issue,2,,2025-12-19,2026-01-01
+447,Re-contextualize vertical web services,user4,Completed,High,Project_G,14.003994268385727,1,,0,Fire I generation husband everyone dark high total.,2025-10-27,2025-11-10
+448,Orchestrate granular partnerships,user9,Completed,Medium,Project_D,6.380872732570704,1,Resource Shortage,0,,2025-08-20,2025-08-25
+449,Scale magnetic networks,user10,Assigned,Medium,Project_D,7.24,0,Dependency,3,,2025-08-14,2025-08-21
+450,Disintermediate global experiences,user7,Blocked,Low,Project_H,6.140310817791195,1,Approval,1,View explain campaign American first already give.,2025-12-04,2025-12-09
+451,Incentivize open-source functionalities,user9,Assigned,Low,Project_B,6.9396218390572955,1,,1,System social knowledge cover.,2025-12-13,2025-12-19
+452,Embrace rich metrics,user7,Blocked,Medium,Project_F,4.521528205130169,1,Approval,0,Director yet fund bar.,2025-10-05,2025-10-09
+453,Transform extensible communities,user8,In Progress,Medium,Project_C,7.63,0,Technical Issue,3,Able score probably property office.,2025-08-12,2025-08-19
+454,Empower intuitive web services,user4,In Progress,High,Project_G,8.32,0,,0,Short sister land teach buy.,2025-08-28,2025-09-05
+455,Drive customized eyeballs,user4,Completed,High,Project_I,14.54,0,,2,State assume computer bag kid certainly.,2025-08-07,2025-08-21
+456,Incentivize collaborative action-items,user4,In Progress,Low,Project_D,4.71,0,,0,,2025-08-30,2025-09-03
+457,Monetize plug-and-play content,user4,Completed,Medium,Project_D,9.65,0,Approval,0,Language least manager.,2025-12-19,2025-12-29
+458,Engineer robust convergence,user5,Blocked,High,Project_I,14.418525714153175,1,Resource Shortage,0,Project lay travel example those pick.,2025-11-24,2025-12-07
+459,Productize intuitive relationships,user10,Blocked,Low,Project_E,1.53307819708921,1,,2,,2025-08-30,2025-08-31
+460,Optimize killer platforms,user4,Blocked,Low,Project_E,6.17,0,Dependency,0,Just character turn Mrs likely skin television.,2025-09-15,2025-09-22
+461,Implement one-to-one web services,user3,Completed,High,Project_F,11.76,0,,2,,2025-08-06,2025-08-18
+462,Generate enterprise web services,user9,In Progress,Medium,Project_I,2.855789735848732,1,,0,Student school court west less Republican.,2025-09-29,2025-10-01
+463,Seize wireless bandwidth,user3,Assigned,Medium,Project_A,7.42,0,Technical Issue,3,Perform candidate commercial as option.,2025-12-21,2025-12-28
+464,Visualize open-source e-business,user5,In Progress,Low,Project_J,3.0,0,Approval,0,Company wrong open out.,2026-01-20,2026-01-25
+465,Envisioneer scalable vortals,user1,In Progress,Medium,Project_G,13.792566407657482,1,Approval,1,,2025-11-20,2025-12-03
+466,Scale rich paradigms,user3,Completed,High,Project_H,8.6,0,Resource Shortage,0,,2025-12-30,2026-01-09
+467,Disintermediate e-business bandwidth,user2,In Progress,Medium,Project_A,13.329653151948744,1,Technical Issue,3,,2025-12-28,2026-01-08
+468,Leverage robust e-business,user6,Assigned,Medium,Project_H,2.23,0,,0,Democratic garden small allow put.,2025-10-24,2025-10-28
+469,Enhance end-to-end e-services,user9,In Progress,Medium,Project_G,14.484889697899549,1,Resource Shortage,0,,2025-09-22,2025-10-06
+470,Syndicate visionary e-markets,user4,Assigned,Low,Project_G,4.97602368827172,1,,1,,2025-10-22,2025-10-25
+471,Empower interactive schemas,user5,Assigned,High,Project_E,4.641495256759875,1,Approval,3,Now report prevent early system information show purpose.,2025-09-23,2025-09-28
+472,Cultivate transparent interfaces,user1,Blocked,Medium,Project_C,4.77,0,,0,Herself smile when.,2025-09-17,2025-09-23
+473,Architect efficient e-tailers,user3,Completed,High,Project_A,7.97,0,Dependency,1,Ready take spend building.,2026-01-08,2026-01-17
+474,Innovate sticky platforms,user9,In Progress,Medium,Project_I,8.11,0,,0,Continue affect beautiful practice.,2025-08-03,2025-08-12
+475,Expedite turn-key niches,user4,In Progress,Low,Project_E,3.7571388073983947,1,Technical Issue,0,Action score middle tend require.,2025-10-24,2025-10-27
+476,Streamline transparent systems,user7,Blocked,Medium,Project_C,12.463120796133687,1,Technical Issue,2,,2025-11-11,2025-11-21
+477,Seize out-of-the-box infrastructures,user5,Assigned,High,Project_A,7.604129571996406,1,Approval,0,,2025-09-10,2025-09-17
+478,Whiteboard enterprise deliverables,user8,In Progress,Low,Project_H,5.061522126164636,1,Approval,3,,2025-09-20,2025-09-26
+479,Exploit b2c niches,user6,In Progress,High,Project_E,5.02,0,Resource Shortage,0,,2025-11-18,2025-11-24
+480,Grow innovative mindshare,user6,In Progress,Low,Project_F,7.310310134372254,1,Approval,2,Market every account.,2025-12-16,2025-12-22
+481,Deliver 24/7 technologies,user10,Blocked,Medium,Project_E,3.54,0,,0,Hit four word particular very yourself.,2026-01-07,2026-01-12
+482,Incentivize granular e-tailers,user1,In Progress,Low,Project_A,4.05,0,Resource Shortage,0,,2025-10-09,2025-10-15
+483,Envisioneer cross-platform roi,user5,Completed,Medium,Project_E,15.247225440184803,1,Resource Shortage,0,Financial possible structure build event receive whole.,2025-09-19,2025-10-05
+484,Evolve leading-edge convergence,user1,Blocked,Medium,Project_D,5.477956908633233,1,Technical Issue,2,Include former face short language skill customer.,2025-12-31,2026-01-05
+485,Disintermediate best-of-breed vortals,user5,Assigned,High,Project_D,4.23,0,Approval,0,Yet teach our become choice help.,2026-01-07,2026-01-11
+486,Optimize killer models,user3,Assigned,Medium,Project_C,10.540061986230963,1,Approval,0,,2025-08-24,2025-09-01
+487,Synergize sticky methodologies,user6,In Progress,High,Project_I,13.08,0,Resource Shortage,1,Group station year for many various must.,2025-11-11,2025-11-26
+488,Syndicate customized communities,user3,Blocked,Low,Project_D,3.64,0,Technical Issue,1,Responsibility order four old market represent affect.,2026-01-02,2026-01-05
+489,Incubate seamless mindshare,user8,Assigned,Low,Project_C,4.74,0,Technical Issue,0,Agency cultural option maybe strong.,2025-08-29,2025-09-04
+490,Maximize synergistic e-markets,user2,Completed,High,Project_C,9.083399708301222,1,Approval,0,,2025-10-11,2025-10-21
+491,Transition cross-platform functionalities,user9,Completed,Medium,Project_D,15.350687614030663,1,,1,Hear first employee camera remember.,2026-01-07,2026-01-21
+492,Facilitate user-centric relationships,user3,Assigned,Low,Project_B,2.76,0,Resource Shortage,0,Into decide maybe.,2025-09-13,2025-09-16
+493,Incubate b2c vortals,user2,Blocked,Low,Project_I,5.292809901105399,1,Approval,2,That hold would us mouth bag.,2025-10-18,2025-10-23
+494,Integrate 24/365 convergence,user7,Assigned,Medium,Project_G,15.411448991568324,1,,0,Lawyer resource difficult upon.,2025-10-22,2025-11-07
+495,Syndicate leading-edge e-commerce,user2,Completed,High,Project_E,5.1710949636814565,1,Technical Issue,0,,2025-07-23,2025-07-27
+496,Re-contextualize seamless roi,user10,Assigned,High,Project_I,3.25,0,Technical Issue,0,Smile develop resource heart trial.,2025-10-30,2025-11-02
+497,Incentivize out-of-the-box e-tailers,user4,Completed,Medium,Project_E,6.64,0,Resource Shortage,1,Behavior probably summer project usually rest prove crime.,2026-01-09,2026-01-16
+498,Re-intermediate 24/365 architectures,user6,Blocked,High,Project_E,9.35,0,Technical Issue,1,Admit high operation financial term always or.,2025-09-24,2025-10-05
+499,Grow global supply-chains,user3,Blocked,Medium,Project_J,15.839066512890945,1,,0,Through space goal course.,2025-08-28,2025-09-12
+500,Leverage front-end experiences,user7,In Progress,High,Project_A,4.365942435158718,1,,1,,2025-08-03,2025-08-09
