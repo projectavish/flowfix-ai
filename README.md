@@ -1,6 +1,3 @@
-Here is the ONE text. Copy everything below this line and paste into your README.md:
-
-```
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/OpenAI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white" />
@@ -77,15 +74,11 @@ python src/ml_predictor.py train
 
 # 3. Launch dashboard
 streamlit run dashboard/streamlit_app.py
-```
 
-**Dashboard URL**: http://localhost:8501
+Dashboard URL: http://localhost:8501
 
----
+🏗️ Project Structure
 
-## 🏗️ Project Structure
-
-```
 flowfix-ai/
 ├── src/              # Core modules (ingestion, ML, AI, exports)
 ├── dashboard/        # Streamlit web interface
@@ -95,13 +88,9 @@ flowfix-ai/
 ├── data/             # Sample datasets
 ├── assets/           # Screenshots & images
 └── flowfix.db        # SQLite database
-```
 
----
+🎮 CLI Commands
 
-## 🎮 CLI Commands
-
-```bash
 # Data & Analysis
 python src/ingestion.py --source data/file.csv
 python src/bottleneck_detector.py detect --assignee "John Doe"
@@ -111,21 +100,12 @@ python src/ml_predictor.py predict <task_id>
 # Reports
 python src/pdf_generator.py --output exports/report.pdf
 python src/export_for_powerbi.py
-```
 
----
-
-## 🛠️ Tech Stack
-
+🛠️ Tech Stack
 Python 3.8+ | OpenAI GPT-4 | Streamlit | scikit-learn | SQLite | PowerBI
 
----
-
-## 📝 License
-
+📝 License
 MIT License © 2026 Avish (@projectavish)
-
----
 
 <p align="center"><strong>⭐ Star this repo if you find it helpful!</strong></p>
 ```
