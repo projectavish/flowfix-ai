@@ -32,16 +32,16 @@ FlowFix AI is a **production-ready workflow analysis system** that combines Mach
 ## 📸 Screenshots
 
 ### 🎛️ Main Dashboard - Real-time Bottleneck Detection
-![Dashboard Overview](./assets/dashboard-overview.png.png)
+![Dashboard Overview](./assets/dashboard-overview.png)
 
 ### 👥 Team Performance Analytics
-![Team Performance](./assets/team-performance.png.png)
+![Team Performance](./assets/team-performance.png)
 
 ### 📊 Project Insights & Status Breakdown
-![Project Insights](./assets/project-insights.png.png)
+![Project Insights](./assets/project-insights.png)
 
 ### 📁 Data Upload & Summary
-![Data Summary](./assets/data-summary.png.png)
+![Data Summary](./assets/data-summary.png)
 
 ---
 
