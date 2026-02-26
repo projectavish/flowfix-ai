@@ -1,0 +1,501 @@
+task_id,task_name,assignee,project,status,priority,created_at,actual_duration,bottleneck_type,severity_score,detected_date,root_cause_suggestion
+T0000,Task 0,Diana,Gamma,In Progress,High,2026-01-06,4,Technical,10,2026-01-06,External dependency
+T0001,Task 1,Bob,Delta,In Progress,High,2025-11-26,10,Resource,41,,Unclear requirements
+T0002,Task 2,Charlie,Gamma,In Progress,Critical,2026-02-12,12,Process,80,,Technical debt
+T0003,Task 3,Eve,Beta,Completed,Medium,2025-12-17,17,Technical,76,2025-12-17,Communication gap
+T0004,Task 4,Frank,Beta,Completed,Medium,2025-12-28,14,Communication,93,2025-12-28,Technical debt
+T0005,Task 5,Alice,Gamma,Blocked,Medium,2026-02-06,14,Process,29,2026-02-06,Unclear requirements
+T0006,Task 6,Eve,Delta,Blocked,Low,2025-12-06,2,Process,44,2025-12-06,Technical debt
+T0007,Task 7,Frank,Delta,In Progress,Low,2025-12-02,11,Resource,87,2025-12-02,Communication gap
+T0008,Task 8,Diana,Alpha,In Progress,Medium,2025-12-14,16,,26,2025-12-14,Unclear requirements
+T0009,Task 9,Eve,Delta,In Progress,Low,2025-12-14,19,Communication,27,2025-12-14,Resource constraint
+T0010,Task 10,Alice,Gamma,Completed,High,2025-12-01,6,Communication,54,2025-12-01,Unclear requirements
+T0011,Task 11,Frank,Beta,In Progress,High,2025-11-19,19,Resource,93,2025-11-19,External dependency
+T0012,Task 12,Frank,Alpha,Completed,High,2026-02-03,5,Technical,62,2026-02-03,Resource constraint
+T0013,Task 13,Frank,Alpha,Completed,Critical,2026-02-24,4,Process,91,,
+T0014,Task 14,Diana,Beta,Completed,Medium,2026-02-05,15,Communication,77,2026-02-05,Technical debt
+T0015,Task 15,Eve,Delta,Completed,Low,2026-01-05,4,,74,2026-01-05,
+T0016,Task 16,Diana,Beta,In Progress,Critical,2026-02-25,10,Communication,10,2026-02-25,External dependency
+T0017,Task 17,Bob,Delta,Not Started,High,2025-12-01,3,,67,2025-12-01,Technical debt
+T0018,Task 18,Bob,Beta,Blocked,Medium,2026-01-28,5,Communication,35,2026-01-28,Resource constraint
+T0019,Task 19,Eve,Gamma,In Progress,Low,2026-01-20,6,Process,29,,Resource constraint
+T0020,Task 20,Diana,Delta,Blocked,High,2026-02-25,8,,19,2026-02-25,Unclear requirements
+T0021,Task 21,Alice,Gamma,Completed,Medium,2025-12-25,7,Process,68,2025-12-25,Communication gap
+T0022,Task 22,Frank,Alpha,Blocked,Critical,2025-12-29,10,Technical,84,,Unclear requirements
+T0023,Task 23,Frank,Beta,Blocked,High,2026-02-06,6,Process,50,,Unclear requirements
+T0024,Task 24,Eve,Alpha,Completed,Low,2026-01-25,14,Process,14,2026-01-25,Technical debt
+T0025,Task 25,Bob,Alpha,In Progress,Low,2025-12-13,4,Technical,74,,External dependency
+T0026,Task 26,Bob,Alpha,In Progress,Critical,2025-12-31,13,Resource,26,,Resource constraint
+T0027,Task 27,Frank,Alpha,Completed,Low,2026-02-05,17,Technical,31,,Resource constraint
+T0028,Task 28,Eve,Beta,Completed,Medium,2025-11-30,7,Technical,50,2025-11-30,Resource constraint
+T0029,Task 29,Diana,Alpha,In Progress,Low,2026-01-09,4,Process,77,2026-01-09,External dependency
+T0030,Task 30,Bob,Beta,In Progress,Medium,2025-11-28,14,Process,78,2025-11-28,Communication gap
+T0031,Task 31,Diana,Beta,Blocked,Medium,2025-12-30,3,Technical,20,2025-12-30,Unclear requirements
+T0032,Task 32,Bob,Gamma,Not Started,Medium,2026-01-16,5,Resource,65,2026-01-16,Resource constraint
+T0033,Task 33,Bob,Delta,Completed,Medium,2025-11-27,16,Communication,60,2025-11-27,Unclear requirements
+T0034,Task 34,Charlie,Delta,In Progress,High,2025-12-29,4,Communication,30,2025-12-29,Resource constraint
+T0035,Task 35,Bob,Beta,In Progress,Critical,2025-12-09,2,,85,2025-12-09,External dependency
+T0036,Task 36,Alice,Gamma,In Progress,High,2026-02-12,18,Communication,35,2026-02-12,Communication gap
+T0037,Task 37,Eve,Beta,Not Started,Medium,2025-12-27,19,Technical,28,2025-12-27,Technical debt
+T0038,Task 38,Eve,Beta,In Progress,High,2025-12-27,19,Communication,69,,External dependency
+T0039,Task 39,Diana,Beta,Completed,Medium,2026-01-11,17,Resource,80,2026-01-11,Unclear requirements
+T0040,Task 40,Bob,Gamma,In Progress,Low,2025-12-27,14,Resource,56,2025-12-27,Communication gap
+T0041,Task 41,Alice,Delta,Completed,Critical,2026-01-07,19,Communication,80,2026-01-07,External dependency
+T0042,Task 42,Diana,Gamma,Completed,Medium,2026-01-03,13,Technical,35,,Unclear requirements
+T0043,Task 43,Charlie,Alpha,Blocked,Medium,2025-12-25,12,Communication,49,2025-12-25,Communication gap
+T0044,Task 44,Diana,Gamma,In Progress,Low,2026-02-24,6,,14,2026-02-24,Unclear requirements
+T0045,Task 45,Diana,Gamma,In Progress,High,2026-01-07,4,,30,2026-01-07,Unclear requirements
+T0046,Task 46,Bob,Gamma,In Progress,Medium,2026-02-20,19,,87,2026-02-20,Resource constraint
+T0047,Task 47,Charlie,Gamma,Not Started,Low,2026-02-06,16,Technical,13,2026-02-06,Technical debt
+T0048,Task 48,Diana,Delta,Blocked,Low,2025-12-16,13,Resource,32,2025-12-16,Communication gap
+T0049,Task 49,Alice,Alpha,Completed,Medium,2026-01-19,4,Technical,93,2026-01-19,External dependency
+T0050,Task 50,Alice,Delta,Completed,Medium,2026-02-09,17,Resource,24,,Communication gap
+T0051,Task 51,Eve,Delta,Completed,Medium,2026-02-23,1,Communication,17,2026-02-23,External dependency
+T0052,Task 52,Charlie,Gamma,In Progress,Low,2025-11-30,18,Communication,50,2025-11-30,External dependency
+T0053,Task 53,Charlie,Beta,Not Started,Medium,2025-12-29,17,Communication,28,2025-12-29,Resource constraint
+T0054,Task 54,Eve,Beta,Completed,Critical,2026-02-13,15,Resource,55,2026-02-13,Technical debt
+T0055,Task 55,Diana,Delta,In Progress,Low,2026-02-18,11,Process,37,2026-02-18,Resource constraint
+T0056,Task 56,Charlie,Delta,Completed,Medium,2025-11-29,13,Technical,77,2025-11-29,Communication gap
+T0057,Task 57,Alice,Gamma,In Progress,Medium,2026-01-05,1,Process,24,2026-01-05,External dependency
+T0058,Task 58,Alice,Delta,In Progress,High,2026-02-25,17,,46,2026-02-25,Resource constraint
+T0059,Task 59,Bob,Gamma,Blocked,Medium,2025-12-05,6,Resource,10,2025-12-05,Communication gap
+T0060,Task 60,Charlie,Beta,In Progress,High,2025-11-27,4,Process,76,2025-11-27,Communication gap
+T0061,Task 61,Diana,Beta,Completed,Medium,2025-12-29,16,Process,33,,Technical debt
+T0062,Task 62,Eve,Alpha,In Progress,High,2025-12-18,15,Communication,36,2025-12-18,Unclear requirements
+T0063,Task 63,Eve,Beta,In Progress,Medium,2026-01-14,15,Communication,49,2026-01-14,Unclear requirements
+T0064,Task 64,Diana,Delta,In Progress,Low,2026-02-19,6,Resource,72,2026-02-19,Resource constraint
+T0065,Task 65,Frank,Beta,In Progress,Critical,2026-01-11,15,Process,70,2026-01-11,Unclear requirements
+T0066,Task 66,Bob,Gamma,Blocked,Low,2026-01-23,14,Technical,45,2026-01-23,Resource constraint
+T0067,Task 67,Eve,Beta,In Progress,Medium,2025-12-11,11,Resource,33,2025-12-11,Technical debt
+T0068,Task 68,Charlie,Alpha,Completed,Low,2025-12-08,7,Communication,33,2025-12-08,Resource constraint
+T0069,Task 69,Bob,Beta,Completed,Medium,2026-01-22,9,Communication,13,,External dependency
+T0070,Task 70,Charlie,Gamma,Completed,Medium,2026-01-08,16,Resource,76,,Technical debt
+T0071,Task 71,Alice,Gamma,Not Started,Medium,2026-02-23,5,Resource,43,,Communication gap
+T0072,Task 72,Bob,Delta,Blocked,Low,2026-02-25,10,,66,2026-02-25,Technical debt
+T0073,Task 73,Eve,Beta,In Progress,Medium,2026-02-21,18,Technical,58,2026-02-21,Technical debt
+T0074,Task 74,Bob,Gamma,In Progress,High,2026-01-04,3,Communication,62,2026-01-04,External dependency
+T0075,Task 75,Bob,Alpha,In Progress,Medium,2026-02-23,13,Process,32,2026-02-23,Resource constraint
+T0076,Task 76,Bob,Delta,Completed,Low,2026-01-04,11,Technical,78,2026-01-04,Unclear requirements
+T0077,Task 77,Frank,Alpha,In Progress,Medium,2025-11-26,17,Process,62,,Communication gap
+T0078,Task 78,Bob,Beta,Completed,Medium,2025-12-26,13,Technical,71,2025-12-26,Resource constraint
+T0079,Task 79,Charlie,Beta,Completed,Medium,2026-02-09,6,,50,2026-02-09,Resource constraint
+T0080,Task 80,Alice,Beta,In Progress,Low,2025-11-29,17,Resource,66,,Unclear requirements
+T0081,Task 81,Diana,Delta,Blocked,High,2026-01-14,13,Process,69,,Resource constraint
+T0082,Task 82,Bob,Gamma,In Progress,Medium,2026-01-24,19,Process,63,,Technical debt
+T0083,Task 83,Eve,Delta,In Progress,Critical,2025-12-15,19,Resource,79,,Unclear requirements
+T0084,Task 84,Bob,Alpha,Blocked,High,2025-12-27,10,Process,66,2025-12-27,External dependency
+T0085,Task 85,Eve,Delta,Completed,High,2025-11-19,3,Process,19,,Communication gap
+T0086,Task 86,Charlie,Alpha,Completed,High,2026-02-13,14,Communication,49,2026-02-13,Communication gap
+T0087,Task 87,Eve,Delta,Completed,Medium,2025-11-24,19,Technical,16,2025-11-24,Communication gap
+T0088,Task 88,Diana,Gamma,In Progress,High,2026-01-10,5,Resource,47,2026-01-10,External dependency
+T0089,Task 89,Alice,Alpha,Blocked,Medium,2026-02-12,5,,94,2026-02-12,Unclear requirements
+T0090,Task 90,Eve,Beta,Blocked,High,2025-12-17,17,Process,70,2025-12-17,External dependency
+T0091,Task 91,Eve,Beta,Completed,High,2025-12-11,10,,93,2025-12-11,Communication gap
+T0092,Task 92,Alice,Delta,In Progress,High,2025-12-02,5,Resource,12,2025-12-02,Communication gap
+T0093,Task 93,Diana,Beta,Completed,Critical,2025-12-27,4,,60,,Technical debt
+T0094,Task 94,Bob,Alpha,In Progress,Medium,2026-01-18,6,Communication,56,2026-01-18,Unclear requirements
+T0095,Task 95,Eve,Beta,In Progress,Medium,2025-12-04,4,,77,,Technical debt
+T0096,Task 96,Alice,Gamma,Not Started,Medium,2025-12-09,7,,85,2025-12-09,Communication gap
+T0097,Task 97,Charlie,Gamma,In Progress,Medium,2025-12-07,7,Resource,47,,Resource constraint
+T0098,Task 98,Alice,Delta,Not Started,High,2026-01-05,18,,45,2026-01-05,Communication gap
+T0099,Task 99,Charlie,Alpha,Completed,Low,2026-02-03,3,Resource,50,2026-02-03,Unclear requirements
+T0100,Task 100,Diana,Gamma,In Progress,Medium,2026-02-01,1,Resource,78,2026-02-01,Resource constraint
+T0101,Task 101,Bob,Gamma,Completed,Medium,2025-11-30,4,Resource,22,2025-11-30,Resource constraint
+T0102,Task 102,Alice,Alpha,Blocked,Critical,2025-12-29,6,Technical,67,2025-12-29,Resource constraint
+T0103,Task 103,Frank,Beta,Blocked,High,2026-01-17,9,Process,59,,Technical debt
+T0104,Task 104,Eve,Beta,Blocked,High,2026-01-29,14,Technical,39,2026-01-29,Unclear requirements
+T0105,Task 105,Diana,Delta,Completed,High,2026-02-12,12,Technical,71,2026-02-12,
+T0106,Task 106,Alice,Beta,Completed,Medium,2026-01-13,4,Communication,34,2026-01-13,Technical debt
+T0107,Task 107,Eve,Alpha,Blocked,Medium,2025-12-24,12,,36,2025-12-24,Resource constraint
+T0108,Task 108,Alice,Gamma,In Progress,Medium,2025-11-30,10,Technical,60,2025-11-30,Communication gap
+T0109,Task 109,Charlie,Beta,Completed,Medium,2025-12-18,7,Resource,87,2025-12-18,External dependency
+T0110,Task 110,Alice,Delta,In Progress,Low,2026-02-18,3,Resource,66,2026-02-18,Communication gap
+T0111,Task 111,Frank,Beta,Not Started,Medium,2025-12-01,14,Process,56,,Resource constraint
+T0112,Task 112,Alice,Alpha,Not Started,Low,2026-02-26,10,Process,48,,External dependency
+T0113,Task 113,Alice,Delta,In Progress,Critical,2026-02-19,16,Resource,25,,Communication gap
+T0114,Task 114,Frank,Beta,Blocked,High,2025-12-01,16,Resource,31,2025-12-01,Resource constraint
+T0115,Task 115,Diana,Delta,Not Started,Critical,2025-12-26,10,,94,2025-12-26,Resource constraint
+T0116,Task 116,Alice,Alpha,In Progress,Medium,2026-02-16,13,Technical,63,2026-02-16,Technical debt
+T0117,Task 117,Frank,Gamma,Completed,Low,2025-12-08,6,Resource,30,2025-12-08,Resource constraint
+T0118,Task 118,Eve,Alpha,Not Started,High,2026-02-19,12,Technical,81,2026-02-19,External dependency
+T0119,Task 119,Charlie,Alpha,In Progress,Low,2026-01-23,9,Process,25,2026-01-23,Unclear requirements
+T0120,Task 120,Charlie,Alpha,Completed,Critical,2026-01-23,13,Technical,68,2026-01-23,External dependency
+T0121,Task 121,Alice,Alpha,In Progress,Low,2026-01-25,4,Communication,40,,Technical debt
+T0122,Task 122,Diana,Gamma,Not Started,High,2026-02-22,11,Technical,51,,Resource constraint
+T0123,Task 123,Diana,Gamma,Not Started,High,2026-01-17,18,Technical,83,2026-01-17,Resource constraint
+T0124,Task 124,Eve,Delta,Not Started,Medium,2026-01-30,11,,41,2026-01-30,Technical debt
+T0125,Task 125,Alice,Beta,Completed,High,2026-02-20,4,,68,2026-02-20,Communication gap
+T0126,Task 126,Charlie,Gamma,Blocked,High,2025-12-16,18,Communication,43,2025-12-16,Communication gap
+T0127,Task 127,Diana,Gamma,Blocked,High,2025-12-17,1,Technical,18,2025-12-17,Unclear requirements
+T0128,Task 128,Alice,Beta,In Progress,Low,2026-02-15,7,Communication,90,,Unclear requirements
+T0129,Task 129,Diana,Gamma,Blocked,Medium,2026-01-24,6,Resource,20,,Resource constraint
+T0130,Task 130,Frank,Alpha,In Progress,High,2026-01-25,15,Resource,19,2026-01-25,Communication gap
+T0131,Task 131,Diana,Alpha,Completed,Medium,2026-01-10,18,Process,26,2026-01-10,Resource constraint
+T0132,Task 132,Charlie,Beta,In Progress,Medium,2026-02-04,11,Technical,77,2026-02-04,Technical debt
+T0133,Task 133,Bob,Delta,In Progress,High,2025-12-27,15,Technical,57,2025-12-27,Communication gap
+T0134,Task 134,Eve,Delta,In Progress,Medium,2025-12-01,16,Resource,61,2025-12-01,External dependency
+T0135,Task 135,Eve,Beta,Completed,High,2026-01-21,7,,34,2026-01-21,Unclear requirements
+T0136,Task 136,Charlie,Beta,In Progress,High,2025-11-20,10,,30,2025-11-20,Unclear requirements
+T0137,Task 137,Diana,Alpha,Blocked,Medium,2026-01-14,12,Communication,74,2026-01-14,Communication gap
+T0138,Task 138,Alice,Delta,In Progress,High,2025-12-03,14,Technical,72,2025-12-03,Communication gap
+T0139,Task 139,Diana,Gamma,In Progress,Medium,2025-11-28,5,,60,2025-11-28,Unclear requirements
+T0140,Task 140,Charlie,Alpha,Completed,Medium,2026-01-23,18,Process,45,2026-01-23,External dependency
+T0141,Task 141,Eve,Beta,Blocked,High,2025-12-24,5,Communication,90,,External dependency
+T0142,Task 142,Diana,Delta,In Progress,Medium,2025-11-20,3,Process,75,2025-11-20,Unclear requirements
+T0143,Task 143,Eve,Gamma,Completed,High,2026-01-11,5,Communication,24,2026-01-11,Unclear requirements
+T0144,Task 144,Alice,Gamma,Blocked,Low,2025-12-11,17,Resource,48,2025-12-11,Technical debt
+T0145,Task 145,Eve,Alpha,Completed,Medium,2026-02-24,19,,79,2026-02-24,Communication gap
+T0146,Task 146,Eve,Delta,In Progress,Low,2026-02-26,19,,10,2026-02-26,Resource constraint
+T0147,Task 147,Bob,Delta,In Progress,Medium,2026-02-22,12,Process,32,2026-02-22,Communication gap
+T0148,Task 148,Bob,Beta,Blocked,Critical,2025-11-29,9,Technical,48,2025-11-29,Communication gap
+T0149,Task 149,Frank,Delta,In Progress,Medium,2026-02-13,1,,66,,Unclear requirements
+T0150,Task 150,Bob,Delta,Blocked,Low,2026-01-31,18,Technical,90,2026-01-31,Communication gap
+T0151,Task 151,Eve,Alpha,Completed,Medium,2026-02-18,4,,43,2026-02-18,External dependency
+T0152,Task 152,Charlie,Delta,Not Started,Low,2025-12-10,10,Technical,50,2025-12-10,Resource constraint
+T0153,Task 153,Eve,Gamma,Blocked,Low,2026-02-12,7,Resource,82,2026-02-12,Unclear requirements
+T0154,Task 154,Charlie,Alpha,Not Started,High,2025-11-29,1,Resource,22,2025-11-29,Technical debt
+T0155,Task 155,Charlie,Alpha,In Progress,High,2026-01-16,17,Resource,79,2026-01-16,External dependency
+T0156,Task 156,Bob,Beta,Blocked,Medium,2025-12-12,2,Communication,15,2025-12-12,
+T0157,Task 157,Diana,Delta,Completed,Medium,2026-01-07,11,Resource,93,2026-01-07,Technical debt
+T0158,Task 158,Alice,Beta,Completed,Low,2025-12-26,9,Technical,61,,Communication gap
+T0159,Task 159,Bob,Gamma,Completed,Low,2025-11-23,7,Technical,12,2025-11-23,Technical debt
+T0160,Task 160,Bob,Alpha,Blocked,High,2026-01-06,17,Technical,90,2026-01-06,Technical debt
+T0161,Task 161,Diana,Alpha,Not Started,High,2025-11-23,17,,72,2025-11-23,Unclear requirements
+T0162,Task 162,Alice,Alpha,Blocked,Medium,2026-02-23,2,,58,,Unclear requirements
+T0163,Task 163,Eve,Gamma,Completed,High,2025-11-25,6,Technical,85,2025-11-25,Unclear requirements
+T0164,Task 164,Frank,Gamma,Completed,Low,2026-02-04,14,,56,2026-02-04,Technical debt
+T0165,Task 165,Frank,Beta,Blocked,Medium,2026-02-12,6,Communication,64,,Resource constraint
+T0166,Task 166,Eve,Beta,In Progress,Medium,2026-01-15,2,Technical,73,2026-01-15,External dependency
+T0167,Task 167,Bob,Beta,In Progress,Critical,2026-01-29,1,,74,2026-01-29,Resource constraint
+T0168,Task 168,Alice,Delta,In Progress,Medium,2026-01-22,10,Resource,90,2026-01-22,Unclear requirements
+T0169,Task 169,Bob,Alpha,In Progress,Medium,2026-02-14,5,Process,76,2026-02-14,Technical debt
+T0170,Task 170,Charlie,Alpha,In Progress,Medium,2026-01-26,2,,24,2026-01-26,Communication gap
+T0171,Task 171,Bob,Beta,In Progress,High,2025-12-18,16,Technical,41,2025-12-18,Resource constraint
+T0172,Task 172,Bob,Alpha,In Progress,Medium,2025-12-30,2,,77,2025-12-30,Unclear requirements
+T0173,Task 173,Eve,Beta,In Progress,Low,2025-12-03,10,,27,,
+T0174,Task 174,Eve,Delta,Not Started,High,2026-01-30,2,Process,92,,Unclear requirements
+T0175,Task 175,Eve,Delta,Completed,Critical,2025-12-23,16,,52,2025-12-23,Unclear requirements
+T0176,Task 176,Frank,Gamma,In Progress,Critical,2026-01-16,16,Technical,44,,External dependency
+T0177,Task 177,Charlie,Delta,Completed,Medium,2026-01-13,19,Technical,87,2026-01-13,Resource constraint
+T0178,Task 178,Eve,Beta,In Progress,Medium,2025-12-27,7,Communication,67,2025-12-27,Technical debt
+T0179,Task 179,Alice,Delta,Not Started,Medium,2026-01-01,12,,42,2026-01-01,Unclear requirements
+T0180,Task 180,Frank,Gamma,Blocked,High,2026-02-21,15,Process,23,2026-02-21,Unclear requirements
+T0181,Task 181,Diana,Alpha,In Progress,High,2026-01-30,8,Technical,43,2026-01-30,Unclear requirements
+T0182,Task 182,Alice,Beta,Completed,Medium,2026-01-30,6,Communication,70,2026-01-30,Resource constraint
+T0183,Task 183,Alice,Alpha,Blocked,Medium,2026-01-14,10,Communication,13,2026-01-14,Unclear requirements
+T0184,Task 184,Eve,Gamma,Not Started,Low,2025-12-05,3,Communication,68,,Resource constraint
+T0185,Task 185,Diana,Gamma,Completed,High,2026-01-28,19,Process,38,2026-01-28,Communication gap
+T0186,Task 186,Diana,Gamma,Completed,Medium,2025-12-27,17,Resource,92,2025-12-27,Unclear requirements
+T0187,Task 187,Frank,Alpha,In Progress,Medium,2025-12-14,7,Resource,15,2025-12-14,Technical debt
+T0188,Task 188,Diana,Alpha,Not Started,Medium,2025-11-27,4,,58,2025-11-27,External dependency
+T0189,Task 189,Charlie,Alpha,In Progress,Medium,2025-11-30,14,Resource,49,,Communication gap
+T0190,Task 190,Eve,Alpha,Not Started,Medium,2025-12-27,15,Resource,92,2025-12-27,Resource constraint
+T0191,Task 191,Diana,Gamma,Completed,Low,2025-11-22,8,,74,2025-11-22,External dependency
+T0192,Task 192,Frank,Gamma,Completed,High,2026-02-26,15,Process,78,2026-02-26,Unclear requirements
+T0193,Task 193,Charlie,Beta,Completed,High,2026-01-31,14,,36,2026-01-31,Resource constraint
+T0194,Task 194,Bob,Beta,In Progress,Medium,2025-12-27,9,Communication,89,2025-12-27,Communication gap
+T0195,Task 195,Bob,Alpha,In Progress,Medium,2025-12-12,8,,15,2025-12-12,Technical debt
+T0196,Task 196,Charlie,Delta,In Progress,High,2026-02-24,17,Resource,22,2026-02-24,Technical debt
+T0197,Task 197,Frank,Delta,In Progress,Critical,2025-12-19,2,Process,73,2025-12-19,Unclear requirements
+T0198,Task 198,Charlie,Gamma,Blocked,Critical,2025-12-17,3,Communication,71,2025-12-17,Technical debt
+T0199,Task 199,Eve,Gamma,In Progress,Low,2026-01-31,8,,28,,Unclear requirements
+T0200,Task 200,Eve,Gamma,In Progress,High,2026-02-18,12,Communication,85,2026-02-18,External dependency
+T0201,Task 201,Bob,Beta,Not Started,High,2025-12-27,1,Process,89,2025-12-27,Unclear requirements
+T0202,Task 202,Diana,Beta,Blocked,High,2026-01-21,10,Communication,52,2026-01-21,External dependency
+T0203,Task 203,Frank,Gamma,Not Started,High,2025-11-22,3,Communication,83,2025-11-22,Technical debt
+T0204,Task 204,Bob,Gamma,Not Started,Critical,2026-01-07,6,Communication,29,2026-01-07,External dependency
+T0205,Task 205,Diana,Gamma,In Progress,Medium,2026-01-14,7,Communication,77,2026-01-14,Communication gap
+T0206,Task 206,Diana,Delta,In Progress,Critical,2026-02-03,18,,53,2026-02-03,Communication gap
+T0207,Task 207,Eve,Beta,Blocked,Low,2025-12-10,11,Communication,32,2025-12-10,Unclear requirements
+T0208,Task 208,Alice,Delta,Completed,High,2025-12-30,19,Process,11,,Unclear requirements
+T0209,Task 209,Alice,Delta,In Progress,Medium,2026-01-26,5,Technical,31,,Unclear requirements
+T0210,Task 210,Charlie,Gamma,Blocked,Low,2025-11-23,19,Process,66,2025-11-23,External dependency
+T0211,Task 211,Eve,Gamma,In Progress,Medium,2025-12-01,11,Technical,81,,External dependency
+T0212,Task 212,Diana,Alpha,In Progress,Medium,2026-01-06,12,Technical,16,,Technical debt
+T0213,Task 213,Frank,Alpha,Completed,High,2025-12-27,10,Process,87,2025-12-27,Resource constraint
+T0214,Task 214,Alice,Delta,Completed,High,2025-12-31,8,Resource,65,2025-12-31,Unclear requirements
+T0215,Task 215,Diana,Beta,Completed,Medium,2026-01-06,9,Process,76,2026-01-06,Communication gap
+T0216,Task 216,Alice,Gamma,In Progress,Low,2026-02-15,4,,25,,Technical debt
+T0217,Task 217,Alice,Gamma,Blocked,Medium,2026-01-19,5,,92,2026-01-19,Communication gap
+T0218,Task 218,Alice,Delta,In Progress,Medium,2026-02-25,8,Process,60,,
+T0219,Task 219,Frank,Alpha,In Progress,Medium,2026-02-24,9,,91,2026-02-24,Resource constraint
+T0220,Task 220,Eve,Beta,Blocked,Medium,2026-01-02,15,Technical,89,2026-01-02,Technical debt
+T0221,Task 221,Frank,Alpha,Not Started,Critical,2025-12-08,15,Resource,81,2025-12-08,Technical debt
+T0222,Task 222,Bob,Alpha,Blocked,Medium,2025-12-30,16,Process,21,2025-12-30,Unclear requirements
+T0223,Task 223,Diana,Alpha,Blocked,Low,2026-02-25,14,Technical,62,,Resource constraint
+T0224,Task 224,Eve,Alpha,Completed,High,2026-02-25,8,Communication,84,2026-02-25,Resource constraint
+T0225,Task 225,Eve,Gamma,Completed,Medium,2025-11-27,18,Communication,14,2025-11-27,External dependency
+T0226,Task 226,Eve,Gamma,In Progress,High,2026-01-04,10,Process,36,2026-01-04,Technical debt
+T0227,Task 227,Eve,Alpha,Completed,Medium,2025-12-02,6,Process,21,,Technical debt
+T0228,Task 228,Frank,Beta,In Progress,Critical,2025-11-23,12,Technical,26,2025-11-23,External dependency
+T0229,Task 229,Eve,Delta,In Progress,Medium,2025-11-22,2,Resource,15,2025-11-22,Communication gap
+T0230,Task 230,Charlie,Beta,Blocked,Medium,2026-02-26,7,Resource,14,2026-02-26,Resource constraint
+T0231,Task 231,Diana,Beta,Completed,High,2026-02-08,16,Resource,66,2026-02-08,Technical debt
+T0232,Task 232,Eve,Beta,In Progress,Medium,2026-02-25,3,,37,2026-02-25,Technical debt
+T0233,Task 233,Diana,Alpha,In Progress,Medium,2026-01-05,13,,87,2026-01-05,Communication gap
+T0234,Task 234,Charlie,Gamma,Completed,Low,2026-01-14,3,Technical,78,2026-01-14,Communication gap
+T0235,Task 235,Charlie,Beta,In Progress,High,2025-11-29,18,,68,2025-11-29,Communication gap
+T0236,Task 236,Diana,Alpha,Blocked,High,2026-01-26,11,Resource,42,2026-01-26,Unclear requirements
+T0237,Task 237,Alice,Beta,Completed,High,2025-12-19,8,Technical,71,2025-12-19,External dependency
+T0238,Task 238,Bob,Beta,Completed,Low,2026-01-26,6,Resource,59,2026-01-26,Resource constraint
+T0239,Task 239,Alice,Alpha,Completed,Low,2025-12-21,1,Communication,28,2025-12-21,Resource constraint
+T0240,Task 240,Alice,Gamma,Blocked,Medium,2026-01-03,1,,78,2026-01-03,Unclear requirements
+T0241,Task 241,Frank,Gamma,In Progress,Low,2025-12-14,8,Communication,75,2025-12-14,Resource constraint
+T0242,Task 242,Alice,Delta,Completed,Medium,2026-01-02,5,Resource,56,2026-01-02,Unclear requirements
+T0243,Task 243,Eve,Alpha,Completed,Medium,2026-02-10,16,Communication,48,2026-02-10,External dependency
+T0244,Task 244,Frank,Delta,In Progress,Critical,2026-01-20,11,Process,77,2026-01-20,External dependency
+T0245,Task 245,Frank,Delta,Blocked,Medium,2026-02-03,5,,42,2026-02-03,Unclear requirements
+T0246,Task 246,Charlie,Delta,Blocked,High,2025-12-20,4,Technical,22,,Unclear requirements
+T0247,Task 247,Alice,Gamma,Completed,Low,2025-11-21,6,Technical,93,2025-11-21,Unclear requirements
+T0248,Task 248,Charlie,Alpha,Blocked,Medium,2025-12-19,14,Technical,63,2025-12-19,Unclear requirements
+T0249,Task 249,Diana,Delta,Blocked,Medium,2025-12-03,19,Communication,16,,Resource constraint
+T0250,Task 250,Bob,Alpha,Blocked,Critical,2026-02-16,9,Process,88,2026-02-16,External dependency
+T0251,Task 251,Frank,Alpha,Blocked,High,2026-02-11,12,Communication,23,2026-02-11,Unclear requirements
+T0252,Task 252,Diana,Gamma,Completed,High,2025-11-22,11,Resource,28,,Technical debt
+T0253,Task 253,Diana,Delta,Completed,High,2025-12-16,14,Communication,63,2025-12-16,Resource constraint
+T0254,Task 254,Eve,Delta,Completed,Critical,2025-12-30,16,,29,2025-12-30,External dependency
+T0255,Task 255,Bob,Alpha,Blocked,Low,2025-12-19,1,,38,2025-12-19,Communication gap
+T0256,Task 256,Diana,Beta,In Progress,Medium,2025-12-09,13,Technical,33,2025-12-09,External dependency
+T0257,Task 257,Diana,Gamma,Blocked,High,2025-11-26,13,Technical,91,,Communication gap
+T0258,Task 258,Bob,Gamma,Blocked,High,2026-02-24,2,Process,72,,Unclear requirements
+T0259,Task 259,Bob,Gamma,In Progress,Medium,2026-02-07,4,Communication,83,2026-02-07,Unclear requirements
+T0260,Task 260,Diana,Gamma,Blocked,Medium,2025-12-30,6,Resource,66,2025-12-30,Communication gap
+T0261,Task 261,Bob,Delta,In Progress,Medium,2026-01-22,5,Technical,17,2026-01-22,Unclear requirements
+T0262,Task 262,Diana,Delta,In Progress,Low,2026-02-08,3,Resource,71,,Technical debt
+T0263,Task 263,Diana,Beta,Blocked,Medium,2025-11-29,1,Process,38,2025-11-29,Resource constraint
+T0264,Task 264,Eve,Gamma,In Progress,Low,2025-12-22,4,Communication,83,,Resource constraint
+T0265,Task 265,Alice,Gamma,Blocked,Low,2026-02-08,2,Process,26,,Technical debt
+T0266,Task 266,Diana,Alpha,Blocked,High,2026-02-07,5,Communication,75,2026-02-07,Technical debt
+T0267,Task 267,Charlie,Delta,Completed,Low,2025-11-23,3,Resource,15,2025-11-23,Communication gap
+T0268,Task 268,Frank,Gamma,In Progress,High,2025-12-18,9,Process,67,2025-12-18,Resource constraint
+T0269,Task 269,Alice,Beta,In Progress,Low,2026-01-06,6,Technical,78,2026-01-06,Technical debt
+T0270,Task 270,Alice,Beta,Completed,High,2026-01-25,18,Process,37,2026-01-25,Resource constraint
+T0271,Task 271,Alice,Delta,Not Started,Low,2026-01-18,6,Resource,71,2026-01-18,Resource constraint
+T0272,Task 272,Eve,Beta,Completed,Low,2026-01-19,19,Communication,50,2026-01-19,Technical debt
+T0273,Task 273,Diana,Beta,In Progress,Low,2025-12-07,12,Process,78,2025-12-07,Resource constraint
+T0274,Task 274,Eve,Delta,Completed,Medium,2026-02-26,11,,91,2026-02-26,Unclear requirements
+T0275,Task 275,Diana,Gamma,Completed,High,2026-02-16,2,Process,93,2026-02-16,Unclear requirements
+T0276,Task 276,Eve,Gamma,Blocked,Critical,2025-11-27,15,Resource,50,,Unclear requirements
+T0277,Task 277,Eve,Beta,In Progress,Medium,2026-01-01,12,Communication,58,2026-01-01,Resource constraint
+T0278,Task 278,Frank,Beta,Blocked,High,2025-11-30,12,Resource,58,,Resource constraint
+T0279,Task 279,Charlie,Gamma,Completed,Medium,2026-01-08,9,Process,85,2026-01-08,Resource constraint
+T0280,Task 280,Eve,Delta,Not Started,High,2026-02-04,2,Resource,80,2026-02-04,Resource constraint
+T0281,Task 281,Frank,Beta,In Progress,Low,2026-01-27,3,Resource,12,,Communication gap
+T0282,Task 282,Bob,Alpha,Completed,Medium,2025-11-25,12,,19,,Unclear requirements
+T0283,Task 283,Charlie,Delta,Not Started,Low,2026-01-16,16,Resource,44,2026-01-16,Unclear requirements
+T0284,Task 284,Eve,Beta,In Progress,High,2025-11-20,1,Communication,89,2025-11-20,Unclear requirements
+T0285,Task 285,Alice,Beta,Not Started,Low,2026-02-20,3,,11,,Communication gap
+T0286,Task 286,Bob,Alpha,Completed,Low,2026-02-11,2,Technical,33,2026-02-11,External dependency
+T0287,Task 287,Bob,Alpha,In Progress,Medium,2025-11-29,9,,83,2025-11-29,Communication gap
+T0288,Task 288,Frank,Gamma,In Progress,Medium,2025-12-29,19,Resource,47,2025-12-29,Communication gap
+T0289,Task 289,Bob,Delta,Blocked,Medium,2026-02-25,15,,31,2026-02-25,Technical debt
+T0290,Task 290,Charlie,Delta,In Progress,High,2026-02-26,18,Process,35,2026-02-26,Communication gap
+T0291,Task 291,Eve,Gamma,Completed,Medium,2026-01-10,11,Communication,52,2026-01-10,Technical debt
+T0292,Task 292,Eve,Delta,In Progress,High,2026-02-15,16,Technical,64,2026-02-15,Unclear requirements
+T0293,Task 293,Alice,Delta,Completed,High,2025-12-20,17,Resource,48,2025-12-20,Unclear requirements
+T0294,Task 294,Frank,Delta,In Progress,High,2026-01-21,5,Communication,38,,Unclear requirements
+T0295,Task 295,Alice,Delta,Blocked,Critical,2026-01-26,12,Communication,29,,External dependency
+T0296,Task 296,Bob,Delta,Not Started,Critical,2026-02-18,11,Process,50,,Technical debt
+T0297,Task 297,Alice,Alpha,Not Started,High,2025-11-20,15,Process,63,2025-11-20,Communication gap
+T0298,Task 298,Charlie,Delta,Blocked,Low,2026-02-08,3,Communication,29,2026-02-08,Unclear requirements
+T0299,Task 299,Eve,Alpha,In Progress,Medium,2026-01-10,1,Communication,28,2026-01-10,Technical debt
+T0300,Task 300,Bob,Delta,Blocked,Low,2025-12-09,16,,93,2025-12-09,Resource constraint
+T0301,Task 301,Alice,Gamma,In Progress,Medium,2026-02-24,2,Communication,75,2026-02-24,Resource constraint
+T0302,Task 302,Frank,Beta,In Progress,High,2026-02-07,2,,39,,External dependency
+T0303,Task 303,Charlie,Alpha,In Progress,Medium,2026-02-03,3,Communication,62,2026-02-03,Technical debt
+T0304,Task 304,Charlie,Delta,Completed,Medium,2026-01-04,8,Resource,43,2026-01-04,Unclear requirements
+T0305,Task 305,Alice,Gamma,Blocked,High,2026-01-25,15,Process,31,2026-01-25,External dependency
+T0306,Task 306,Eve,Beta,Completed,Medium,2026-02-03,7,Communication,76,2026-02-03,Unclear requirements
+T0307,Task 307,Alice,Alpha,Completed,High,2025-12-14,6,Communication,15,2025-12-14,
+T0308,Task 308,Bob,Beta,In Progress,Medium,2025-12-17,9,Process,88,2025-12-17,Unclear requirements
+T0309,Task 309,Alice,Gamma,Not Started,Medium,2026-01-22,1,Resource,36,2026-01-22,Unclear requirements
+T0310,Task 310,Charlie,Alpha,Completed,High,2026-01-20,8,,19,2026-01-20,Unclear requirements
+T0311,Task 311,Alice,Beta,Completed,Critical,2025-12-05,3,Technical,82,2025-12-05,Resource constraint
+T0312,Task 312,Eve,Delta,In Progress,Medium,2025-11-20,4,Technical,57,,Resource constraint
+T0313,Task 313,Frank,Alpha,Blocked,Medium,2025-11-30,15,Technical,79,2025-11-30,Communication gap
+T0314,Task 314,Diana,Beta,Completed,Critical,2025-11-20,6,Resource,68,,External dependency
+T0315,Task 315,Alice,Gamma,In Progress,Low,2026-02-02,15,Resource,68,2026-02-02,Communication gap
+T0316,Task 316,Eve,Gamma,In Progress,Critical,2025-11-26,3,Resource,11,,Resource constraint
+T0317,Task 317,Eve,Alpha,Completed,Medium,2026-02-09,14,Process,38,2026-02-09,Technical debt
+T0318,Task 318,Frank,Beta,Completed,Low,2025-12-07,14,Communication,77,2025-12-07,Resource constraint
+T0319,Task 319,Charlie,Alpha,In Progress,High,2025-12-23,4,Technical,74,2025-12-23,Resource constraint
+T0320,Task 320,Eve,Alpha,Not Started,High,2026-01-04,12,,92,,Communication gap
+T0321,Task 321,Eve,Beta,In Progress,High,2026-01-23,17,,35,,Technical debt
+T0322,Task 322,Eve,Beta,Completed,High,2025-12-09,7,Resource,19,,Resource constraint
+T0323,Task 323,Eve,Delta,Not Started,High,2025-12-28,9,Communication,62,,Resource constraint
+T0324,Task 324,Bob,Beta,Completed,Medium,2026-01-17,3,Technical,88,,
+T0325,Task 325,Bob,Gamma,Completed,Critical,2025-11-19,13,,68,2025-11-19,Resource constraint
+T0326,Task 326,Charlie,Alpha,In Progress,Medium,2026-01-25,15,Resource,31,,Technical debt
+T0327,Task 327,Alice,Alpha,In Progress,Low,2025-12-21,18,Communication,60,,Technical debt
+T0328,Task 328,Eve,Gamma,Not Started,Low,2026-01-25,19,Communication,57,2026-01-25,Resource constraint
+T0329,Task 329,Frank,Beta,Completed,Medium,2026-02-13,1,Resource,30,2026-02-13,Resource constraint
+T0330,Task 330,Alice,Gamma,Blocked,High,2026-02-06,6,Process,31,2026-02-06,Unclear requirements
+T0331,Task 331,Frank,Gamma,In Progress,Medium,2026-01-10,2,Communication,39,2026-01-10,Communication gap
+T0332,Task 332,Alice,Delta,In Progress,Medium,2026-02-07,14,Communication,34,2026-02-07,Technical debt
+T0333,Task 333,Charlie,Gamma,In Progress,Medium,2026-02-19,6,Resource,37,,Communication gap
+T0334,Task 334,Eve,Alpha,Completed,High,2026-02-20,14,Communication,74,2026-02-20,
+T0335,Task 335,Eve,Gamma,In Progress,Low,2025-12-22,4,Resource,54,2025-12-22,Communication gap
+T0336,Task 336,Diana,Alpha,Blocked,Medium,2026-02-10,8,Communication,77,,Technical debt
+T0337,Task 337,Frank,Alpha,Completed,High,2026-01-25,3,Process,16,2026-01-25,Technical debt
+T0338,Task 338,Alice,Alpha,Not Started,High,2026-01-10,19,,58,,Communication gap
+T0339,Task 339,Alice,Beta,In Progress,Medium,2025-12-13,14,Resource,18,,Communication gap
+T0340,Task 340,Bob,Delta,Blocked,Low,2025-12-30,17,Resource,45,2025-12-30,Technical debt
+T0341,Task 341,Diana,Alpha,Blocked,Medium,2025-12-03,8,Process,92,2025-12-03,Communication gap
+T0342,Task 342,Bob,Alpha,Blocked,Medium,2026-02-05,14,Process,10,2026-02-05,Resource constraint
+T0343,Task 343,Bob,Beta,Blocked,Critical,2026-01-28,6,Technical,19,,Technical debt
+T0344,Task 344,Bob,Alpha,Blocked,Medium,2026-01-20,16,Resource,45,2026-01-20,Unclear requirements
+T0345,Task 345,Frank,Gamma,Completed,Medium,2026-01-07,19,,82,2026-01-07,Resource constraint
+T0346,Task 346,Frank,Gamma,In Progress,Critical,2026-01-04,14,Process,55,2026-01-04,Resource constraint
+T0347,Task 347,Charlie,Delta,In Progress,High,2026-02-19,19,Resource,41,2026-02-19,Communication gap
+T0348,Task 348,Charlie,Alpha,Not Started,Medium,2026-01-31,3,Resource,41,,Technical debt
+T0349,Task 349,Bob,Beta,Completed,High,2026-01-31,10,Process,15,,Unclear requirements
+T0350,Task 350,Diana,Gamma,Blocked,Medium,2025-11-21,19,Process,57,2025-11-21,Technical debt
+T0351,Task 351,Alice,Beta,Completed,High,2026-02-06,9,Technical,47,2026-02-06,Technical debt
+T0352,Task 352,Frank,Beta,In Progress,Critical,2026-01-28,13,Technical,26,2026-01-28,Resource constraint
+T0353,Task 353,Diana,Gamma,In Progress,High,2025-11-22,7,Technical,83,2025-11-22,Communication gap
+T0354,Task 354,Eve,Beta,Completed,Low,2026-01-30,14,Technical,36,2026-01-30,Communication gap
+T0355,Task 355,Frank,Gamma,Completed,Low,2025-12-25,9,Technical,63,,Communication gap
+T0356,Task 356,Frank,Beta,In Progress,Low,2025-11-22,19,Process,59,2025-11-22,Communication gap
+T0357,Task 357,Charlie,Gamma,Completed,Medium,2025-12-20,15,Technical,44,,Technical debt
+T0358,Task 358,Alice,Alpha,In Progress,High,2025-12-28,14,,94,2025-12-28,Resource constraint
+T0359,Task 359,Alice,Delta,Completed,Medium,2026-01-10,6,Technical,34,2026-01-10,Unclear requirements
+T0360,Task 360,Eve,Gamma,In Progress,Medium,2026-02-08,4,Communication,37,2026-02-08,Resource constraint
+T0361,Task 361,Eve,Gamma,Blocked,Low,2026-02-23,8,Resource,24,2026-02-23,
+T0362,Task 362,Frank,Delta,In Progress,Critical,2026-01-23,17,Communication,13,,Resource constraint
+T0363,Task 363,Bob,Gamma,Completed,Medium,2025-12-25,9,Communication,82,,Resource constraint
+T0364,Task 364,Charlie,Gamma,In Progress,High,2026-01-09,1,Technical,36,,External dependency
+T0365,Task 365,Charlie,Beta,In Progress,High,2026-02-10,14,,35,2026-02-10,External dependency
+T0366,Task 366,Frank,Delta,In Progress,Medium,2026-01-14,11,Process,28,2026-01-14,Communication gap
+T0367,Task 367,Diana,Alpha,Completed,Medium,2025-11-27,3,Process,26,2025-11-27,Resource constraint
+T0368,Task 368,Bob,Gamma,Completed,High,2026-01-28,9,Communication,52,,Resource constraint
+T0369,Task 369,Frank,Delta,In Progress,High,2025-11-26,14,,50,2025-11-26,Unclear requirements
+T0370,Task 370,Bob,Beta,Completed,Medium,2026-01-12,9,Process,51,2026-01-12,Resource constraint
+T0371,Task 371,Bob,Alpha,Blocked,Medium,2026-02-21,4,Resource,59,2026-02-21,Resource constraint
+T0372,Task 372,Bob,Delta,Blocked,Low,2025-11-20,4,Process,93,2025-11-20,Technical debt
+T0373,Task 373,Frank,Alpha,In Progress,Low,2026-01-21,8,Resource,49,2026-01-21,External dependency
+T0374,Task 374,Charlie,Alpha,Completed,Medium,2026-02-03,2,Communication,48,2026-02-03,Unclear requirements
+T0375,Task 375,Charlie,Alpha,In Progress,High,2025-11-26,9,Technical,32,,Communication gap
+T0376,Task 376,Bob,Gamma,In Progress,Medium,2026-01-12,14,Resource,61,2026-01-12,Communication gap
+T0377,Task 377,Diana,Gamma,Not Started,Medium,2026-01-05,9,Resource,56,,Unclear requirements
+T0378,Task 378,Alice,Beta,In Progress,High,2025-11-24,16,Process,72,2025-11-24,Communication gap
+T0379,Task 379,Frank,Beta,Completed,Low,2025-11-20,17,Resource,78,2025-11-20,Unclear requirements
+T0380,Task 380,Alice,Delta,Completed,Critical,2025-12-29,16,Communication,52,2025-12-29,Resource constraint
+T0381,Task 381,Diana,Beta,Blocked,Low,2025-11-22,12,,57,2025-11-22,Communication gap
+T0382,Task 382,Frank,Alpha,Completed,Medium,2025-12-26,3,,43,2025-12-26,Resource constraint
+T0383,Task 383,Bob,Alpha,In Progress,Medium,2025-12-04,11,Process,49,2025-12-04,
+T0384,Task 384,Charlie,Gamma,In Progress,Medium,2026-01-26,14,,84,2026-01-26,Resource constraint
+T0385,Task 385,Alice,Alpha,Completed,Low,2025-12-02,18,Communication,70,2025-12-02,Technical debt
+T0386,Task 386,Eve,Delta,In Progress,Medium,2026-01-25,5,Communication,59,2026-01-25,Technical debt
+T0387,Task 387,Eve,Alpha,In Progress,Medium,2025-12-22,16,Technical,76,2025-12-22,Resource constraint
+T0388,Task 388,Diana,Alpha,In Progress,Critical,2026-02-09,5,Resource,71,2026-02-09,Resource constraint
+T0389,Task 389,Bob,Delta,In Progress,Medium,2026-02-02,3,Resource,67,2026-02-02,Communication gap
+T0390,Task 390,Alice,Beta,In Progress,High,2025-11-24,12,Process,42,2025-11-24,External dependency
+T0391,Task 391,Bob,Beta,In Progress,Medium,2026-01-04,1,Resource,84,2026-01-04,External dependency
+T0392,Task 392,Alice,Delta,Completed,Medium,2025-12-31,9,Resource,25,,Technical debt
+T0393,Task 393,Diana,Gamma,Completed,Medium,2025-12-22,9,Technical,91,,Communication gap
+T0394,Task 394,Diana,Alpha,Blocked,Critical,2026-01-12,4,Communication,57,2026-01-12,Communication gap
+T0395,Task 395,Eve,Delta,In Progress,Critical,2026-02-03,3,Technical,19,,Communication gap
+T0396,Task 396,Bob,Alpha,In Progress,Medium,2026-01-26,17,Process,91,2026-01-26,Technical debt
+T0397,Task 397,Frank,Gamma,In Progress,Critical,2026-01-11,2,,47,2026-01-11,Communication gap
+T0398,Task 398,Eve,Alpha,Completed,Critical,2025-12-03,1,,28,2025-12-03,External dependency
+T0399,Task 399,Bob,Delta,Blocked,Critical,2026-02-04,8,Communication,45,2026-02-04,Unclear requirements
+T0400,Task 400,Eve,Alpha,In Progress,Low,2025-12-23,13,,68,2025-12-23,External dependency
+T0401,Task 401,Frank,Beta,Not Started,Medium,2026-01-31,15,Technical,72,2026-01-31,Technical debt
+T0402,Task 402,Charlie,Gamma,In Progress,High,2026-02-25,8,,86,2026-02-25,Resource constraint
+T0403,Task 403,Charlie,Gamma,Completed,High,2025-11-29,12,Process,55,2025-11-29,Resource constraint
+T0404,Task 404,Charlie,Gamma,Blocked,High,2026-02-10,12,Resource,12,2026-02-10,Unclear requirements
+T0405,Task 405,Charlie,Delta,Blocked,Medium,2026-01-25,14,Resource,83,,Technical debt
+T0406,Task 406,Alice,Gamma,Blocked,Medium,2026-02-18,15,Process,74,2026-02-18,External dependency
+T0407,Task 407,Charlie,Beta,Blocked,High,2026-01-15,15,Process,17,2026-01-15,Resource constraint
+T0408,Task 408,Frank,Delta,In Progress,High,2026-01-10,9,Communication,60,2026-01-10,External dependency
+T0409,Task 409,Diana,Beta,Blocked,Critical,2026-01-19,19,Communication,90,2026-01-19,External dependency
+T0410,Task 410,Diana,Alpha,In Progress,Medium,2025-11-26,8,Technical,82,2025-11-26,Resource constraint
+T0411,Task 411,Alice,Alpha,Blocked,Medium,2026-01-16,19,Process,15,2026-01-16,External dependency
+T0412,Task 412,Charlie,Alpha,Completed,High,2026-02-01,6,,48,2026-02-01,
+T0413,Task 413,Charlie,Alpha,Blocked,Critical,2025-11-20,19,Communication,69,,Communication gap
+T0414,Task 414,Charlie,Beta,Completed,Critical,2026-01-08,4,Resource,37,,Communication gap
+T0415,Task 415,Eve,Delta,Completed,Low,2026-02-02,7,Communication,63,2026-02-02,
+T0416,Task 416,Bob,Delta,Completed,High,2026-02-03,4,Resource,46,2026-02-03,Communication gap
+T0417,Task 417,Eve,Gamma,Blocked,Medium,2026-02-14,12,Resource,18,2026-02-14,Unclear requirements
+T0418,Task 418,Bob,Beta,In Progress,Medium,2025-12-29,13,,91,2025-12-29,External dependency
+T0419,Task 419,Charlie,Alpha,In Progress,High,2026-02-20,3,Resource,65,2026-02-20,Communication gap
+T0420,Task 420,Charlie,Beta,In Progress,High,2026-01-01,12,Technical,68,2026-01-01,Technical debt
+T0421,Task 421,Eve,Gamma,In Progress,High,2026-01-22,2,,94,,Unclear requirements
+T0422,Task 422,Eve,Gamma,Blocked,Medium,2026-01-13,2,Communication,11,2026-01-13,Communication gap
+T0423,Task 423,Bob,Beta,In Progress,Medium,2026-02-07,9,Process,70,,Resource constraint
+T0424,Task 424,Diana,Beta,Not Started,Medium,2025-12-24,1,Process,67,,External dependency
+T0425,Task 425,Bob,Beta,In Progress,Medium,2026-02-19,8,Process,69,2026-02-19,Unclear requirements
+T0426,Task 426,Eve,Delta,In Progress,Critical,2026-02-11,6,Communication,49,,Resource constraint
+T0427,Task 427,Frank,Alpha,Blocked,Low,2026-02-13,6,Technical,45,,Technical debt
+T0428,Task 428,Eve,Beta,Completed,Medium,2025-12-13,18,Process,46,,Resource constraint
+T0429,Task 429,Frank,Beta,Completed,High,2025-12-02,17,,88,2025-12-02,Communication gap
+T0430,Task 430,Alice,Beta,Completed,Low,2026-02-12,12,Technical,27,2026-02-12,External dependency
+T0431,Task 431,Eve,Gamma,Blocked,Medium,2025-11-27,6,Resource,72,2025-11-27,External dependency
+T0432,Task 432,Alice,Gamma,In Progress,Medium,2025-11-21,8,Technical,31,2025-11-21,Resource constraint
+T0433,Task 433,Diana,Delta,Not Started,Medium,2025-12-23,19,Communication,20,2025-12-23,Resource constraint
+T0434,Task 434,Bob,Alpha,Not Started,Low,2026-01-26,10,Process,67,2026-01-26,External dependency
+T0435,Task 435,Frank,Delta,Completed,Medium,2025-12-02,1,Resource,66,,External dependency
+T0436,Task 436,Bob,Alpha,In Progress,High,2025-12-26,13,,86,2025-12-26,Technical debt
+T0437,Task 437,Alice,Gamma,Completed,High,2025-12-03,17,Technical,13,2025-12-03,Technical debt
+T0438,Task 438,Frank,Gamma,In Progress,Low,2026-01-07,3,Technical,16,2026-01-07,Unclear requirements
+T0439,Task 439,Bob,Gamma,In Progress,High,2026-02-02,8,Technical,70,2026-02-02,External dependency
+T0440,Task 440,Eve,Delta,In Progress,High,2025-12-31,14,Process,63,2025-12-31,Communication gap
+T0441,Task 441,Charlie,Beta,Completed,Medium,2025-12-26,3,Process,77,2025-12-26,Unclear requirements
+T0442,Task 442,Alice,Beta,Blocked,Medium,2025-12-27,16,Technical,88,2025-12-27,Unclear requirements
+T0443,Task 443,Bob,Gamma,Blocked,Medium,2026-02-05,13,Resource,10,2026-02-05,External dependency
+T0444,Task 444,Alice,Beta,Blocked,Low,2025-12-31,17,Process,64,2025-12-31,Resource constraint
+T0445,Task 445,Alice,Beta,Completed,High,2025-12-31,13,,12,2025-12-31,Unclear requirements
+T0446,Task 446,Frank,Delta,In Progress,High,2025-12-03,6,,87,2025-12-03,Technical debt
+T0447,Task 447,Frank,Alpha,In Progress,High,2026-01-09,17,Communication,47,2026-01-09,Resource constraint
+T0448,Task 448,Charlie,Gamma,Not Started,Low,2026-01-06,14,,10,,Resource constraint
+T0449,Task 449,Eve,Gamma,In Progress,Medium,2026-01-16,17,Resource,47,2026-01-16,External dependency
+T0450,Task 450,Alice,Delta,Blocked,High,2025-12-19,8,,94,,External dependency
+T0451,Task 451,Bob,Delta,Completed,Low,2026-02-12,11,Process,38,2026-02-12,External dependency
+T0452,Task 452,Diana,Beta,Completed,Low,2026-01-04,1,,14,2026-01-04,External dependency
+T0453,Task 453,Alice,Gamma,Blocked,Low,2025-12-29,7,,83,2025-12-29,Technical debt
+T0454,Task 454,Alice,Alpha,Completed,Low,2025-11-22,17,Communication,30,,External dependency
+T0455,Task 455,Charlie,Delta,Blocked,High,2026-02-19,10,,80,2026-02-19,Unclear requirements
+T0456,Task 456,Eve,Alpha,Not Started,Medium,2026-01-05,11,Technical,76,,Communication gap
+T0457,Task 457,Diana,Alpha,Completed,Medium,2025-12-29,9,Resource,56,2025-12-29,
+T0458,Task 458,Frank,Gamma,In Progress,Low,2026-02-22,9,Technical,93,2026-02-22,Unclear requirements
+T0459,Task 459,Frank,Gamma,Completed,Medium,2025-12-21,5,Technical,92,2025-12-21,Unclear requirements
+T0460,Task 460,Bob,Delta,Not Started,Medium,2026-02-21,17,Process,44,2026-02-21,Technical debt
+T0461,Task 461,Diana,Gamma,In Progress,Medium,2025-11-23,9,Communication,77,2025-11-23,Resource constraint
+T0462,Task 462,Frank,Gamma,Completed,High,2025-11-25,17,,78,,Resource constraint
+T0463,Task 463,Bob,Gamma,Completed,Medium,2026-01-11,19,Process,10,2026-01-11,External dependency
+T0464,Task 464,Eve,Alpha,Blocked,Low,2025-11-20,7,Communication,77,2025-11-20,
+T0465,Task 465,Bob,Delta,In Progress,Low,2026-01-03,9,,21,2026-01-03,Technical debt
+T0466,Task 466,Frank,Beta,Blocked,Critical,2026-01-18,7,,69,2026-01-18,Resource constraint
+T0467,Task 467,Charlie,Alpha,Not Started,High,2026-01-06,13,,36,,Resource constraint
+T0468,Task 468,Charlie,Gamma,In Progress,High,2026-02-11,11,Technical,65,2026-02-11,External dependency
+T0469,Task 469,Charlie,Alpha,In Progress,Medium,2026-02-14,14,,32,2026-02-14,Technical debt
+T0470,Task 470,Frank,Gamma,Not Started,Low,2026-01-28,19,Communication,34,2026-01-28,Unclear requirements
+T0471,Task 471,Charlie,Gamma,In Progress,High,2026-02-08,11,Process,30,,Technical debt
+T0472,Task 472,Diana,Alpha,Blocked,Medium,2026-02-10,13,Technical,70,,Unclear requirements
+T0473,Task 473,Eve,Delta,Completed,Low,2025-12-26,14,Communication,72,2025-12-26,Technical debt
+T0474,Task 474,Bob,Gamma,In Progress,Medium,2026-02-08,13,Resource,61,2026-02-08,External dependency
+T0475,Task 475,Bob,Delta,Blocked,Medium,2025-11-27,1,Communication,34,,Technical debt
+T0476,Task 476,Frank,Beta,Completed,Medium,2025-12-31,8,Communication,64,2025-12-31,Communication gap
+T0477,Task 477,Charlie,Gamma,Completed,Medium,2026-01-03,12,Process,55,2026-01-03,Unclear requirements
+T0478,Task 478,Charlie,Delta,In Progress,High,2025-11-29,19,Technical,41,2025-11-29,Communication gap
+T0479,Task 479,Alice,Delta,Completed,Medium,2025-11-29,12,Communication,64,2025-11-29,Communication gap
+T0480,Task 480,Eve,Beta,In Progress,Medium,2025-12-27,8,Technical,14,2025-12-27,Resource constraint
+T0481,Task 481,Diana,Delta,In Progress,Low,2026-02-04,8,Process,45,2026-02-04,Technical debt
+T0482,Task 482,Bob,Delta,Not Started,Medium,2026-02-18,13,Process,58,2026-02-18,Unclear requirements
+T0483,Task 483,Alice,Beta,In Progress,Medium,2026-02-15,12,Resource,67,2026-02-15,External dependency
+T0484,Task 484,Alice,Gamma,Completed,High,2026-02-26,16,,48,,Technical debt
+T0485,Task 485,Frank,Delta,In Progress,Medium,2025-12-31,1,Resource,89,,
+T0486,Task 486,Bob,Delta,Blocked,Critical,2026-02-26,13,Communication,94,2026-02-26,Resource constraint
+T0487,Task 487,Frank,Delta,In Progress,High,2026-01-24,7,Resource,70,,Communication gap
+T0488,Task 488,Diana,Alpha,Not Started,Medium,2025-11-23,5,Resource,18,2025-11-23,Communication gap
+T0489,Task 489,Alice,Beta,Completed,Low,2026-01-10,8,,15,,Communication gap
+T0490,Task 490,Alice,Alpha,In Progress,Critical,2025-11-30,14,Communication,44,,Unclear requirements
+T0491,Task 491,Eve,Beta,In Progress,Medium,2026-02-26,13,Process,48,2026-02-26,Technical debt
+T0492,Task 492,Diana,Gamma,In Progress,Low,2026-02-11,15,Technical,31,2026-02-11,Communication gap
+T0493,Task 493,Alice,Gamma,Completed,High,2025-12-28,17,Process,50,2025-12-28,Unclear requirements
+T0494,Task 494,Diana,Delta,In Progress,Medium,2025-12-25,15,Technical,14,,Unclear requirements
+T0495,Task 495,Bob,Beta,Blocked,Medium,2025-12-26,18,Communication,51,,Technical debt
+T0496,Task 496,Charlie,Gamma,Completed,Medium,2025-12-20,18,Process,90,2025-12-20,Technical debt
+T0497,Task 497,Alice,Beta,In Progress,High,2026-02-05,2,Resource,85,2026-02-05,Unclear requirements
+T0498,Task 498,Eve,Gamma,Completed,High,2025-11-26,4,Resource,89,2025-11-26,Unclear requirements
+T0499,Task 499,Bob,Alpha,Blocked,Medium,2025-12-22,1,,76,2025-12-22,Unclear requirements
