@@ -276,7 +276,11 @@ def get_task_statistics():
     query = """
     SELECT 
         COUNT(*) as total_tasks,
+<<<<<<< HEAD
         COUNT(CASE WHEN actual_duration IS NOT NULL THEN 1 END) as completed_tasks,
+=======
+        COUNT(CASE WHEN status = 'Done' THEN 1 END) as completed_tasks,
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
         COUNT(CASE WHEN status = 'Blocked' THEN 1 END) as blocked_tasks,
         COUNT(CASE WHEN is_delayed = 1 THEN 1 END) as delayed_tasks,
         AVG(actual_duration) as avg_duration,
@@ -358,6 +362,7 @@ def get_tasks_by_bottleneck():
     return execute_query(query)
 
 
+<<<<<<< HEAD
 def get_tasks_with_predictions(limit: int = 1000):
     query = f"""
     SELECT
@@ -381,6 +386,8 @@ def get_tasks_with_predictions(limit: int = 1000):
     return execute_query(query)
 
 
+=======
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
 def get_summary_metrics():
     """Get comprehensive summary metrics for dashboard"""
     metrics = {}
@@ -442,6 +449,7 @@ def update_dashboard_kpis():
         engine = get_engine()
         
         with engine.connect() as conn:
+<<<<<<< HEAD
             conn.execute(text("""
               CREATE TABLE IF NOT EXISTS dashboard_summary (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -451,11 +459,14 @@ def update_dashboard_kpis():
               updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 """))
+=======
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
             # Clear existing metrics
             conn.execute(text("DELETE FROM dashboard_summary"))
             
             # Insert new metrics
             for metric_name, metric_value in metrics.items():
+<<<<<<< HEAD
                 count_keys = {
                     "total_tasks", "completed_tasks", "blocked_tasks", "delayed_tasks",
                     "total_assignees", "total_projects",
@@ -463,6 +474,9 @@ def update_dashboard_kpis():
                     "gpt_suggestions", "improvements_logged"
 }
                 category = "count" if metric_name in count_keys else "rate"
+=======
+                category = 'count' if 'count' in metric_name or 'total' in metric_name else 'rate'
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
                 conn.execute(text("""
                     INSERT INTO dashboard_summary (metric_name, metric_value, metric_category)
                     VALUES (:name, :value, :category)

@@ -21,7 +21,11 @@ from fpdf import FPDF
 import matplotlib
 matplotlib.use('Agg')  # Non-interactive backend
 import matplotlib.pyplot as plt
+<<<<<<< HEAD
 from src.utils import execute_query
+=======
+from utils import execute_query
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
 
 
 # Configure logging
@@ -235,7 +239,11 @@ def generate_impact_summary() -> Dict:
         gpt_query = """
         SELECT COUNT(*) as count
         FROM gpt_suggestions
+<<<<<<< HEAD
         WHERE applied = 1
+=======
+        WHERE feedback_status = 'applied'
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
         """
         gpt_df = query_with_fallback(gpt_query)
         if not gpt_df.empty:
@@ -243,7 +251,13 @@ def generate_impact_summary() -> Dict:
         
         # ML prediction accuracy
         ml_query = """
+<<<<<<< HEAD
         SELECT COUNT(*) as total, NULL as correct
+=======
+        SELECT 
+            COUNT(*) as total,
+            SUM(CASE WHEN prediction_correct = 1 THEN 1 ELSE 0 END) as correct
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
         FROM ml_predictions
         """
         ml_df = query_with_fallback(ml_query)
@@ -458,7 +472,11 @@ def generate_bottleneck_analysis() -> str:
         bottleneck_type,
         COUNT(*) as count,
         AVG(actual_duration) as avg_duration,
+<<<<<<< HEAD
         NULL as avg_severity
+=======
+        AVG(severity_score) as avg_severity
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     FROM tasks
     WHERE bottleneck_type != ''
     GROUP BY bottleneck_type
@@ -542,7 +560,11 @@ def generate_gpt_recommendations() -> str:
         gs.root_causes,
         gs.recommendations,
         gs.quality_score,
+<<<<<<< HEAD
         
+=======
+        gs.feedback_status
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     FROM gpt_suggestions gs
     ORDER BY gs.quality_score DESC
     LIMIT 5

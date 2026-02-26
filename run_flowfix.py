@@ -19,7 +19,11 @@ def run_script(script_name, description, args=None):
     print(f"\n[RUNNING] {description}...")
     print(f"Script: {script_name}")
     
+<<<<<<< HEAD
     cmd = [sys.executable, "-m", f"src.{script_name.replace('.py','')}"]
+=======
+    cmd = [sys.executable, f"src/{script_name}"]
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     if args:
         cmd.extend(args)
     
@@ -71,12 +75,26 @@ def main():
     
     # Step 3: GPT AI Suggestions
     print_header("STEP 3: AI RECOMMENDATIONS")
+<<<<<<< HEAD
 
     print("[INFO] GPT suggestions are optional and currently disabled (no API key).")
     print("[INFO] Skipping gpt_suggester.py")
 
     results['gpt_suggestions'] = True
    
+=======
+    results['gpt_suggestions'] = run_script(
+        'gpt_suggester.py',
+        'Generating AI-powered suggestions (requires API key)'
+    )
+    
+    # Step 3: GPT AI Suggestions
+    print_header("STEP 3: GPT AI SUGGESTIONS")
+    results['gpt_suggestions'] = run_script(
+        'gpt_suggester.py',
+        'Generating AI-powered suggestions (requires API key)'
+    )
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     
     # Step 4: PDF Report Generation
     print_header("STEP 4: REPORT GENERATION")

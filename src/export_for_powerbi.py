@@ -7,7 +7,11 @@ import logging
 from datetime import datetime
 from typing import Optional
 import pandas as pd
+<<<<<<< HEAD
 from src.utils import execute_query
+=======
+from utils import execute_query
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
 
 # Configure logging
 logging.basicConfig(
@@ -124,10 +128,19 @@ def export_gpt_suggestions_sheet() -> Optional[pd.DataFrame]:
         g.urgency,
         g.quality_score,
         g.applied,
+<<<<<<< HEAD
         g.created_at,
        
        
     
+=======
+        g.applied_action,
+        g.created_at,
+        g.feedback_status,
+        g.feedback_notes,
+        g.feedback_date,
+        g.was_helpful
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     FROM gpt_suggestions g
     JOIN tasks t ON g.task_id = t.task_id
     ORDER BY g.created_at DESC
@@ -231,6 +244,7 @@ def export_ml_predictions_sheet() -> Optional[pd.DataFrame]:
     logger.info("[ML] Exporting ML Predictions sheet...")
     
     query = """
+<<<<<<< HEAD
     SELECT
     mp.task_id,
     t.task_name,
@@ -246,6 +260,26 @@ def export_ml_predictions_sheet() -> Optional[pd.DataFrame]:
     FROM ml_predictions mp
     JOIN tasks t ON mp.task_id = t.task_id
     ORDER BY mp.created_at DESC
+=======
+    SELECT 
+        mp.task_id,
+        t.task_name,
+        t.assignee,
+        t.project,
+        mp.model_type,
+        mp.predicted_duration,
+        mp.predicted_delay_prob,
+        mp.confidence_score,
+        mp.model_version,
+        mp.prediction_date,
+        mp.actual_outcome,
+        mp.prediction_correct,
+        t.actual_duration,
+        t.is_delayed
+    FROM ml_predictions mp
+    JOIN tasks t ON mp.task_id = t.task_id
+    ORDER BY mp.prediction_date DESC
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     """
     
     try:

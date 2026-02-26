@@ -16,7 +16,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 from sklearn.metrics import roc_auc_score, roc_curve
 from sqlalchemy import text
+<<<<<<< HEAD
 from src.utils import get_engine, execute_query
+=======
+from utils import get_engine, execute_query
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
 
 # Try to import SHAP for explainability
 try:
@@ -304,6 +308,7 @@ def train_duration_predictor(df, label_encoders):
     
     model.fit(X_train, y_train)
     
+<<<<<<< HEAD
       # Cross-validation (safe for small datasets)
     cv = min(5, len(X_train))
 
@@ -322,6 +327,12 @@ def train_duration_predictor(df, label_encoders):
         logger.warning("Skipping CV: not enough training samples")
 
 
+=======
+    # Cross-validation
+    cv_scores = cross_val_score(model, X_train, y_train, cv=5, 
+                                scoring='neg_mean_absolute_error', n_jobs=-1)
+    cv_mae = -cv_scores.mean()
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     
     # Evaluate
     y_pred_train = model.predict(X_train)
@@ -337,18 +348,25 @@ def train_duration_predictor(df, label_encoders):
     logger.info("\n[STATS] Model Performance:")
     logger.info(f"   Train MAE: {train_mae:.2f} days")
     logger.info(f"   Test MAE: {test_mae:.2f} days")
+<<<<<<< HEAD
 
     if cv_mae is not None:
         logger.info(f"   CV MAE: {cv_mae:.2f} days")
     else:
         logger.info("   CV MAE: skipped (insufficient data)")
 
+=======
+    logger.info(f"   CV MAE: {cv_mae:.2f} days")
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     logger.info(f"   Train RMSE: {train_rmse:.2f} days")
     logger.info(f"   Test RMSE: {test_rmse:.2f} days")
     logger.info(f"   Train R²: {train_r2:.3f}")
     logger.info(f"   Test R²: {test_r2:.3f}")
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     
     # Feature importance
     feature_importance = pd.DataFrame({
@@ -365,6 +383,7 @@ def train_duration_predictor(df, label_encoders):
     
     # Prepare metrics for logging
     metrics = {
+<<<<<<< HEAD
     'train_mae': float(train_mae),
     'test_mae': float(test_mae),
     'cv_mae': float(cv_mae) if cv_mae is not None else None,
@@ -375,6 +394,18 @@ def train_duration_predictor(df, label_encoders):
     'n_train': len(X_train),
     'n_test': len(X_test)
 }
+=======
+        'train_mae': float(train_mae),
+        'test_mae': float(test_mae),
+        'cv_mae': float(cv_mae),
+        'train_rmse': float(train_rmse),
+        'test_rmse': float(test_rmse),
+        'train_r2': float(train_r2),
+        'test_r2': float(test_r2),
+        'n_train': len(X_train),
+        'n_test': len(X_test)
+    }
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     
     feature_importance_dict = feature_importance.set_index('feature')['importance'].to_dict()
     feature_importance_dict = {k: float(v) for k, v in feature_importance_dict.items()}
@@ -571,6 +602,7 @@ def train_delay_classifier(df, label_encoders):
 
 
 def save_prediction_to_db(task_id, model_type, prediction, confidence=None):
+<<<<<<< HEAD
     """Save prediction to ml_predictions table (matches current DB schema)"""
     engine = get_engine()
 
@@ -595,6 +627,29 @@ def save_prediction_to_db(task_id, model_type, prediction, confidence=None):
         logger.info(f"[SUCCESS] Saved prediction for {task_id} ({model_type})")
         return True
 
+=======
+    """Save prediction to ml_predictions table"""
+    engine = get_engine()
+    
+    query = text("""
+        INSERT INTO ml_predictions 
+        (task_id, model_type, prediction_value, confidence_score, model_version)
+        VALUES (:task_id, :model_type, :prediction, :confidence, :version)
+    """)
+    
+    try:
+        with engine.connect() as conn:
+            conn.execute(query, {
+                'task_id': task_id,
+                'model_type': model_type,
+                'prediction': float(prediction),
+                'confidence': float(confidence) if confidence else None,
+                'version': MODEL_VERSION
+            })
+            conn.commit()
+        logger.info(f"[SUCCESS] Saved prediction for {task_id}")
+        return True
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
     except Exception as e:
         logger.error(f"Failed to save prediction: {e}")
         return False
@@ -634,6 +689,7 @@ def predict_new_task(task_data, model_type='duration', save_to_db=True):
 
 
 def train_all_models():
+<<<<<<< HEAD
     """
     Train ML models if they don't already exist.
     Safe to call multiple times.
@@ -786,3 +842,65 @@ if __name__ == "__main__":
         import sys
         sys.exit(0)   # still exit cleanly so pipeline doesn't fail
 
+=======
+    """Train all ML models with full production features"""
+    print("\n" + "="*60)
+    print("[ML] STARTING ML MODEL TRAINING - Production Grade")
+    print(f"   Version: {MODEL_VERSION}")
+    print("="*60 + "\n")
+    
+    # Load data
+    df = load_training_data()
+    
+    if len(df) < 50:
+        logger.warning("[WARNING] Warning: Limited training data. Results may not be reliable.")
+    
+    # Engineer features
+    df, label_encoders = engineer_features(df)
+    
+    # Validation and export
+    logger.info("\n[STATS] Data Validation:")
+    logger.info(f"   Total samples: {len(df)}")
+    logger.info(f"   Features engineered: {len([c for c in df.columns if '_encoded' in c or 'avg_' in c or 'std_' in c])}")
+    logger.info(f"   Missing values: {df.isnull().sum().sum()}")
+    
+    # Export feature set for analysis
+    feature_export_path = os.path.join(MODEL_DIR, f'feature_set_v{MODEL_VERSION}.csv')
+    df.to_csv(feature_export_path, index=False)
+    logger.info(f"   Exported feature set: {feature_export_path}")
+    
+    # Train duration predictor
+    duration_model, duration_features = train_duration_predictor(df, label_encoders)
+    
+    # Train delay classifier
+    delay_model, delay_features = train_delay_classifier(df, label_encoders)
+    
+    print("\n" + "="*60)
+    print("[SUCCESS] ALL MODELS TRAINED SUCCESSFULLY")
+    print("="*60)
+    print(f"\n[INFO] Models saved in '{MODEL_DIR}/' directory:")
+    print(f"   - duration_predictor_v{MODEL_VERSION}_*.pkl")
+    print(f"   - delay_classifier_v{MODEL_VERSION}_*.pkl")
+    print(f"   - duration_predictor_latest.pkl")
+    print(f"   - delay_classifier_latest.pkl")
+    if SHAP_AVAILABLE:
+        print(f"\n[INFO] SHAP visualizations saved in '{SHAP_DIR}/' directory")
+    print("\n")
+    
+    return {
+        'duration_model': duration_model,
+        'delay_model': delay_model,
+        'label_encoders': label_encoders
+    }
+
+
+if __name__ == "__main__":
+    import sys
+    
+    # Check for verbose flag
+    if '--verbose' in sys.argv:
+        logging.getLogger().setLevel(logging.DEBUG)
+    
+    # Train models
+    models = train_all_models()
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5

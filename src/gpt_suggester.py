@@ -10,6 +10,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from openai import OpenAI, RateLimitError, APIError, APITimeoutError
 from sqlalchemy import text
+<<<<<<< HEAD
 from src.utils import get_engine, execute_query
 import sys
 
@@ -21,6 +22,9 @@ if not OPENAI_API_KEY:
     print("[GPT] Skipping suggestion generation.")
 
     sys.exit(0)  # critical: clean exit, no failure 
+=======
+from utils import get_engine, execute_query
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
 
 # Configure logging
 logging.basicConfig(
@@ -649,7 +653,11 @@ def export_suggestions_to_csv():
     """Export GPT suggestions to CSV file with enhanced fields"""
     query = """
     SELECT 
+<<<<<<< HEAD
         g.suggested_id,
+=======
+        g.id,
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
         g.task_id,
         t.task_name,
         t.assignee,
@@ -702,6 +710,7 @@ def get_suggestion_summary():
     
     return execute_query(query)
 
+<<<<<<< HEAD
 from datetime import datetime, timezone
 import sys
 from sqlalchemy import text
@@ -754,3 +763,46 @@ if __name__ == "__main__":
     generate_gpt_suggestions()
     sys.exit(0)
     
+=======
+
+if __name__ == "__main__":
+    import sys
+    
+    # Check command line arguments
+    limit = None
+    use_ab_testing = False
+    
+    if len(sys.argv) > 1:
+        for arg in sys.argv[1:]:
+            if arg == '--ab-test':
+                use_ab_testing = True
+                print("🔬 A/B testing mode enabled")
+            else:
+                try:
+                    limit = int(arg)
+                    print(f"Processing limit: {limit} tasks")
+                except ValueError:
+                    print("Usage: python gpt_suggester.py [limit] [--ab-test]")
+                    sys.exit(1)
+    
+    # Generate suggestions
+    generate_suggestions(limit=limit, use_ab_testing=use_ab_testing)
+    
+    # Export to CSV
+    print("\n📤 Exporting suggestions...")
+    export_suggestions_to_csv()
+    
+    # Show summary
+    summary = get_suggestion_summary()
+    if len(summary) > 0:
+        row = summary.iloc[0]
+        print(f"\n📊 Summary:")
+        print(f"   Total Suggestions: {row['total_suggestions']}")
+        print(f"   Applied: {row['applied_count']}")
+        print(f"   Unique Tasks: {row['unique_tasks']}")
+        print(f"   Avg Quality Score: {row['avg_quality_score']:.1f}/100")
+        print(f"   Avg Latency: {row['avg_latency_ms']:.0f}ms")
+        print(f"   Critical: {row['critical_count']}")
+        print(f"   High Urgency: {row['high_urgency_count']}")
+        print(f"   Needs Review: {row['needs_review_count']}")
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5

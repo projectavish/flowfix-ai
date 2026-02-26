@@ -9,7 +9,11 @@ from datetime import datetime, timedelta
 from typing import Optional, Dict, List
 import pandas as pd
 from sqlalchemy import text
+<<<<<<< HEAD
 from src.utils import get_engine, execute_query, update_dashboard_kpis
+=======
+from utils import get_engine, execute_query, update_dashboard_kpis
+>>>>>>> 789db11de11bf607177a31557cbb9b376ebcdde5
 
 # Configure logging
 logging.basicConfig(
